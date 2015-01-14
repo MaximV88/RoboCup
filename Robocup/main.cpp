@@ -1,15 +1,23 @@
-//
-//  main.cpp
-//  Robocup
-//
-//  Created by Maxim Vainshtein on 1/14/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/*8921005 303677512 maxim vainshtein*/
 
 #include <iostream>
+#include <stdlib.h>
+#include "Client.h"
+#include "Player.h"
+
+#define NAME_INPUT "maxim_va"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    //First create a client for all the players
+    Client *udpClient = Client::createClient(ProtocolTypeUDP, 6000);
+    
+    Player *testPlayer = Player::createPlayer(PlayerTypeForward, udpClient->connection(), NAME_INPUT);
+    testPlayer->start();
+    
+    //Waits for the player to finish playing
+    testPlayer->waitCompletion();
+    
     return 0;
+    
 }
