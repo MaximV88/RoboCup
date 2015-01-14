@@ -26,6 +26,9 @@ StatusType PushTargetToStackNode::process() {
     //Push it to the stack
     getContext().getStack().push(cTarget);
     
+    //Clear the current target once pointer is saved
+    getContext().setCurrentTarget(NULL);
+    
     //All was OK
     return StatusTypeSuccess;
     

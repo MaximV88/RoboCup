@@ -9,6 +9,6 @@
 #ifndef Robocup_BehaviorCustom_h
 #define Robocup_BehaviorCustom_h
 
-#include "SearchBallNode.h"
+#include "SearchNode.h"
 
 #endif

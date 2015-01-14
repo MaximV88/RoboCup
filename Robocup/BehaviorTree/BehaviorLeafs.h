@@ -23,5 +23,7 @@
 #include "PopFromStackNode.h"
 #include "IsTargetEnemyNode.h"
 #include "IsTargetPlayerNode.h"
+#include "IsTargetVisibleNode.h"
+#include "SetTargetToNode.h"
 
 #endif

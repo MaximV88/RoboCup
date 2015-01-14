@@ -33,12 +33,18 @@ namespace behavior {
         
         const Observable* m_cObservable;
         
+        const ObservableType* m_eObservableType;
+        
     public:
         BehaviorTarget(const Observable& cObservable);
         
         BehaviorTarget(const Coordinate& cCoordinate);
         
         BehaviorTarget(WidthType eWidthType, QualityType eQualityType);
+        
+        BehaviorTarget(ObservableType eObservableType);
+        
+        BehaviorTarget(double dValue);
         
         ~BehaviorTarget();
         
@@ -57,6 +63,8 @@ namespace behavior {
         const QualityType* getQualityTypeValue() const;
         
         const Observable* getObservable() const;
+        
+        const ObservableType* getObservableType() const;
 
     };
     

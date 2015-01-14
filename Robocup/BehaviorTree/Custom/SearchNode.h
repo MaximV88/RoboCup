@@ -13,8 +13,13 @@
 
 namespace behavior {
     
+    /****************************************************************************************
+     * SearchNode Class: Recieves an input target (an ObservableType), and searches for     *
+     *                   it. When found, it will populate the context's stack with it's     *
+     *                   coordinate, direction from player, and direction vector.           *
+     ***************************************************************************************/
+    
     class SearchNode : public SequenceNode {
-        
         
     public:
         SearchNode();

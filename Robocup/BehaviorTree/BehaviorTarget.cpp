@@ -38,6 +38,24 @@ BehaviorTarget::BehaviorTarget(WidthType eWidthType, QualityType eQualityType) {
     
 }
 
+BehaviorTarget::BehaviorTarget(ObservableType eObservableType) {
+    
+    initialize();
+
+    //Copy the parameter
+    m_eObservableType = new ObservableType(eObservableType);
+    
+}
+
+BehaviorTarget::BehaviorTarget(double dValue) {
+    
+    initialize();
+    
+    //Copy the parameter
+    m_dValue = new double(dValue);
+    
+}
+
 BehaviorTarget::~BehaviorTarget() {
     
     //Remove all non-object member variables
@@ -52,6 +70,9 @@ BehaviorTarget::~BehaviorTarget() {
     
     if (m_iValue != NULL)
         delete m_iValue;
+    
+    if (m_eObservableType != NULL)
+        delete m_eObservableType;
     
     //Should delete c string? check for memory leaks
  //   if (m_chCString != NULL)
@@ -118,5 +139,12 @@ const Observable* BehaviorTarget::getObservable() const {
     
     //Return value pointer
     return m_cObservable;
+    
+}
+
+const ObservableType* BehaviorTarget::getObservableType() const {
+    
+    //Return value pointer
+    return m_eObservableType;
     
 }
