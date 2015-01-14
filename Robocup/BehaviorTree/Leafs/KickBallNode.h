@@ -9,7 +9,6 @@
 #ifndef __Ex3__KickBallNode__
 #define __Ex3__KickBallNode__
 
-#include <stdio.h>
 #include "BehaviorTreeNode.h"
 
 namespace behavior {

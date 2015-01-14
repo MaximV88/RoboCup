@@ -1,13 +1,13 @@
 //
-//  TurnNode.h
-//  Ex3
+//  SetTargetToNode.h
+//  Robocup
 //
-//  Created by Maxim Vainshtein on 1/10/15.
+//  Created by Maxim Vainshtein on 1/14/15.
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
-#ifndef __Ex3__TurnNode__
-#define __Ex3__TurnNode__
+#ifndef __Robocup__SetTargetToNode__
+#define __Robocup__SetTargetToNode__
 
 #include "BehaviorTreeNode.h"
 
@@ -17,16 +17,19 @@ namespace behavior {
      * TurnNode Class:        This command will turn the player’s body direction Moment                 *
      *                        degrees relative to the current direction.                                *
      ***************************************************************************************************/
-
-    class TurnNode : public BehaviorTreeNode {
+    
+    class SetTargetToNode : public BehaviorTreeNode {
         
+    private:
+        
+        BehaviorTarget* m_cTarget;
         
     public:
-        TurnNode();
-        ~TurnNode();
-    
+        SetTargetToNode(BehaviorTarget* cTarget);
+        ~SetTargetToNode();
+        
         virtual StatusType process();
-
+        
     };
     
 }

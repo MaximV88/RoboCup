@@ -8,6 +8,7 @@
 
 #include "ChangeViewNode.h"
 #include "Brain.h"
+#include "Player.h"
 
 #define CHANGE_VIEW_NODE_COMMAND "change_view"
 #define CHANGE_VIEW_NODE_TARGET_ERROR "ChangeViewNode Error: No Target given"
@@ -65,6 +66,17 @@ StatusType ChangeViewNode::process() {
         return StatusTypeFailure;
         
     }
+    
+    //Check if there is need to perform an instruction (settings already set)
+    const BodyState* cBody = getContext().getPlayer().getLastBodyState();
+    
+    if (cBody->viewModeWidth == *eWidthType && cBody->viewModeQuality == *eQualityType) {
+        
+        //No need to proceed
+        return StatusTypeSuccess;
+        
+    }
+    
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

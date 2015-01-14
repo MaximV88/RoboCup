@@ -1,0 +1,14 @@
+//
+//  BehaviorCustom.h
+//  Robocup
+//
+//  Created by Maxim Vainshtein on 1/14/15.
+//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
+//
+
+#ifndef Robocup_BehaviorCustom_h
+#define Robocup_BehaviorCustom_h
+
+#include "SearchBallNode.h"
+
+#endif

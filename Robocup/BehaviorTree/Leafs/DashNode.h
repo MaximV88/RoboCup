@@ -9,7 +9,6 @@
 #ifndef __Ex3__DashNode__
 #define __Ex3__DashNode__
 
-#include <stdio.h>
 #include "BehaviorTreeNode.h"
 
 namespace behavior {

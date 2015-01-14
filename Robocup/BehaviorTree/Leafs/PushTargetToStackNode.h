@@ -9,7 +9,6 @@
 #ifndef __Ex3__PushTargetToStackNode__
 #define __Ex3__PushTargetToStackNode__
 
-#include <stdio.h>
 #include "BehaviorTreeNode.h"
 
 namespace behavior {

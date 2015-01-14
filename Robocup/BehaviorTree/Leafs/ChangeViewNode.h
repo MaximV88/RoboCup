@@ -9,7 +9,6 @@
 #ifndef __Ex3__ChangeViewNode__
 #define __Ex3__ChangeViewNode__
 
-#include <stdio.h>
 #include "BehaviorTreeNode.h"
 
 namespace behavior {

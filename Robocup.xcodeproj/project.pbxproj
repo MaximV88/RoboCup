@@ -67,6 +67,8 @@
 		BE0C068F1A66DDCD009065F8 /* TurnNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C067F1A66DDCD009065F8 /* TurnNode.cpp */; };
 		BE0C06931A66DE17009065F8 /* Brain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06911A66DE17009065F8 /* Brain.cpp */; };
 		BE0C06971A66DEA4009065F8 /* BehaviorException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06951A66DEA4009065F8 /* BehaviorException.cpp */; };
+		BE0C06A21A66E4DC009065F8 /* SearchNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06A01A66E4DC009065F8 /* SearchNode.cpp */; };
+		BE0C06A51A66E72E009065F8 /* SetTargetToNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06A31A66E72E009065F8 /* SetTargetToNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -204,9 +206,16 @@
 		BE0C06801A66DDCD009065F8 /* TurnNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnNode.h; path = BehaviorTree/Leafs/TurnNode.h; sourceTree = "<group>"; };
 		BE0C06911A66DE17009065F8 /* Brain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Brain.cpp; path = Thread/Brain.cpp; sourceTree = "<group>"; };
 		BE0C06921A66DE17009065F8 /* Brain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Brain.h; path = Thread/Brain.h; sourceTree = "<group>"; };
-		BE0C06941A66DE84009065F8 /* Behavior.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Behavior.h; path = BehaviorTree/Behavior.h; sourceTree = "<group>"; };
+		BE0C06941A66DE84009065F8 /* BehaviorLeafs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BehaviorLeafs.h; path = BehaviorTree/BehaviorLeafs.h; sourceTree = "<group>"; };
 		BE0C06951A66DEA4009065F8 /* BehaviorException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BehaviorException.cpp; path = BehaviorTree/BehaviorException.cpp; sourceTree = "<group>"; };
 		BE0C06961A66DEA4009065F8 /* BehaviorException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BehaviorException.h; path = BehaviorTree/BehaviorException.h; sourceTree = "<group>"; };
+		BE0C069D1A66E23C009065F8 /* BehaviorCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BehaviorCustom.h; path = BehaviorTree/BehaviorCustom.h; sourceTree = "<group>"; };
+		BE0C069E1A66E275009065F8 /* Behavior.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Behavior.h; path = BehaviorTree/Behavior.h; sourceTree = "<group>"; };
+		BE0C069F1A66E2A5009065F8 /* BehaviorFlow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BehaviorFlow.h; path = BehaviorTree/BehaviorFlow.h; sourceTree = "<group>"; };
+		BE0C06A01A66E4DC009065F8 /* SearchNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SearchNode.cpp; path = BehaviorTree/Custom/SearchNode.cpp; sourceTree = "<group>"; };
+		BE0C06A11A66E4DC009065F8 /* SearchNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchNode.h; path = BehaviorTree/Custom/SearchNode.h; sourceTree = "<group>"; };
+		BE0C06A31A66E72E009065F8 /* SetTargetToNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetTargetToNode.cpp; path = BehaviorTree/Leafs/SetTargetToNode.cpp; sourceTree = "<group>"; };
+		BE0C06A41A66E72E009065F8 /* SetTargetToNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetTargetToNode.h; path = BehaviorTree/Leafs/SetTargetToNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,7 +510,10 @@
 		BE0C063E1A66DD08009065F8 /* BehaviorTree */ = {
 			isa = PBXGroup;
 			children = (
-				BE0C06941A66DE84009065F8 /* Behavior.h */,
+				BE0C069E1A66E275009065F8 /* Behavior.h */,
+				BE0C069F1A66E2A5009065F8 /* BehaviorFlow.h */,
+				BE0C06941A66DE84009065F8 /* BehaviorLeafs.h */,
+				BE0C069D1A66E23C009065F8 /* BehaviorCustom.h */,
 				BE0C06401A66DD1B009065F8 /* BehaviorTree.h */,
 				BE0C063F1A66DD1B009065F8 /* BehaviorTree.cpp */,
 				BE0C06441A66DD28009065F8 /* BehaviorContext.h */,
@@ -522,6 +534,7 @@
 				BE0C064D1A66DD47009065F8 /* Decorator */,
 				BE0C064C1A66DD42009065F8 /* Composition */,
 				BE0C06621A66DDBF009065F8 /* Leafs */,
+				BE0C06991A66E19C009065F8 /* CustomNodes */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -601,6 +614,8 @@
 				BE0C067D1A66DDCD009065F8 /* TurnNeckNode.cpp */,
 				BE0C06801A66DDCD009065F8 /* TurnNode.h */,
 				BE0C067F1A66DDCD009065F8 /* TurnNode.cpp */,
+				BE0C06A41A66E72E009065F8 /* SetTargetToNode.h */,
+				BE0C06A31A66E72E009065F8 /* SetTargetToNode.cpp */,
 			);
 			name = Leafs;
 			sourceTree = "<group>";
@@ -621,6 +636,15 @@
 				BE0C06951A66DEA4009065F8 /* BehaviorException.cpp */,
 			);
 			name = Exception;
+			sourceTree = "<group>";
+		};
+		BE0C06991A66E19C009065F8 /* CustomNodes */ = {
+			isa = PBXGroup;
+			children = (
+				BE0C06A11A66E4DC009065F8 /* SearchNode.h */,
+				BE0C06A01A66E4DC009065F8 /* SearchNode.cpp */,
+			);
+			name = CustomNodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -691,6 +715,7 @@
 				BE0C068B1A66DDCD009065F8 /* SayNode.cpp in Sources */,
 				BE0C06601A66DDB5009065F8 /* SelectorNode.cpp in Sources */,
 				BE0C05E41A66DA28009065F8 /* Client.cpp in Sources */,
+				BE0C06A51A66E72E009065F8 /* SetTargetToNode.cpp in Sources */,
 				BE0C068D1A66DDCD009065F8 /* SenseBodyNode.cpp in Sources */,
 				BE0C05C41A66D9E9009065F8 /* Instruction.cpp in Sources */,
 				BE0C06381A66DC99009065F8 /* Coordinate.cpp in Sources */,
@@ -705,6 +730,7 @@
 				BE0C05E51A66DA28009065F8 /* TCPClient.cpp in Sources */,
 				BE0C06611A66DDB5009065F8 /* SequenceNode.cpp in Sources */,
 				BE0C06451A66DD28009065F8 /* BehaviorContext.cpp in Sources */,
+				BE0C06A21A66E4DC009065F8 /* SearchNode.cpp in Sources */,
 				BE0C05DB1A66DA20009065F8 /* Connection.cpp in Sources */,
 				BE0C05D21A66DA18009065F8 /* Server.cpp in Sources */,
 				BE0C06861A66DDCD009065F8 /* ChangeViewNode.cpp in Sources */,

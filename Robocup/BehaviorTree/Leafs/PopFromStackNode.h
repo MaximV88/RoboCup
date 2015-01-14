@@ -9,8 +9,6 @@
 #ifndef __Ex3__PopFromStackNode__
 #define __Ex3__PopFromStackNode__
 
-#include <stdio.h>
-
 #include "BehaviorTreeNode.h"
 
 namespace behavior {

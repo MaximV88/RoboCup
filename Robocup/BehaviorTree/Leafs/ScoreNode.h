@@ -9,7 +9,6 @@
 #ifndef __Ex3__ScoreNode__
 #define __Ex3__ScoreNode__
 
-#include <stdio.h>
 #include "BehaviorTreeNode.h"
 
 namespace behavior {

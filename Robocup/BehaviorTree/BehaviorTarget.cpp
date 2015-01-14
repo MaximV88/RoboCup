@@ -28,7 +28,34 @@ BehaviorTarget::BehaviorTarget(const Coordinate& cCoordinate) {
     
 }
 
+BehaviorTarget::BehaviorTarget(WidthType eWidthType, QualityType eQualityType) {
+    
+    initialize();
+    
+    //Copy both parameters
+    m_eQualityTypeValue = new QualityType(eQualityType);
+    m_eWidthTypeValue = new WidthType(eWidthType);
+    
+}
+
 BehaviorTarget::~BehaviorTarget() {
+    
+    //Remove all non-object member variables
+    if (m_eQualityTypeValue != NULL)
+        delete m_eQualityTypeValue;
+    
+    if (m_eWidthTypeValue != NULL)
+        delete m_eWidthTypeValue;
+
+    if (m_dValue != NULL)
+        delete m_dValue;
+    
+    if (m_iValue != NULL)
+        delete m_iValue;
+    
+    //Should delete c string? check for memory leaks
+ //   if (m_chCString != NULL)
+ //       delete m_chCString;
     
 }
 

@@ -9,8 +9,6 @@
 #ifndef __Ex3__IsTargetEnemyNode__
 #define __Ex3__IsTargetEnemyNode__
 
-#include <stdio.h>
-
 #include "BehaviorTreeNode.h"
 
 namespace behavior {

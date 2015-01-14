@@ -9,7 +9,6 @@
 #ifndef __Ex3__SayNode__
 #define __Ex3__SayNode__
 
-#include <stdio.h>
 #include "BehaviorTreeNode.h"
 
 namespace behavior {

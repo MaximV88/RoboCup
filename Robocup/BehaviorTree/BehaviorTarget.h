@@ -38,6 +38,8 @@ namespace behavior {
         
         BehaviorTarget(const Coordinate& cCoordinate);
         
+        BehaviorTarget(WidthType eWidthType, QualityType eQualityType);
+        
         ~BehaviorTarget();
         
         void initialize();

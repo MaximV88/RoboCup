@@ -9,7 +9,6 @@
 #ifndef __Ex3__MoveNode__
 #define __Ex3__MoveNode__
 
-#include <stdio.h>
 #include "BehaviorTreeNode.h"
 #include "Coordinate.h"
 

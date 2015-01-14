@@ -9,7 +9,6 @@
 #ifndef __Ex3__IsTargetPlayerNode__
 #define __Ex3__IsTargetPlayerNode__
 
-#include <stdio.h>
 #include "BehaviorTreeNode.h"
 
 namespace behavior {
