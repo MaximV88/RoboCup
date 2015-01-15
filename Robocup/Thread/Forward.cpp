@@ -255,16 +255,11 @@ Player(cConnection, chTeamName) {
     
     //Create all behaviors and add them to the brain
     BehaviorTree *cTree = new BehaviorTree(*this, getBrain());
+
+    RepeaterNode *cRepeat = new RepeaterNode(new SearchTurnNeckNode());
+    cRepeat->setRepeats(100000);
     
-    //Create the nodes
-    TurnNode *cTurnNode = new TurnNode();
-    EndActNode *cEndNode = new EndActNode();
-    
-    SequenceNode *cSequence = new SequenceNode();
-    cSequence->addChild(cEndNode);
-    cSequence->addChild(cTurnNode);
-    
-    cTree->setRoot(cSequence);
+    cTree->setRoot(cRepeat);
     
     getBrain().addBehavior("Start", *cTree);
     

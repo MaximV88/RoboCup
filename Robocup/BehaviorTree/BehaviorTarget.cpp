@@ -88,6 +88,7 @@ void BehaviorTarget::initialize() {
     m_eQualityTypeValue = NULL;
     m_eWidthTypeValue = NULL;
     m_iValue = NULL;
+    m_eObservableType = NULL;
     
     //TODO: convert to memset?
     

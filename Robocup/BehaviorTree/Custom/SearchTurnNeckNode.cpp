@@ -8,18 +8,23 @@
 
 #include "SearchTurnNeckNode.h"
 #include "IsTargetVisibleNode.h"
-#include "TurnNeckNode.h"
 #include "InverterNode.h"
 #include "BehaviorContext.h"
 #include "PushTargetToStackNode.h"
+#include "TurnNeckNode.h"
 #include "SetTargetToNode.h"
 #include "EndActNode.h"
+#include "ExecuteActNode.h"
+#include "SenseBodyNode.h"
 #include "PopFromStackNode.h"
+#include "RepeatUntilFailNode.h"
 #include "Player.h"
+#include "TurnNeckNegativeNode.h"
+#include "TurnNeckPositiveNode.h"
 
 using namespace behavior;
 
-SearchTurnNeckNode::SearchTurnNeckNode() {
+SearchTurnNeckNode::SearchTurnNeckNode() : InverterNode(new SequenceNode()) {
     
     
     /************************************************
@@ -27,24 +32,36 @@ SearchTurnNeckNode::SearchTurnNeckNode() {
      * to right, check again, and if not turn left. *
      ***********************************************/
     
-    SequenceNode *cCheckingSequence = new SequenceNode();
+    //Take the existing child into a pointer
+    SequenceNode *cCheckingSequence = static_cast<SequenceNode*>(&getChild());
     
     /*
      * If not visible, we need to continue the sequence,
-     * thus we will use an Inverter.
+     * thus we will use an Inverter. The addVisibilityCheck
+     * does this process for us.
      */
     
     addVisibilityCheck(cCheckingSequence);
     
     /*
      * If not found, the sequence continues and we need to turn the neck.
-     * Save the target into the stack and set rotation value as target.
-     * Afterwards, update and check again
+     * Need to repeat the positive rotation until maximum, at which it
+     * will fail. Thus we need to repeat until fail.
      */
+
+    TurnNeckNegativeNode *cTurnNegative = new TurnNeckNegativeNode();
     
-    double dRotation = getContext().getPlayer().getLastServerState()->maxNeckAngle;
+    //Also check visibility at each turn
+    addVisibilityCheck(cTurnNegative);
     
-    turnNeck(cCheckingSequence, dRotation);
+    //Repeat the node until it fails
+    RepeatUntilFailNode *cRepeatUntilFailNeg = new RepeatUntilFailNode(cTurnNegative);
+    
+    //Dont want to stop sequence here if found node or just cant proceed - it will always be true
+    InverterNode *cInvertRepeatNeg = new InverterNode(cRepeatUntilFailNeg);
+    
+    cCheckingSequence->addChild(cInvertRepeatNeg);
+
     
     /*
      * At this section, we would have already turned the neck
@@ -53,10 +70,28 @@ SearchTurnNeckNode::SearchTurnNeckNode() {
      */
 
     addVisibilityCheck(cCheckingSequence);
+    
+    TurnNeckPositiveNode *cTurnPositive = new TurnNeckPositiveNode();
+    
+    //Also check visibility at each turn
+    addVisibilityCheck(cTurnPositive);
+    
+    //Repeat the node until it fails
+    RepeatUntilFailNode *cRepeatUntilFailPos = new RepeatUntilFailNode(cTurnPositive);
+    
+    //Dont want to stop sequence here if found node or just cant proceed - it will always be true
+    InverterNode *cInvertRepeatPos = new InverterNode(cRepeatUntilFailPos);
+    
+    cCheckingSequence->addChild(cInvertRepeatPos);
 
+    /*
+     * At this section, we would have already turned the neck
+     * to the minimum angle. We need to check again if the
+     * target is visible using an inverter just like before.
+     */
     
-    
-    
+    addVisibilityCheck(cCheckingSequence);
+
 }
 
 SearchTurnNeckNode::~SearchTurnNeckNode() {
@@ -71,22 +106,3 @@ void SearchTurnNeckNode::addVisibilityCheck(SequenceNode* cSequence) {
     
 }
 
-void SearchTurnNeckNode::turnNeck(SequenceNode* cSequence, double dDirection) {
-    
-    
-    //Push the current target to the stack
-    cSequence->addChild(new PushTargetToStackNode());
-    
-    //Set the value for neck rotation as target
-    cSequence->addChild(new SetTargetToNode(new BehaviorTarget(dDirection)));
-    
-    //Perform the rotation and update variables with EndAct
-    cSequence->addChild(new TurnNeckNode());
-    
-    //Pop the original target back
-    cSequence->addChild(new PopFromStackNode());
-    
-    //Update
-    cSequence->addChild(new EndActNode());
-    
-}

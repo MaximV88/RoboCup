@@ -75,7 +75,7 @@ StatusType DashNode::process() {
     
     //Add the required input
     cInstruction->addCommand(DASH_NODE_COMMAND);
-    cInstruction->addCommand(convertToString(iValue));
+    cInstruction->addCommand(convertToString(*iValue));
     
     //Send the instruction to the brain
     perform(*cInstruction);

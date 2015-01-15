@@ -25,5 +25,8 @@
 #include "IsTargetPlayerNode.h"
 #include "IsTargetVisibleNode.h"
 #include "SetTargetToNode.h"
+#include "SetTargetToNegativeNeckTurnAngleNode.h"
+#include "SetTargetToPositiveNeckTurnAngleNode.h"
+#include "ExecuteActNode.h"
 
 #endif

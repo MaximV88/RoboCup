@@ -74,7 +74,7 @@ StatusType TurnNode::process() {
     
     //Add the required input
     cInstruction->addCommand(TURN_NODE_COMMAND);
-    cInstruction->addCommand(convertToString(iValue));
+    cInstruction->addCommand(convertToString(*iValue));
     
     //Send the instruction to the brain
     perform(*cInstruction);

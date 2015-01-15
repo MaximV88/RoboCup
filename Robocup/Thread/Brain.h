@@ -65,7 +65,9 @@ public:
     void setBehavior(std::string strName);
     
     void perform(const Instruction& cInstruction);
-
+    
+    void executeAct();
+    
     void startAct();
 
     /****************************************************************************************************

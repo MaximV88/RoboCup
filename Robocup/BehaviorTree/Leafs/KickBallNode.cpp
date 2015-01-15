@@ -86,8 +86,8 @@ StatusType KickBallNode::process() {
     
     //Add the required input
     cInstruction->addCommand(KICKBALL_NODE_COMMAND);
-    cInstruction->addCommand(convertToString(iValue));
-    cInstruction->addCommand(convertToString(dValue));
+    cInstruction->addCommand(convertToString(*iValue));
+    cInstruction->addCommand(convertToString(*dValue));
     
     //Send the instruction to the brain
     perform(*cInstruction);

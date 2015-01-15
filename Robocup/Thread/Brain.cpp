@@ -93,6 +93,18 @@ void Brain::startAct() {
     
 }
 
+void Brain::executeAct() {
+    
+    //Check if there is something to execute
+    if (!m_qInstructionWaitingQueue.empty()) {
+        
+        //Prevent duplicate code
+        endAct();
+        
+    }
+    
+}
+
 /****************************************************************************************************
  * function name: endAct                                                                            *
  * The Input: none                                                                                  *

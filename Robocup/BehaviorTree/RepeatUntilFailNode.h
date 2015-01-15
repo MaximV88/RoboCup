@@ -26,12 +26,6 @@ namespace behavior {
         RepeatUntilFailNode(BehaviorTreeNode* cChild);
         ~RepeatUntilFailNode();
         
-        void setRepeats(unsigned int uiRepeats);
-        
-        unsigned int getRepeats() const;
-        
-        virtual void initialize();
-        
         virtual StatusType process();
         
     };

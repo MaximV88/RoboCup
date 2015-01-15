@@ -13,9 +13,10 @@
 
 namespace behavior {
     
-    /****************************************************************************************************
-     * EndActNode Class: Request the Brain to send gathered instructions.                               *
-     ***************************************************************************************************/
+    /*******************************************************************************
+     * EndActNode Class: Request the Brain to send gathered instructions. Will     *
+     *                   always wait until an update has been recieved from server.*
+     ******************************************************************************/
     
     class EndActNode : public BehaviorTreeNode {
         

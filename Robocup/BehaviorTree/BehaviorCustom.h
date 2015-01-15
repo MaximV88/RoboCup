@@ -10,5 +10,8 @@
 #define Robocup_BehaviorCustom_h
 
 #include "SearchNode.h"
+#include "SearchTurnNeckNode.h"
+#include "TurnNeckPositiveNode.h"
+#include "TurnNeckNegativeNode.h"
 
 #endif

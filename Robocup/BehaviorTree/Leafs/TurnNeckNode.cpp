@@ -75,7 +75,7 @@ StatusType TurnNeckNode::process() {
     
     //Add the required input
     cInstruction->addCommand(TURNNECK_NODE_COMMAND);
-    cInstruction->addCommand(convertToString(dValue));
+    cInstruction->addCommand(convertToString(*dValue));
     
     //Can be attached to other instructions (not unique per cycle)
     cInstruction->setAttachable(true);

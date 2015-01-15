@@ -9,6 +9,7 @@
 #ifndef __Robocup__SearchHeadTurnNode__
 #define __Robocup__SearchHeadTurnNode__
 
+#include "InverterNode.h"
 #include "SequenceNode.h"
 
 namespace behavior {
@@ -19,12 +20,13 @@ namespace behavior {
      *                   If found, returns success. Otherwise returns false.                *
      ***************************************************************************************/
     
-    class SearchTurnNeckNode : public SequenceNode {
+    class SearchTurnNeckNode : public InverterNode {
         
     private:
         
         void addVisibilityCheck(SequenceNode* cSequence);
-        void turnNeck(SequenceNode* cSequence, double dDirection);
+        void addTurnNeckPositive(SequenceNode* cSequence);
+        void addTurnNeckNegative(SequenceNode* cSequence);
         
     public:
         SearchTurnNeckNode();

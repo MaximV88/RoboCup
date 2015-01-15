@@ -14,21 +14,42 @@
 #include "IsTargetVisibleNode.h"
 #include "InverterNode.h"
 #include "EndActNode.h"
+#include "ExecuteActNode.h"
 #include "Player.h"
+#include "SearchTurnNeckNode.h"
 
 using namespace behavior;
 
 SearchNode::SearchNode() {
-    
-    //  -----   FIRST SEQUENCE ----- //
-    
     
     /********************************************
      * Checks if the target is visible, if not  *
      * changes the view settings for search.    *
      *******************************************/
 
-    SequenceNode *cFirstSequence = new SequenceNode();
+    SequenceNode *cSequence = new SequenceNode();
+    
+    addStartSearching(cSequence);
+    
+    /********************************************
+     *  Rotate the head - check center,         *
+     *  left and right.                         *
+     *******************************************/
+    
+    cSequence->addChild(new SearchTurnNeckNode());
+    
+    /********************************************
+     *  Turn the body, and check again.         *
+     *******************************************/
+    
+    
+}
+
+SearchNode::~SearchNode() {
+    
+}
+
+void SearchNode::addStartSearching(SequenceNode* cSequence) {
     
     /*
      * First check if the object is already visible.
@@ -39,7 +60,7 @@ SearchNode::SearchNode() {
      */
     
     InverterNode *cInvert = new InverterNode(new IsTargetVisibleNode());
-    cFirstSequence->addChild(cInvert);
+    cSequence->addChild(cInvert);
     
     /*
      * When searching, first we need to change the view quality to low,
@@ -49,32 +70,18 @@ SearchNode::SearchNode() {
      */
     
     //Push the current target to the stack
-    cFirstSequence->addChild(new PushTargetToStackNode());
+    cSequence->addChild(new PushTargetToStackNode());
     
     //Create our required target for view changing
-    cFirstSequence->addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeWide, QualityTypeLow)));
+    cSequence->addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeWide, QualityTypeLow)));
     
     //Change the view
-    cFirstSequence->addChild(new ChangeViewNode());
+    cSequence->addChild(new ChangeViewNode());
     
     //Pop the previous target back to the context
-    cFirstSequence->addChild(new PopFromStackNode());
+    cSequence->addChild(new PopFromStackNode());
     
     //Call the EndAct node to update the view settings
-    cFirstSequence->addChild(new EndActNode());
-    
-    
-    //  -----   SECOND SEQUENCE ----- //
-
-    
-    /********************************************
-     *  Rotate the head - check center,         *
-     *  left and right.                         *
-     *******************************************/
-    
-    
-}
-
-SearchNode::~SearchNode() {
+    cSequence->addChild(new ExecuteActNode());
     
 }

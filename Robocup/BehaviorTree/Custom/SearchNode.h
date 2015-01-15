@@ -21,6 +21,10 @@ namespace behavior {
     
     class SearchNode : public SequenceNode {
         
+    private:
+        
+        void addStartSearching(SequenceNode* cSequence);
+        
     public:
         SearchNode();
         ~SearchNode();
