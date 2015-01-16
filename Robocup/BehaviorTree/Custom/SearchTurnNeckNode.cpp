@@ -9,23 +9,18 @@
 #include "SearchTurnNeckNode.h"
 #include "IsTargetVisibleNode.h"
 #include "InverterNode.h"
-#include "BehaviorContext.h"
-#include "PushTargetToStackNode.h"
-#include "TurnNeckNode.h"
 #include "SetTargetToNode.h"
-#include "EndActNode.h"
 #include "ExecuteActNode.h"
-#include "SenseBodyNode.h"
-#include "PopFromStackNode.h"
 #include "RepeatUntilFailNode.h"
-#include "Player.h"
 #include "TurnNeckNegativeNode.h"
 #include "TurnNeckPositiveNode.h"
+#include "TurnNeckToCenterNode.h"
+#include "SuccessNode.h"
+#include "TurnNode.h"
 
 using namespace behavior;
 
 SearchTurnNeckNode::SearchTurnNeckNode() : InverterNode(new SequenceNode()) {
-    
     
     /************************************************
      * Check if visibile on center, otherwise turn  *
@@ -58,9 +53,9 @@ SearchTurnNeckNode::SearchTurnNeckNode() : InverterNode(new SequenceNode()) {
     RepeatUntilFailNode *cRepeatUntilFailNeg = new RepeatUntilFailNode(cTurnNegative);
     
     //Dont want to stop sequence here if found node or just cant proceed - it will always be true
-    InverterNode *cInvertRepeatNeg = new InverterNode(cRepeatUntilFailNeg);
+    SuccessNode *cSuccessRepeatNeg = new SuccessNode(cRepeatUntilFailNeg);
     
-    cCheckingSequence->addChild(cInvertRepeatNeg);
+    cCheckingSequence->addChild(cSuccessRepeatNeg);
 
     
     /*
@@ -80,9 +75,9 @@ SearchTurnNeckNode::SearchTurnNeckNode() : InverterNode(new SequenceNode()) {
     RepeatUntilFailNode *cRepeatUntilFailPos = new RepeatUntilFailNode(cTurnPositive);
     
     //Dont want to stop sequence here if found node or just cant proceed - it will always be true
-    InverterNode *cInvertRepeatPos = new InverterNode(cRepeatUntilFailPos);
+    SuccessNode *cSuccessRepeatPos = new SuccessNode(cRepeatUntilFailPos);
     
-    cCheckingSequence->addChild(cInvertRepeatPos);
+    cCheckingSequence->addChild(cSuccessRepeatPos);
 
     /*
      * At this section, we would have already turned the neck
@@ -91,7 +86,18 @@ SearchTurnNeckNode::SearchTurnNeckNode() : InverterNode(new SequenceNode()) {
      */
     
     addVisibilityCheck(cCheckingSequence);
+    
+    
+    /*
+     * If the sequence still continues, it means that we
+     * havnt found the target. Thus, turn the neck back to
+     * the center.
+     */
 
+    //The result of this node should be disregarded, thus always succedes
+    cCheckingSequence->addChild(new SuccessNode(new TurnNeckToCenterNode()));
+    cCheckingSequence->addChild(new ExecuteActNode());
+    
 }
 
 SearchTurnNeckNode::~SearchTurnNeckNode() {

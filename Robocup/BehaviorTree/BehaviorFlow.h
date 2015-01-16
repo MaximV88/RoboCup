@@ -13,5 +13,8 @@
 #include "RepeatUntilFailNode.h"
 #include "SequenceNode.h"
 #include "SelectorNode.h"
+#include "SuccessNode.h"
+#include "FailureNode.h"
+#include "InverterNode.h"
 
 #endif

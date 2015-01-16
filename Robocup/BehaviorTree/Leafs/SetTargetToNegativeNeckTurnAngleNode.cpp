@@ -72,22 +72,22 @@ StatusType SetTargetToNegativeNeckTurnAngleNode::process() {
             break;
     }
     
-    double dMaxAngle = getContext().getPlayer().getLastServerState()->minNeckAngle;
+    double dMinAngle = getContext().getPlayer().getLastServerState()->minNeckAngle;
 
     //Check versus the current neck angle
     double dCurrentAngle = getContext().getPlayer().getLastBodyState()->headAngle;
     
     //Fail if the current angle is already at max
-    if (dCurrentAngle == dMaxAngle)
+    if (dCurrentAngle == dMinAngle)
         return StatusTypeFailure;
     
     //Limit it by the maximum allowed angle
-    if (dRotation < dMaxAngle)
-        dRotation = dMaxAngle;
+    if (dRotation < dMinAngle)
+        dRotation = dMinAngle;
     
     //Set the rotation as the target
     getContext().setCurrentTarget(new BehaviorTarget(dRotation));
-    
+
     //All is OK
     return StatusTypeSuccess;
     

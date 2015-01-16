@@ -52,6 +52,15 @@ public:
      * function name: Vector Copy Constructor                                                       *
      * The Input: const Vector object (reference)                                                   *
      * The output: none                                                                             *
+     * The Function Opertion: Initializes the object as a copy of the input object.                 *
+     * *********************************************************************************************/
+    
+    Vector(const Vector& cVector);
+    
+    /************************************************************************************************
+     * function name: Vector Copy Constructor                                                       *
+     * The Input: const Vector object (reference)                                                   *
+     * The output: none                                                                             *
      * The Function Opertion: Initializes the object.                                               *
      * *********************************************************************************************/
     

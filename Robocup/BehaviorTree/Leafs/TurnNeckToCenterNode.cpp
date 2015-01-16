@@ -1,30 +1,29 @@
 //
-//  TurnNode.cpp
-//  Ex3
+//  TurnNeckToCenterNode.cpp
+//  Robocup
 //
-//  Created by Maxim Vainshtein on 1/10/15.
+//  Created by Maxim Vainshtein on 1/16/15.
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
+#include <string>
 #include <iostream>
 #include <sstream>
-#include <string>
-#include "TurnNode.h"
-#include "Brain.h"
+#include "TurnNeckToCenterNode.h"
+#include "Player.h"
 
-#define TURN_NODE_COMMAND "turn"
-#define TURN_NODE_TARGET_ERROR "TurnNode Error: No Target given"
-#define TURN_NODE_VALUE_ERROR "TurnNode Error: No double value given in the Target"
+#define TURN_NECK_TO_CENTER_NODE_COMMAND "turn_neck"
 
 using namespace behavior;
 
-TurnNode::TurnNode() {
+TurnNeckToCenterNode::TurnNeckToCenterNode() {
     
 }
 
-TurnNode::~TurnNode() {
+TurnNeckToCenterNode::~TurnNeckToCenterNode() {
     
 }
+
 
 /****************************************************************************************************
  * function name: convertToString                                                                   *
@@ -45,36 +44,28 @@ inline std::string convertToString(T tType) {
     
 }
 
-StatusType TurnNode::process() {
+StatusType TurnNeckToCenterNode::process() {
     
-    //Add the required input from the target
-    BehaviorTarget *cTarget = getContext().getCurrentTarget();
-    
-    //If no target is present, return failed
-    if (cTarget == NULL) {
-        
-        std::cerr << TURN_NODE_TARGET_ERROR << std::endl;
+    //Check if valid for calculation
+    if (getContext().getPlayer().getLastBodyState() == NULL)
         return StatusTypeFailure;
-        
-    }
     
-    //Check if our target has an origin to move to
-    const double *dValue = cTarget->getDoubleValue();
+    //Get the value needed to turn to center
+    double dRotation = getContext().getPlayer().getLastBodyState()->headAngle;
     
-    //If no coordinate is given, return failed
-    if (dValue == NULL) {
-        
-        std::cerr << TURN_NODE_VALUE_ERROR << std::endl;
-        return StatusTypeFailure;
-        
-    }
+    //No need to rotate
+    if (dRotation == 0)
+        return StatusTypeSuccess;
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();
     
     //Add the required input
-    cInstruction->addCommand(TURN_NODE_COMMAND);
-    cInstruction->addCommand(convertToString(*dValue));
+    cInstruction->addCommand(TURN_NECK_TO_CENTER_NODE_COMMAND);
+    cInstruction->addCommand(convertToString(-dRotation));
+    
+    //Can be attached to other instructions (not unique per cycle)
+    cInstruction->setAttachable(true);
     
     //Send the instruction to the brain
     perform(*cInstruction);

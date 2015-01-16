@@ -28,5 +28,9 @@
 #include "SetTargetToNegativeNeckTurnAngleNode.h"
 #include "SetTargetToPositiveNeckTurnAngleNode.h"
 #include "ExecuteActNode.h"
+#include "TurnNeckToCenterNode.h"
+#include "ClearStackNode.h"
+#include "ClearTargetNode.h"
+#include "SetTargetToMaximumMomentAngleNode.h"
 
 #endif

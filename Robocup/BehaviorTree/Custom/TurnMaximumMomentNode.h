@@ -1,13 +1,13 @@
 //
-//  TurnNeckNegativeNode.h
+//  TurnMaximumMomentNode.h
 //  Robocup
 //
-//  Created by Maxim Vainshtein on 1/15/15.
+//  Created by Maxim Vainshtein on 1/16/15.
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
-#ifndef __Robocup__TurnNeckNegativeNode__
-#define __Robocup__TurnNeckNegativeNode__
+#ifndef __Robocup__TurnMaximumMomentNode__
+#define __Robocup__TurnMaximumMomentNode__
 
 #include "SequenceNode.h"
 
@@ -18,11 +18,11 @@ namespace behavior {
      *                             false if cant do that, True otherwise.               *
      ***********************************************************************************/
     
-    class TurnNeckNegativeNode : public SequenceNode {
+    class TurnMaximumMomentNode : public SequenceNode {
         
     public:
-        TurnNeckNegativeNode();
-        ~TurnNeckNegativeNode();
+        TurnMaximumMomentNode();
+        ~TurnMaximumMomentNode();
         
         
     };

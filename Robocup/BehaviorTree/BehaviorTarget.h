@@ -36,6 +36,9 @@ namespace behavior {
         const ObservableType* m_eObservableType;
         
     public:
+        
+        BehaviorTarget(const BehaviorTarget& cBehaviorTarget);
+        
         BehaviorTarget(const Observable& cObservable);
         
         BehaviorTarget(const Coordinate& cCoordinate);

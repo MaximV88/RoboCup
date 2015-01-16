@@ -10,6 +10,33 @@
 
 using namespace behavior;
 
+BehaviorTarget::BehaviorTarget(const BehaviorTarget& cBehaviorTarget) {
+    
+    initialize();
+    
+    //Copy each element that exists into the heap
+    if (cBehaviorTarget.m_iValue != NULL)
+        m_iValue = new int(*cBehaviorTarget.m_iValue);
+    
+    if (cBehaviorTarget.m_dValue != NULL)
+        m_dValue = new double(*cBehaviorTarget.m_dValue);
+    
+    if (cBehaviorTarget.m_eWidthTypeValue != NULL)
+        m_eWidthTypeValue = new WidthType(*cBehaviorTarget.m_eWidthTypeValue);
+    
+    if (cBehaviorTarget.m_eQualityTypeValue != NULL)
+        m_eQualityTypeValue = new QualityType(*cBehaviorTarget.m_eQualityTypeValue);
+    
+    if (cBehaviorTarget.m_eObservableType != NULL)
+        m_eObservableType = new ObservableType(*cBehaviorTarget.m_eObservableType);
+    
+    //Just copy the pointer for this one (its not our responsibility to delete it)
+    if (cBehaviorTarget.m_cObservable != NULL)
+        m_cObservable =  cBehaviorTarget.m_cObservable;
+    
+    
+}
+
 BehaviorTarget::BehaviorTarget(const Observable& cObservable) {
     
     initialize();

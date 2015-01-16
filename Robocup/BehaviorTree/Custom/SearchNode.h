@@ -9,7 +9,7 @@
 #ifndef __Robocup__SearchNode__
 #define __Robocup__SearchNode__
 
-#include "SequenceNode.h"
+#include "InverterNode.h"
 
 namespace behavior {
     
@@ -19,12 +19,8 @@ namespace behavior {
      *                   coordinate, direction from player, and direction vector.           *
      ***************************************************************************************/
     
-    class SearchNode : public SequenceNode {
-        
-    private:
-        
-        void addStartSearching(SequenceNode* cSequence);
-        
+    class SearchNode : public InverterNode {
+                
     public:
         SearchNode();
         ~SearchNode();

@@ -23,7 +23,7 @@ namespace behavior {
     class SearchTurnNeckNode : public InverterNode {
         
     private:
-        
+
         void addVisibilityCheck(SequenceNode* cSequence);
         void addTurnNeckPositive(SequenceNode* cSequence);
         void addTurnNeckNegative(SequenceNode* cSequence);

@@ -56,11 +56,11 @@ void Parser::execute() {
             
         }
         else {
-        
-        
-        //Parse the input and add it to the queue
-        m_qStateQueue.push(parseValidInput(*strInput));
-        
+            
+            
+            //Parse the input and add it to the queue
+            m_qStateQueue.push(parseValidInput(*strInput));
+            
             
         }
 

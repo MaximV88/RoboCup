@@ -13,13 +13,15 @@
 #include "SenseBodyNode.h"
 #include "PopFromStackNode.h"
 #include "EndActNode.h"
+#include "ClearTargetNode.h"
+#include "SuccessNode.h"
 
 using namespace behavior;
 
 TurnNeckPositiveNode::TurnNeckPositiveNode() {
     
-    //Push the current target to the stack
-    addChild(new PushTargetToStackNode());
+    //Push the current target to the stack - dont care if there is a target
+    addChild(new SuccessNode(new PushTargetToStackNode()));
     
     //Set the value for neck rotation as target
     addChild(new SetTargetToPositiveNeckTurnAngleNode());
@@ -30,8 +32,8 @@ TurnNeckPositiveNode::TurnNeckPositiveNode() {
     //Ask to update the body state
     addChild(new SenseBodyNode());
     
-    //Pop the original target back
-    addChild(new PopFromStackNode());
+    //Pop the original target back - dont care if there isnt a target
+    addChild(new SuccessNode(new PopFromStackNode()));
     
     //Update variables and body state
     addChild(new EndActNode());

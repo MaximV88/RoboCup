@@ -10,6 +10,9 @@
 #include "Player.h"
 #include "BehaviorTree.h"
 
+#define DEBUG_PRINT_EXECUTION_INDEX 0
+#define DEBUG_PRINT_EXECUTION_INDEX_MESSAGE "Debug: At execution index "
+
 #define BRAIN_UNKNOWN_BEHAVIOR_NAME_ERROR "Brain Error: Behavior change to unknown name requested."
 #define BRAIN_NO_SELECTED_BEHAVIOR_ERROR "Brain Error: No behavior has been selected."
 #define BRAIN_INVALID_SHUTTING_DOWN "Invalid setup. Shutting Down."
@@ -87,6 +90,15 @@ void Brain::perform(const Instruction &cInstruction) {
 }
 
 void Brain::startAct() {
+    
+#if DEBUG_PRINT_EXECUTION_INDEX
+    
+    static int iExcIndex = 0;
+    
+    //Mainly used to compare updates vs server cycles
+    std::cout << DEBUG_PRINT_EXECUTION_INDEX_MESSAGE << ++iExcIndex << std::endl;
+    
+#endif
     
     //Remove any waiting thread in this object
     m_cConditionVariable.broadcast();

@@ -21,8 +21,9 @@ SetTargetToNode::~SetTargetToNode() {
 
 StatusType SetTargetToNode::process() {
     
-    //Set the target to the required pointer
-    getContext().setCurrentTarget(m_cTarget);
+    //Set the target to the required pointer only if exists
+    if (m_cTarget != NULL)
+        getContext().setCurrentTarget(new BehaviorTarget(*m_cTarget));
     
     return StatusTypeSuccess;
     

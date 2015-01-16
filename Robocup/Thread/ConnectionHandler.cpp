@@ -1,6 +1,6 @@
 /****************************************************************
  * Student Name:     Maxim Vainshtein                           *
- * Exercise Name:    Ex3                                    *
+ * Exercise Name:    Ex3                                        *
  * File description: Implementation of ConnectionHandler Class  *
  ***************************************************************/
 

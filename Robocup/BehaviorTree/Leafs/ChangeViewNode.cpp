@@ -69,6 +69,11 @@ StatusType ChangeViewNode::process() {
     
     //Check if there is need to perform an instruction (settings already set)
     const BodyState* cBody = getContext().getPlayer().getLastBodyState();
+
+    //Fail quietly
+    if (cBody == NULL)
+        return StatusTypeFailure;
+        
     
     if (cBody->viewModeWidth == *eWidthType && cBody->viewModeQuality == *eQualityType) {
         

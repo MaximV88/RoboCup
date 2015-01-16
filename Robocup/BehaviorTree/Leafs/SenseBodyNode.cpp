@@ -9,6 +9,7 @@
 #include "SenseBodyNode.h"
 #include "BehaviorContext.h"
 #include "Brain.h"
+#include "Player.h"
 
 #define SENSE_BODY_NODE_COMMAND "sense_body"
 
@@ -21,9 +22,9 @@ SenseBodyNode::SenseBodyNode() {
 SenseBodyNode::~SenseBodyNode() {
     
 }
-
+#include <iostream>
 StatusType SenseBodyNode::process() {
-
+    
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();
     

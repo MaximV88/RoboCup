@@ -17,39 +17,21 @@
 #include "ExecuteActNode.h"
 #include "Player.h"
 #include "SearchTurnNeckNode.h"
-
+#include "RepeatUntilFailNode.h"
+#include "TurnMaximumMomentNode.h"
+#include "SuccessNode.h"
+#include "Player.h"
 using namespace behavior;
 
-SearchNode::SearchNode() {
+SearchNode::SearchNode() : InverterNode(new SequenceNode()) {
+    
+    //Take the existing child into a pointer
+    SequenceNode *cCheckingSequence = static_cast<SequenceNode*>(&getChild());
     
     /********************************************
      * Checks if the target is visible, if not  *
      * changes the view settings for search.    *
      *******************************************/
-
-    SequenceNode *cSequence = new SequenceNode();
-    
-    addStartSearching(cSequence);
-    
-    /********************************************
-     *  Rotate the head - check center,         *
-     *  left and right.                         *
-     *******************************************/
-    
-    cSequence->addChild(new SearchTurnNeckNode());
-    
-    /********************************************
-     *  Turn the body, and check again.         *
-     *******************************************/
-    
-    
-}
-
-SearchNode::~SearchNode() {
-    
-}
-
-void SearchNode::addStartSearching(SequenceNode* cSequence) {
     
     /*
      * First check if the object is already visible.
@@ -58,9 +40,9 @@ void SearchNode::addStartSearching(SequenceNode* cSequence) {
      * continue, a successful answer must be received from
      * not seeing the target. We will use an Inverter.
      */
-    
+        
     InverterNode *cInvert = new InverterNode(new IsTargetVisibleNode());
-    cSequence->addChild(cInvert);
+    cCheckingSequence->addChild(cInvert);
     
     /*
      * When searching, first we need to change the view quality to low,
@@ -69,19 +51,51 @@ void SearchNode::addStartSearching(SequenceNode* cSequence) {
      * the stack, load our target, pop the stack and continue.
      */
     
-    //Push the current target to the stack
-    cSequence->addChild(new PushTargetToStackNode());
+    //Push the current target to the stack - dont care if there isnt a target
+    cCheckingSequence->addChild(new SuccessNode(new PushTargetToStackNode()));
     
     //Create our required target for view changing
-    cSequence->addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeWide, QualityTypeLow)));
+    cCheckingSequence->addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeWide, QualityTypeLow)));
     
     //Change the view
-    cSequence->addChild(new ChangeViewNode());
+    cCheckingSequence->addChild(new ChangeViewNode());
     
-    //Pop the previous target back to the context
-    cSequence->addChild(new PopFromStackNode());
+    //Pop the previous target back to the context - dont care if there isnt a target
+    cCheckingSequence->addChild(new SuccessNode(new PopFromStackNode()));
     
     //Call the EndAct node to update the view settings
-    cSequence->addChild(new ExecuteActNode());
+    cCheckingSequence->addChild(new ExecuteActNode());
+    
+    
+    /*
+     * This next section will be repeated 
+     * until the target is found.
+     */
+    
+    SequenceNode *cSequence = new SequenceNode();
+    
+    /********************************************
+     *  Rotate the head - check center,         *
+     *  left and right.                         *
+     *******************************************/
+    
+    cSequence->addChild(new InverterNode(new SearchTurnNeckNode()));
+    
+    /********************************************
+     *  Turn the body, and check again. The     *
+     *  turning of the body is decided by       *
+     *  the maximum angle.                      *
+     *******************************************/
+    
+    cSequence->addChild(new TurnMaximumMomentNode());
+    
+    //Implement the repeater
+    cCheckingSequence->addChild(new RepeatUntilFailNode(cSequence));
+    
+    
+    
+}
+
+SearchNode::~SearchNode() {
     
 }

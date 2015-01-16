@@ -43,6 +43,21 @@ Vector::Vector(double dValueX, double dValueY) {
  * function name: Vector Copy Constructor                                                       *
  * The Input: const Vector object (reference)                                                   *
  * The output: none                                                                             *
+ * The Function Opertion: Initializes the object as a copy of the input object.                 *
+ * *********************************************************************************************/
+
+Vector::Vector(const Vector& cVector) {
+    
+    //Assign to input
+    m_dValueX = cVector.m_dValueX;
+    m_dValueY = cVector.m_dValueY;
+    
+}
+
+/************************************************************************************************
+ * function name: Vector Copy Constructor                                                       *
+ * The Input: const Vector object (reference)                                                   *
+ * The output: none                                                                             *
  * The Function Opertion: Initializes the object with input's member variables.                 *
  * *********************************************************************************************/
 

@@ -20,10 +20,6 @@ namespace behavior {
     
     class IsTargetVisibleNode : public BehaviorTreeNode {
         
-    private:
-        
-        BehaviorTarget* m_cTarget;
-        
     public:
         IsTargetVisibleNode();
         ~IsTargetVisibleNode();
