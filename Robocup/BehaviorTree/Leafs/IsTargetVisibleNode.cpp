@@ -37,7 +37,7 @@ StatusType IsTargetVisibleNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
-        std::cerr << IS_TARGET_VISIBLE_NODE_TARGET_ERROR << std::endl;
+   //     std::cerr << IS_TARGET_VISIBLE_NODE_TARGET_ERROR << std::endl;
     //    return StatusTypeFailure;
         
     }
@@ -47,8 +47,8 @@ StatusType IsTargetVisibleNode::process() {
     
     //If no coordinate is given, return failed
  //   if (eObservableType == NULL) {
-        
-        std::cerr << IS_TARGET_VISIBLE_NODE_VALUE_ERROR << std::endl;
+   //
+     //   std::cerr << IS_TARGET_VISIBLE_NODE_VALUE_ERROR << std::endl;
   //      return StatusTypeFailure;
         
  //   }

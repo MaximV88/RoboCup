@@ -67,6 +67,20 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
             
         }
         
+        //Clear the vector before - this is somewhat wierd that data persists...
+        if (!m_vcObservables.empty()) {
+            
+            for (vector<Observable*>::iterator iter = m_vcObservables.begin() ;
+                 iter != m_vcObservables.end() ;
+                 iter++) {
+                
+                delete *iter;
+                
+            }
+        
+            m_vcObservables.clear();
+            
+        }
         
         //This input is more complex compared to the others, there can be several objects.
         switch (parseWord(strFirst)) {
@@ -173,7 +187,6 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                     default:
                         break;
                 }
-                
                 
                 break;
                 
@@ -333,7 +346,6 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                                 break;
                         }
                         
-                        
                         break;
                         
                     case ParseTypeG:
@@ -409,9 +421,6 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                             default:
                                 break;
                         }
-                        
-                        
-                        
                         
                         break;
                         
@@ -490,7 +499,6 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                                     default:
                                         break;
                                         
-                                        
                                 }
                                 
                                 break;
@@ -553,7 +561,6 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                                         
                                     default:
                                         break;
-                                        
                                         
                                 }
                                 
@@ -641,7 +648,6 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                                     default:
                                         break;
                                         
-                                        
                                 }
                                 
                                 break;
@@ -705,11 +711,9 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                                     default:
                                         break;
                                         
-                                        
                                 }
                                 
                                 break;
-                                
                                 
                             default:
                                 break;
@@ -755,7 +759,7 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                         else {
                             
                             //This is the central flag - add an object and set it's type
-                            Observable *cObservable = new Observable(ObservableTypeFlagCenterTop);
+                            Observable *cObservable = new Observable(ObservableTypeFlagCenter);
                             m_vcObservables.push_back(cObservable);
                             
                         }
@@ -1050,7 +1054,7 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                 uiIndex += 4;
                 
                 //Make sure that there is data (can happen with no visible items)
-                if (m_vcObservables.size() != 0) {
+                if (!m_vcObservables.empty()) {
                     
                     //This goes a particular order- first the distance
                     Observable *cObservable = m_vcObservables.back();
@@ -1123,7 +1127,7 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
         --uiIndex;
         
     }
-    
+
 }
 
 //  ---                         PUBLIC FUNCTIONS                       ---   //
