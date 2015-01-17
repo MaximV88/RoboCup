@@ -26,12 +26,14 @@ SetTargetToMaximumMomentAngleNode::~SetTargetToMaximumMomentAngleNode() {
 
 StatusType SetTargetToMaximumMomentAngleNode::process() {
     
+    ServerState *cServerState = getContext().getPlayer().getLastServerState();
+
     //Check if valid for calculation
-    if (getContext().getPlayer().getLastServerState() == NULL)
+    if (cServerState == NULL)
         return StatusTypeFailure;
     
     
-    double dMaxMomentAngle = getContext().getPlayer().getLastServerState()->maxMoment;
+    double dMaxMomentAngle = cServerState->maxMoment;
     
     //Set the rotation as the target
     getContext().setCurrentTarget(new BehaviorTarget(dMaxMomentAngle, NODE_NAME));
@@ -43,6 +45,9 @@ StatusType SetTargetToMaximumMomentAngleNode::process() {
     DEBUG_ACTION_DESCRIPTION_SUCCESS_2 << std::endl;
     
 #endif
+    
+    //Delete after usage
+    delete cServerState;
     
     //All is OK
     return StatusTypeSuccess;

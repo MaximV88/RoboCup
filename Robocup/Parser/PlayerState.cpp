@@ -148,5 +148,6 @@ State(cParseMap, StateTypePlayer) { }
  * The Function Opertion: Destroys the current object.                                        *
  * *******************************************************************************************/
 
-PlayerState::~PlayerState() { }
+PlayerState::~PlayerState() {
+}
 

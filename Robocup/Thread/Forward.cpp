@@ -260,7 +260,10 @@ Player(cConnection, chTeamName) {
     //Create all behaviors and add them to the brain
     BehaviorTree *cTree = new BehaviorTree(*this, getBrain(), "Attack");
     
-    cTree->setRoot(new SearchNode());
+    SequenceNode *cs = new SequenceNode();
+    cs->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "lala")));
+    cs->addChild(new SearchNode());
+    cTree->setRoot(cs);
     
     getBrain().addBehavior(*cTree);
         

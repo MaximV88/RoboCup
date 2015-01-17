@@ -28,7 +28,7 @@ IsTargetVisibleNode::~IsTargetVisibleNode() {
 StatusType IsTargetVisibleNode::process() {
     
     //Set the target to the required pointer
-    const SeeState* cState = getContext().getPlayer().getLastSeeState();
+    SeeState* cState = getContext().getPlayer().getLastSeeState();
     
     //Check if the player has even seen anything
     if (cState == NULL)
@@ -46,6 +46,9 @@ StatusType IsTargetVisibleNode::process() {
         
 #endif
         
+        //Delete after usage
+        delete cState;
+        
         return StatusTypeFailure;
         
     }
@@ -61,17 +64,21 @@ StatusType IsTargetVisibleNode::process() {
         std::cerr << IS_TARGET_VISIBLE_NODE_VALUE_ERROR << *cTarget << std::endl;
         
 #endif
+        //Delete after usage
+        delete cState;
         
         return StatusTypeFailure;
         
     }
     
+    std::vector<Observable*> vcObservables = cState->getObservables();
+    
     //Search in the see states visible observables for our target
-    for (std::vector<Observable*>::const_iterator iter = cState->getObservables().begin() ;
-         iter != cState->getObservables().end() ;
+    for (std::vector<Observable*>::const_iterator iter = vcObservables.begin() ;
+         iter != vcObservables.end() ;
          iter++) {
         
-        if ((*iter)->type == ObservableTypeNone) {
+        if ((*iter)->type == *eObservableType) {
             
 #if DEBUG_PRINT_ACTION
             
@@ -79,6 +86,8 @@ StatusType IsTargetVisibleNode::process() {
             std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS << **iter << std::endl;
             
 #endif
+            //Delete after usage
+            delete cState;
             
             //Found it - thus it's visible
             return StatusTypeSuccess;
@@ -93,6 +102,9 @@ StatusType IsTargetVisibleNode::process() {
     std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << *cTarget << std::endl;
     
 #endif
+    
+    //Delete after usage
+    delete cState;
     
     //Havnt found it
     return StatusTypeFailure;

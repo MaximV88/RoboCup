@@ -31,14 +31,28 @@ SetTargetToNegativeNeckTurnAngleNode::~SetTargetToNegativeNeckTurnAngleNode() {
 
 StatusType SetTargetToNegativeNeckTurnAngleNode::process() {
 
+    BodyState *cBodyState = getContext().getPlayer().getLastBodyState();
+    
     //Check if valid for calculation
-    if (getContext().getPlayer().getLastBodyState() == NULL)
+    if (cBodyState == NULL)
         return StatusTypeFailure;
+    
+    ServerState *cServerState = getContext().getPlayer().getLastServerState();
+    
+    //Check if valid for calculation
+    if (cServerState == NULL) {
+        
+        //Delete after usage
+        delete cBodyState;
+        
+        return StatusTypeFailure;
+        
+    }
     
     
     //Set the target to the required pointer
-    WidthType eWidthType = getContext().getPlayer().getLastBodyState()->viewModeWidth;
-    double dVisibleAngle = getContext().getPlayer().getLastServerState()->visibleAngle;
+    WidthType eWidthType = cBodyState->viewModeWidth;
+    double dVisibleAngle = cServerState->visibleAngle;
     
     //Set the target's rotation value based on the width
     double dRotation = 0;
@@ -78,10 +92,10 @@ StatusType SetTargetToNegativeNeckTurnAngleNode::process() {
             break;
     }
     
-    double dMinAngle = getContext().getPlayer().getLastServerState()->minNeckAngle;
+    double dMinAngle = cServerState->minNeckAngle;
 
     //Check versus the current neck angle
-    double dCurrentAngle = getContext().getPlayer().getLastBodyState()->headAngle;
+    double dCurrentAngle = cBodyState->headAngle;
     
     //Fail if the current angle is already at max
     if (dCurrentAngle == dMinAngle) {
@@ -92,6 +106,11 @@ StatusType SetTargetToNegativeNeckTurnAngleNode::process() {
         std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << std::endl;
         
 #endif
+        
+        //Delete after usage
+        delete cBodyState;
+        delete cServerState;
+        
         return StatusTypeFailure;
     }
     
@@ -110,6 +129,10 @@ StatusType SetTargetToNegativeNeckTurnAngleNode::process() {
     
 #endif
 
+    //Delete after usage
+    delete cBodyState;
+    delete cServerState;
+    
     //All is OK
     return StatusTypeSuccess;
     

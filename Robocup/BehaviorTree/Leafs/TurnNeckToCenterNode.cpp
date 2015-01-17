@@ -49,11 +49,13 @@ inline std::string convertToString(T tType) {
 StatusType TurnNeckToCenterNode::process() {
     
     //Check if valid for calculation
-    if (getContext().getPlayer().getLastBodyState() == NULL)
+    BodyState *cState = getContext().getPlayer().getLastBodyState();
+    
+    if (cState == NULL)
         return StatusTypeFailure;
     
     //Get the value needed to turn to center
-    double dRotation = getContext().getPlayer().getLastBodyState()->headAngle;
+    double dRotation = cState->headAngle;
     
 #if DEBUG_PRINT_ACTION
     
@@ -63,8 +65,14 @@ StatusType TurnNeckToCenterNode::process() {
 #endif
     
     //No need to rotate
-    if (dRotation == 0)
+    if (dRotation == 0) {
+        
+        //Delete after usage
+        delete cState;
+        
         return StatusTypeSuccess;
+        
+    }
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();
@@ -78,6 +86,9 @@ StatusType TurnNeckToCenterNode::process() {
     
     //Send the instruction to the brain
     perform(*cInstruction);
+    
+    //Delete after usage
+    delete cState;
     
     return StatusTypeSuccess;
     

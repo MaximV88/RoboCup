@@ -31,14 +31,28 @@ SetTargetToPositiveNeckTurnAngleNode::~SetTargetToPositiveNeckTurnAngleNode() {
 
 StatusType SetTargetToPositiveNeckTurnAngleNode::process() {
     
+    BodyState *cBodyState = getContext().getPlayer().getLastBodyState();
+    
     //Check if valid for calculation
-    if (getContext().getPlayer().getLastBodyState() == NULL)
+    if (cBodyState == NULL)
         return StatusTypeFailure;
+    
+    ServerState *cServerState = getContext().getPlayer().getLastServerState();
+    
+    //Check if valid for calculation
+    if (cServerState == NULL) {
+        
+        //Delete after usage
+        delete cBodyState;
+        
+        return StatusTypeFailure;
+        
+    }
     
     
     //Set the target to the required pointer
-    WidthType eWidthType = getContext().getPlayer().getLastBodyState()->viewModeWidth;
-    double dVisibleAngle = getContext().getPlayer().getLastServerState()->visibleAngle;
+    WidthType eWidthType = cBodyState->viewModeWidth;
+    double dVisibleAngle = cServerState->visibleAngle;
 
     //Set the target's rotation value based on the width
     double dRotation = 0;
@@ -78,10 +92,10 @@ StatusType SetTargetToPositiveNeckTurnAngleNode::process() {
             break;
     }
     
-    double dMaxAngle = getContext().getPlayer().getLastServerState()->maxNeckAngle;
+    double dMaxAngle = cServerState->maxNeckAngle;
     
     //Check versus the current neck angle
-    double dCurrentAngle = getContext().getPlayer().getLastBodyState()->headAngle;
+    double dCurrentAngle = cBodyState->headAngle;
     
     //Fail if the current angle is already at max
     if (dCurrentAngle == dMaxAngle) {
@@ -92,6 +106,11 @@ StatusType SetTargetToPositiveNeckTurnAngleNode::process() {
         std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << std::endl;
         
 #endif
+        
+        //Delete after usage
+        delete cBodyState;
+        delete cServerState;
+        
         return StatusTypeFailure;
     
     }
@@ -110,6 +129,10 @@ StatusType SetTargetToPositiveNeckTurnAngleNode::process() {
     DEBUG_ACTION_DESCRIPTION_SUCCESS_2 << std::endl;
     
 #endif
+    
+    //Delete after usage
+    delete cBodyState;
+    delete cServerState;
     
     //All is OK
     return StatusTypeSuccess;

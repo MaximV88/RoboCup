@@ -172,7 +172,7 @@ void Brain::executeAct() {
     //Check if there is something to execute
     if (!m_qInstructionWaitingQueue.empty()) {
         
-#ifdef DEBUG_PRINT_ACTION
+#if DEBUG_PRINT_ACTION
       
         std::cout << EXECUTE_ACTION_DESCRIPTION << std::endl;
         

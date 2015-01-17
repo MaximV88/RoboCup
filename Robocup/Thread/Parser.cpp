@@ -38,6 +38,12 @@ void Parser::execute() {
         //Get a string to parse from the queue - this will hold the thread
         string* strInput = m_qInputQueue.pop();
 
+#if DEBUG_SHOW_INCOMING_MESSAGES
+        
+        std::cout << *strInput << std::endl;
+        
+#endif
+        
         /*
          * Check if the input is valid, the check is very short.
          */

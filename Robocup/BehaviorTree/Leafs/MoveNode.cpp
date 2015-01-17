@@ -53,16 +53,23 @@ inline std::string convertToString(T tType) {
 StatusType MoveNode::process() {
     
     //Get the TeamState and check if it allows for Move commands
-    const TeamState* cTeamState = getContext().getPlayer().getLastTeamState();
+    const TeamState* cState = getContext().getPlayer().getLastTeamState();
+    
+    //Fail silently
+    if (cState == NULL)
+        return StatusTypeFailure;
     
     //Cannot move when in PlayOn mode
-    if (cTeamState->playMode == PlayModePlayOn) {
+    if (cState->playMode == PlayModePlayOn) {
      
 #if DEBUG_PRINT_ERRORS
 
         std::cerr << MOVE_NODE_PLAYMODE_ERROR << std::endl;
         
 #endif
+        
+        //Delete after usage
+        delete cState;
         
         return StatusTypeFailure;
         
@@ -79,6 +86,10 @@ StatusType MoveNode::process() {
         std::cerr << MOVE_NODE_TARGET_ERROR << std::endl;
         
 #endif
+        
+        //Delete after usage
+        delete cState;
+        
         return StatusTypeFailure;
     
     }
@@ -94,6 +105,9 @@ StatusType MoveNode::process() {
         std::cerr << MOVE_NODE_COORDINATE_ERROR << *cTarget << std::endl;
         
 #endif
+        
+        //Delete after usage
+        delete cState;
         
         return StatusTypeFailure;
         
@@ -115,6 +129,9 @@ StatusType MoveNode::process() {
     
     //Send the instruction to the brain
     perform(*cInstruction);
+    
+    //Delete after usage
+    delete cState;
     
     return StatusTypeSuccess;
     

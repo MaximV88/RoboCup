@@ -94,6 +94,9 @@ StatusType ChangeViewNode::process() {
     
     if (cBody->viewModeWidth == *eWidthType && cBody->viewModeQuality == *eQualityType) {
         
+        //Delete after usage
+        delete cBody;
+        
         //No need to proceed
         return StatusTypeSuccess;
         
@@ -148,6 +151,9 @@ StatusType ChangeViewNode::process() {
     
     //Send the instruction to the brain
     perform(*cInstruction);
+    
+    //Delete after usage
+    delete cBody;
     
     return StatusTypeSuccess;
     

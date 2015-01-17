@@ -23,6 +23,8 @@
 #include "HearState.h"
 #include "SeeState.h"
 
+#define DEBUG_SHOW_INCOMING_MESSAGES 0
+
 namespace parse {
     
     /*******************************************************************************

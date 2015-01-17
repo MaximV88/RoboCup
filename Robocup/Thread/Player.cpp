@@ -60,6 +60,8 @@ void Player::execute() {
         //Get the current field state
         State *cState = m_qStateQueue.pop();
         
+        m_cMutualExclusion.lock();
+
         switch (cState->eType) {
             case StateTypeBody:
                 
@@ -68,6 +70,8 @@ void Player::execute() {
                     delete m_cBodyState;
                 
                 m_cBodyState = static_cast<BodyState*>(cState);
+                
+                m_cMutualExclusion.unlock();
                 
                 m_cBrain.updateState(*m_cBodyState);
                 
@@ -81,6 +85,8 @@ void Player::execute() {
                 
                 m_cTeamState = static_cast<TeamState*>(cState);
                 
+                m_cMutualExclusion.unlock();
+
                 actTeamState(*m_cTeamState);
                 m_cBrain.updateState(*m_cTeamState);
                 
@@ -91,6 +97,8 @@ void Player::execute() {
                 //Add to the stored PlayerState
                 m_vcPlayerStates.push_back(static_cast<const PlayerState*>(cState));
                 
+                m_cMutualExclusion.unlock();
+
                 break;
                 
                 case StateTypeServer:
@@ -101,6 +109,8 @@ void Player::execute() {
                 
                 m_cServerState = static_cast<ServerState*>(cState);
                 
+                m_cMutualExclusion.unlock();
+
                 break;
                 
             case StateTypeSee:
@@ -114,6 +124,8 @@ void Player::execute() {
                 //Update the location using triangulation
                 updateOrigin(*m_cSeeState);
                 
+                m_cMutualExclusion.unlock();
+
                 m_cBrain.updateState(*m_cSeeState);
 
                 break;
@@ -129,6 +141,8 @@ void Player::execute() {
                 //Update the team value (play mode)
                 m_cTeamState->convert(*m_cHearState);
 
+                m_cMutualExclusion.unlock();
+
                 //We use the PlayMode variable only in TeamState
                 actTeamState(*m_cTeamState);
                 m_cBrain.updateState(*m_cTeamState);
@@ -137,6 +151,9 @@ void Player::execute() {
                 
             //Shouldnt reach here
             default:
+                
+                //Unlock just in case
+                m_cMutualExclusion.unlock();
                 break;
         }
         
@@ -244,9 +261,20 @@ Player::~Player() {
  * The Function Opertion: Returns the appropriate pointer from the member variable.                 *
  * *************************************************************************************************/
 
-const SeeState* Player::getLastSeeState() const {
+SeeState* Player::getLastSeeState() {
+
+    SeeState *cSeeState = NULL;
     
-    return m_cSeeState;
+    //Lock to prevent multiple access
+    m_cMutualExclusion.lock();
+
+    if (m_cSeeState != NULL)
+        cSeeState = new SeeState(*m_cSeeState);
+    
+    //Unlock to proceed
+    m_cMutualExclusion.unlock();
+    
+    return cSeeState;
     
 }
 
@@ -257,9 +285,20 @@ const SeeState* Player::getLastSeeState() const {
  * The Function Opertion: Returns the appropriate pointer from the member variable.                 *
  * *************************************************************************************************/
 
-const HearState* Player::getLastHearState() const {
+HearState* Player::getLastHearState() {
     
-    return m_cHearState;
+    HearState *cHearState = NULL;
+    
+    //Lock to prevent multiple access
+    m_cMutualExclusion.lock();
+    
+    if (m_cHearState != NULL)
+        cHearState = new HearState(*m_cHearState);
+    
+    //Unlock to proceed
+    m_cMutualExclusion.unlock();
+    
+    return cHearState;
     
 }
 
@@ -270,9 +309,20 @@ const HearState* Player::getLastHearState() const {
  * The Function Opertion: Returns the appropriate pointer from the member variable.                 *
  * *************************************************************************************************/
 
-const ServerState* Player::getLastServerState() const {
+ServerState* Player::getLastServerState() {
     
-    return m_cServerState;
+    ServerState *cServerState = NULL;
+    
+    //Lock to prevent multiple access
+    m_cMutualExclusion.lock();
+    
+    if (m_cServerState != NULL)
+        cServerState = new ServerState(*m_cServerState);
+    
+    //Unlock to proceed
+    m_cMutualExclusion.unlock();
+    
+    return cServerState;
     
 }
 
@@ -283,9 +333,20 @@ const ServerState* Player::getLastServerState() const {
  * The Function Opertion: Returns the appropriate pointer from the member variable.                 *
  * *************************************************************************************************/
 
-const TeamState* Player::getLastTeamState() const {
+TeamState* Player::getLastTeamState() {
     
-    return m_cTeamState;
+    TeamState *cTeamState = NULL;
+    
+    //Lock to prevent multiple access
+    m_cMutualExclusion.lock();
+    
+    if (m_cTeamState != NULL)
+        cTeamState = new TeamState(*m_cTeamState);
+    
+    //Unlock to proceed
+    m_cMutualExclusion.unlock();
+    
+    return cTeamState;
     
 }
 
@@ -296,9 +357,28 @@ const TeamState* Player::getLastTeamState() const {
  * The Function Opertion: Returns the appropriate member variable.                                  *
  * *************************************************************************************************/
 
-const std::vector<const PlayerState*>& Player::getPlayerStates() const {
+std::vector<const PlayerState*>* Player::getPlayerStates() {
     
-    return m_vcPlayerStates;
+    std::vector<const PlayerState*>* vcPlayerStates = NULL;
+    
+    //Lock to prevent multiple access
+    m_cMutualExclusion.lock();
+    
+    if (!m_vcPlayerStates.empty())
+        vcPlayerStates = new std::vector<const PlayerState*>;
+
+    for (std::vector<const PlayerState*>::const_iterator iter = m_vcPlayerStates.begin() ;
+         iter != m_vcPlayerStates.end() ;
+         iter++) {
+        
+        vcPlayerStates->push_back(new PlayerState(**iter));
+        
+    }
+    
+    //Unlock to proceed
+    m_cMutualExclusion.unlock();
+    
+    return vcPlayerStates;
     
 }
 
@@ -309,9 +389,20 @@ const std::vector<const PlayerState*>& Player::getPlayerStates() const {
  * The Function Opertion: Returns the appropriate pointer from the member variable.                 *
  * *************************************************************************************************/
 
-const BodyState* Player::getLastBodyState() const {
+BodyState* Player::getLastBodyState() {
     
-    return m_cBodyState;
+    BodyState *cBodyState = NULL;
+    
+    //Lock to prevent multiple access
+    m_cMutualExclusion.lock();
+    
+    if (m_cBodyState != NULL)
+        cBodyState = new BodyState(*m_cBodyState);
+    
+    //Unlock to proceed
+    m_cMutualExclusion.unlock();
+    
+    return cBodyState;
     
 }
 
@@ -322,9 +413,20 @@ const BodyState* Player::getLastBodyState() const {
  * The Function Opertion: Returns the appropriate pointer from the member variable.                 *
  * *************************************************************************************************/
 
-const Coordinate* Player::getLastOrigin() const {
+Coordinate* Player::getLastOrigin() {
     
-    return m_cPlayerOrigin;
+    Coordinate *cPlayerOrigin = NULL;
+    
+    //Lock to prevent multiple access
+    m_cMutualExclusion.lock();
+    
+    if (cPlayerOrigin != NULL)
+        cPlayerOrigin = new Coordinate(*m_cPlayerOrigin);
+    
+    //Unlock to proceed
+    m_cMutualExclusion.unlock();
+    
+    return cPlayerOrigin;
     
 }
 

@@ -94,9 +94,7 @@ SearchNode::SearchNode() : InverterNode(new SequenceNode()) {
     
     //Implement the repeater
     cCheckingSequence->addChild(new RepeatUntilFailNode(cSequence));
-    
-    
-    
+        
 }
 
 SearchNode::~SearchNode() {

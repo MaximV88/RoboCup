@@ -1128,6 +1128,24 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
 SeeState::SeeState(const std::map<std::string, ParseType>& cParseMap) :
 State(cParseMap, StateTypeSee) { }
 
+SeeState::SeeState(const SeeState& cSeeState) :
+State(cSeeState) {
+    
+    //Copy member variables
+    time = cSeeState.time;
+    
+    //Copy the objects held in the vector
+    for (std::vector<Observable*>::const_iterator iter = cSeeState.m_vcObservables.begin() ;
+         iter != cSeeState.m_vcObservables.end() ;
+         iter++) {
+        
+        //Copy the objects
+        m_vcObservables.push_back(new Observable(**iter));
+        
+    }
+    
+}
+
 /**********************************************************************************************
  * function name: SeeState Destructor                                                         *
  * The Input: none                                                                            *
@@ -1137,17 +1155,15 @@ State(cParseMap, StateTypeSee) { }
 
 SeeState::~SeeState() {
     
-    m_cMutex.lock();
-
     //Remove all Observed objects from the vector
-    for (vector<Observable*>::iterator iter = m_vcObservables.begin() ; iter != m_vcObservables.end() ; iter++) {
+    for (vector<Observable*>::iterator iter = m_vcObservables.begin() ;
+         iter != m_vcObservables.end() ;
+         iter++) {
         
         //Can only be deleted by the SeeState
         delete *iter;
         
     }
-    
-    m_cMutex.unlock();
     
 }
 

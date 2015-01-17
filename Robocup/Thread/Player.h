@@ -20,6 +20,7 @@
 #include "HearState.h"
 #include "SeeState.h"
 #include "Brain.h"
+#include "Mutex.h"
 
 typedef enum {
     PlayerTypeGoalKeeper,
@@ -77,6 +78,9 @@ private:
     
     //Holds the player's brain
     Brain m_cBrain;
+    
+    //Holds the Mutex object of the Player
+    Mutex m_cMutualExclusion;
     
     //  ---                         PRIVATE FUNCTIONS                       ---   //
     
@@ -146,7 +150,7 @@ public:
      * The Function Opertion: Returns the last recieved SeeState (may return NULL).                     *
      * *************************************************************************************************/
     
-    const SeeState* getLastSeeState() const;
+    SeeState* getLastSeeState();
     
     /****************************************************************************************************
      * function name: getLastHearState                                                                  *
@@ -155,7 +159,7 @@ public:
      * The Function Opertion: Returns the last recieved HearState (may return NULL).                    *
      * *************************************************************************************************/
     
-    const HearState* getLastHearState() const;
+    HearState* getLastHearState();
     
     /****************************************************************************************************
      * function name: getLastServerState                                                                *
@@ -164,7 +168,7 @@ public:
      * The Function Opertion: Returns the last recieved ServerState (may return NULL).                  *
      * *************************************************************************************************/
     
-    const ServerState* getLastServerState() const;
+    ServerState* getLastServerState();
     
     /****************************************************************************************************
      * function name: getLastTeamState                                                                  *
@@ -173,7 +177,7 @@ public:
      * The Function Opertion: Returns the last recieved TeamState (may return NULL).                    *
      * *************************************************************************************************/
     
-    const TeamState* getLastTeamState() const;
+    TeamState* getLastTeamState();
     
     /****************************************************************************************************
      * function name: getPlayerStates                                                                   *
@@ -182,7 +186,7 @@ public:
      * The Function Opertion: Returns all of the recieved PlayerStates.                                 *
      * *************************************************************************************************/
     
-    const std::vector<const PlayerState*>& getPlayerStates() const;
+    std::vector<const PlayerState*>* getPlayerStates();
     
     /****************************************************************************************************
      * function name: getLastBodyState                                                                  *
@@ -191,7 +195,7 @@ public:
      * The Function Opertion: Returns the last recieved BodyState (may return NULL).                    *
      * *************************************************************************************************/
     
-    const BodyState* getLastBodyState() const;
+    BodyState* getLastBodyState();
     
     /****************************************************************************************************
      * function name: getLastOrigin                                                                     *
@@ -200,7 +204,7 @@ public:
      * The Function Opertion: Returns the last known origin (may return NULL).                          *
      * *************************************************************************************************/
     
-    const Coordinate* getLastOrigin() const;
+    Coordinate* getLastOrigin();
 
     /**********************************************************************************************
      * function name: createPlayer                                                                *
