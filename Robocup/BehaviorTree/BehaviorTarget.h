@@ -14,10 +14,11 @@
 #include "Observable.h"
 #include "Instruction.h"
 #include "BodyState.h"
+#include "Nameable.h"
 
 namespace behavior {
     
-    class BehaviorTarget {
+    class BehaviorTarget : public Nameable {
         
         const Coordinate* m_cOrigin;
         
@@ -39,15 +40,15 @@ namespace behavior {
         
         BehaviorTarget(const BehaviorTarget& cBehaviorTarget);
         
-        BehaviorTarget(const Observable& cObservable);
+        BehaviorTarget(const Observable& cObservable, const std::string& strName);
         
-        BehaviorTarget(const Coordinate& cCoordinate);
+        BehaviorTarget(const Coordinate& cCoordinate, const std::string& strName);
         
-        BehaviorTarget(WidthType eWidthType, QualityType eQualityType);
+        BehaviorTarget(WidthType eWidthType, QualityType eQualityType, const std::string& strName);
+    
+        BehaviorTarget(ObservableType eObservableType, const std::string& strName);
         
-        BehaviorTarget(ObservableType eObservableType);
-        
-        BehaviorTarget(double dValue);
+        BehaviorTarget(double dValue, const std::string& strName);
         
         ~BehaviorTarget();
         
@@ -68,6 +69,8 @@ namespace behavior {
         const Observable* getObservable() const;
         
         const ObservableType* getObservableType() const;
+        
+        friend std::ostream& operator<<(std::ostream &out, const BehaviorTarget &cBehaviorTarget);
 
     };
     

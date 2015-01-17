@@ -13,6 +13,8 @@
 #include <stack>
 #include "BehaviorContext.h"
 
+#define DEBUG_PRINT_ACTION 1
+
 namespace behavior {
     
     typedef enum {

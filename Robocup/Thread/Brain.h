@@ -60,7 +60,7 @@ public:
     
     ~Brain();
     
-    void addBehavior(std::string strName, behavior::BehaviorTree& cBehaviorTree);
+    void addBehavior(behavior::BehaviorTree& cBehaviorTree);
     
     void setBehavior(std::string strName);
     

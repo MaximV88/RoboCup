@@ -8,9 +8,12 @@
 
 #include "BehaviorTarget.h"
 
+#define TARGET_PRINT_FORMAT "BehaviorTarget created by "
+
 using namespace behavior;
 
-BehaviorTarget::BehaviorTarget(const BehaviorTarget& cBehaviorTarget) {
+BehaviorTarget::BehaviorTarget(const BehaviorTarget& cBehaviorTarget) :
+Nameable(cBehaviorTarget) {
     
     initialize();
     
@@ -37,7 +40,8 @@ BehaviorTarget::BehaviorTarget(const BehaviorTarget& cBehaviorTarget) {
     
 }
 
-BehaviorTarget::BehaviorTarget(const Observable& cObservable) {
+BehaviorTarget::BehaviorTarget(const Observable& cObservable, const std::string& strName) :
+Nameable(strName) {
     
     initialize();
     
@@ -46,7 +50,8 @@ BehaviorTarget::BehaviorTarget(const Observable& cObservable) {
     
 }
 
-BehaviorTarget::BehaviorTarget(const Coordinate& cCoordinate) {
+BehaviorTarget::BehaviorTarget(const Coordinate& cCoordinate, const std::string& strName) :
+Nameable(strName) {
     
     initialize();
     
@@ -55,7 +60,8 @@ BehaviorTarget::BehaviorTarget(const Coordinate& cCoordinate) {
     
 }
 
-BehaviorTarget::BehaviorTarget(WidthType eWidthType, QualityType eQualityType) {
+BehaviorTarget::BehaviorTarget(WidthType eWidthType, QualityType eQualityType, const std::string& strName) :
+Nameable(strName) {
     
     initialize();
     
@@ -65,7 +71,8 @@ BehaviorTarget::BehaviorTarget(WidthType eWidthType, QualityType eQualityType) {
     
 }
 
-BehaviorTarget::BehaviorTarget(ObservableType eObservableType) {
+BehaviorTarget::BehaviorTarget(ObservableType eObservableType, const std::string& strName) :
+Nameable(strName) {
     
     initialize();
 
@@ -74,7 +81,8 @@ BehaviorTarget::BehaviorTarget(ObservableType eObservableType) {
     
 }
 
-BehaviorTarget::BehaviorTarget(double dValue) {
+BehaviorTarget::BehaviorTarget(double dValue, const std::string& strName) :
+Nameable(strName) {
     
     initialize();
     
@@ -175,4 +183,16 @@ const ObservableType* BehaviorTarget::getObservableType() const {
     //Return value pointer
     return m_eObservableType;
     
+}
+
+namespace behavior {
+    
+    std::ostream& operator<<(std::ostream &out, const BehaviorTarget &cBehaviorTarget) {
+        
+        out << TARGET_PRINT_FORMAT << "'" << cBehaviorTarget.getName() << "'.";
+        
+        return out;
+        
+    }
+
 }

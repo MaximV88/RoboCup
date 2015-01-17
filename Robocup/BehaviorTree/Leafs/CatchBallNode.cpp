@@ -14,7 +14,9 @@
 
 #define CATCHBALL_NODE_COMMAND "catch"
 #define CATCHBALL_NODE_TARGET_ERROR "CatchBallNode Error: No Target given"
-#define CATCHBALL_NODE_VALUE_ERROR "CatchBallNode Error: No double value given in the Target"
+#define CATCHBALL_NODE_VALUE_ERROR "CatchBallNode Error: No double value given in the "
+
+#define DEBUG_ACTION_DESCRIPTION "Catching the Ball."
 
 using namespace behavior;
 
@@ -64,10 +66,17 @@ StatusType CatchBallNode::process() {
     //If no coordinate is given, return failed
     if (dValue == NULL) {
         
-        std::cerr << CATCHBALL_NODE_VALUE_ERROR << std::endl;
+        std::cerr << CATCHBALL_NODE_VALUE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

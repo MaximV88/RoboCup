@@ -14,6 +14,8 @@
 
 #define TURN_NECK_TO_CENTER_NODE_COMMAND "turn_neck"
 
+#define DEBUG_ACTION_DESCRIPTION "Centering the Neck."
+
 using namespace behavior;
 
 TurnNeckToCenterNode::TurnNeckToCenterNode() {
@@ -52,6 +54,13 @@ StatusType TurnNeckToCenterNode::process() {
     
     //Get the value needed to turn to center
     double dRotation = getContext().getPlayer().getLastBodyState()->headAngle;
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //No need to rotate
     if (dRotation == 0)

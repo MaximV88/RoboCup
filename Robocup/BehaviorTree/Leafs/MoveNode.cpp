@@ -17,8 +17,9 @@
 #define MOVE_NODE_COMMAND "move"
 #define MOVE_NODE_PLAYMODE_ERROR "MoveNode Error: No compatible PlayMode for moving"
 #define MOVE_NODE_TARGET_ERROR "MoveNode Error: No Target given"
-#define MOVE_NODE_COORDINATE_ERROR "MoveNode Error: No Coordinate given in the Target"
+#define MOVE_NODE_COORDINATE_ERROR "MoveNode Error: No Coordinate given in the "
 
+#define DEBUG_ACTION_DESCRIPTION "Moving the Player."
 
 using namespace behavior;
 
@@ -79,11 +80,17 @@ StatusType MoveNode::process() {
     //If no coordinate is given, return failed
     if (cCoordinate == NULL) {
      
-        std::cerr << MOVE_NODE_COORDINATE_ERROR << std::endl;
+        std::cerr << MOVE_NODE_COORDINATE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
     
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

@@ -9,6 +9,8 @@
 #include "EndActNode.h"
 #include "Brain.h"
 
+#define DEBUG_ACTION_DESCRIPTION "Ending the current Act."
+
 using namespace behavior;
 
 EndActNode::EndActNode() {
@@ -20,6 +22,13 @@ EndActNode::~EndActNode() {
 }
 
 StatusType EndActNode::process() {
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Make the brain send the instructions gathered
     getContext().getBrain().endAct();

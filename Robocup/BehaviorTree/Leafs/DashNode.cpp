@@ -14,7 +14,9 @@
 
 #define DASH_NODE_COMMAND "dash"
 #define DASH_NODE_TARGET_ERROR "DashNode Error: No Target given"
-#define DASH_NODE_VALUE_ERROR "DashNode Error: No int value given in the Target"
+#define DASH_NODE_VALUE_ERROR "DashNode Error: No int value given in the "
+
+#define DEBUG_ACTION_DESCRIPTION "Dashing the Player."
 
 using namespace behavior;
 
@@ -65,10 +67,17 @@ StatusType DashNode::process() {
     //If no coordinate is given, return failed
     if (iValue == NULL) {
         
-        std::cerr << DASH_NODE_VALUE_ERROR << std::endl;
+        std::cerr << DASH_NODE_VALUE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

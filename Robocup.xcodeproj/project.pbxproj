@@ -84,6 +84,7 @@
 		BEBEF7911A697F860094396A /* FailureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF78F1A697F860094396A /* FailureNode.cpp */; };
 		BEBEF7971A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7951A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp */; };
 		BEBEF79A1A698A8E0094396A /* TurnMaximumMomentNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7981A698A8E0094396A /* TurnMaximumMomentNode.cpp */; };
+		BEE1F2C81A6A510500FBD90C /* Nameable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE1F2C61A6A510500FBD90C /* Nameable.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -261,6 +262,8 @@
 		BEBEF7961A6989900094396A /* SetTargetToMaximumMomentAngleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetTargetToMaximumMomentAngleNode.h; path = BehaviorTree/Leafs/SetTargetToMaximumMomentAngleNode.h; sourceTree = "<group>"; };
 		BEBEF7981A698A8E0094396A /* TurnMaximumMomentNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnMaximumMomentNode.cpp; path = BehaviorTree/Custom/TurnMaximumMomentNode.cpp; sourceTree = "<group>"; };
 		BEBEF7991A698A8E0094396A /* TurnMaximumMomentNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnMaximumMomentNode.h; path = BehaviorTree/Custom/TurnMaximumMomentNode.h; sourceTree = "<group>"; };
+		BEE1F2C61A6A510500FBD90C /* Nameable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nameable.cpp; sourceTree = "<group>"; };
+		BEE1F2C71A6A510500FBD90C /* Nameable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nameable.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +300,7 @@
 				BE0C05C21A66D9E9009065F8 /* Instruction.cpp */,
 				BE0C05B51A66D90F009065F8 /* main.cpp */,
 				BE0C063E1A66DD08009065F8 /* BehaviorTree */,
+				BEE1F2C91A6A511000FBD90C /* Nameable */,
 				BE0C06331A66DC8E009065F8 /* Math */,
 				BE0C06231A66DC74009065F8 /* Player */,
 				BE0C060F1A66DBE7009065F8 /* Threadable */,
@@ -722,6 +726,15 @@
 			name = CustomNodes;
 			sourceTree = "<group>";
 		};
+		BEE1F2C91A6A511000FBD90C /* Nameable */ = {
+			isa = PBXGroup;
+			children = (
+				BEE1F2C71A6A510500FBD90C /* Nameable.h */,
+				BEE1F2C61A6A510500FBD90C /* Nameable.cpp */,
+			);
+			name = Nameable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -822,6 +835,7 @@
 				BE0C06531A66DD54009065F8 /* CompositionNode.cpp in Sources */,
 				BE0C06871A66DDCD009065F8 /* DashNode.cpp in Sources */,
 				BE0C06AE1A670525009065F8 /* SearchTurnNeckNode.cpp in Sources */,
+				BEE1F2C81A6A510500FBD90C /* Nameable.cpp in Sources */,
 				BE0C06891A66DDCD009065F8 /* KickBallNode.cpp in Sources */,
 				BE0C06841A66DDCD009065F8 /* PushTargetToStackNode.cpp in Sources */,
 				BE0C06971A66DEA4009065F8 /* BehaviorException.cpp in Sources */,

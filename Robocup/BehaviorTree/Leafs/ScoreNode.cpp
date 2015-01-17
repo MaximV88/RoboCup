@@ -11,6 +11,8 @@
 
 #define SCORE_NODE_COMMAND "score"
 
+#define DEBUG_ACTION_DESCRIPTION "Finding out the Score."
+
 using namespace behavior;
 
 ScoreNode::ScoreNode() {
@@ -22,6 +24,13 @@ ScoreNode::~ScoreNode() {
 }
 
 StatusType ScoreNode::process() {
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

@@ -228,11 +228,11 @@ void Forward::actTeamState(const TeamState& cTeamState) {
     //Decide which Behavior to perform based on the PlayMode
     switch (cTeamState.playMode) {
         case PlayModePlayOn:
-            getBrain().setBehavior("Start");
+            getBrain().setBehavior("Attack");
             break;
             
         default:
-            getBrain().setBehavior("Start");
+            getBrain().setBehavior("Attack");
             break;
             
     }
@@ -254,11 +254,11 @@ Forward::Forward(const Connection* cConnection, const char* chTeamName) :
 Player(cConnection, chTeamName) {
     
     //Create all behaviors and add them to the brain
-    BehaviorTree *cTree = new BehaviorTree(*this, getBrain());
+    BehaviorTree *cTree = new BehaviorTree(*this, getBrain(), "Attack");
 
     cTree->setRoot(new SearchNode());
     
-    getBrain().addBehavior("Start", *cTree);
+    getBrain().addBehavior(*cTree);
     
 }
 

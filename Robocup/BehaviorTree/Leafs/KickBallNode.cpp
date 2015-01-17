@@ -14,8 +14,10 @@
 
 #define KICKBALL_NODE_COMMAND "kick"
 #define KICKBALL_NODE_TARGET_ERROR "KickBallNode Error: No Target given"
-#define KICKBALL_NODE_INT_VALUE_ERROR "KickBallNode Error: No int value given in the Target"
-#define KICKBALL_NODE_DOUBLE_VALUE_ERROR "KickBallNode Error: No double value given in the Target"
+#define KICKBALL_NODE_INT_VALUE_ERROR "KickBallNode Error: No int value given in the "
+#define KICKBALL_NODE_DOUBLE_VALUE_ERROR "KickBallNode Error: No double value given in the "
+
+#define DEBUG_ACTION_DESCRIPTION "Kicking the Ball."
 
 using namespace behavior;
 
@@ -65,7 +67,7 @@ StatusType KickBallNode::process() {
     //If no coordinate is given, return failed
     if (iValue == NULL) {
         
-        std::cerr << KICKBALL_NODE_INT_VALUE_ERROR << std::endl;
+        std::cerr << KICKBALL_NODE_INT_VALUE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
@@ -75,11 +77,17 @@ StatusType KickBallNode::process() {
     //If no coordinate is given, return failed
     if (dValue == NULL) {
         
-        std::cerr << KICKBALL_NODE_DOUBLE_VALUE_ERROR << std::endl;
+        std::cerr << KICKBALL_NODE_DOUBLE_VALUE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
     
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

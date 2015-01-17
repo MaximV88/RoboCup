@@ -13,6 +13,12 @@
 #define VIEW_FACTOR_NORMAL 1
 #define VIEW_FACTOR_WIDE 0.5
 
+#define NODE_NAME "SetTargetToPositiveNeckTurnAngle"
+
+#define DEBUG_ACTION_DESCRIPTION_SUCCESS_1 "Successfuly set positive rotation for Neck at "
+#define DEBUG_ACTION_DESCRIPTION_SUCCESS_2 " degrees."
+#define DEBUG_ACTION_DESCRIPTION_FAILURE "Could not set positive rotation for Neck any further."
+
 using namespace behavior;
 
 SetTargetToPositiveNeckTurnAngleNode::SetTargetToPositiveNeckTurnAngleNode() {
@@ -78,16 +84,33 @@ StatusType SetTargetToPositiveNeckTurnAngleNode::process() {
     double dCurrentAngle = getContext().getPlayer().getLastBodyState()->headAngle;
     
     //Fail if the current angle is already at max
-    if (dCurrentAngle == dMaxAngle)
+    if (dCurrentAngle == dMaxAngle) {
+    
+#if DEBUG_PRINT_ACTION
+        
+        //Print the action's description
+        std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << std::endl;
+        
+#endif
         return StatusTypeFailure;
+    
+    }
     
     //Limit it by the minimum allowed angle
     if (dRotation > dMaxAngle)
         dRotation = dMaxAngle;
     
     //Set the rotation as the target
-    getContext().setCurrentTarget(new BehaviorTarget(dRotation));
+    getContext().setCurrentTarget(new BehaviorTarget(dRotation, NODE_NAME));
 
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS_1 << dRotation <<
+    DEBUG_ACTION_DESCRIPTION_SUCCESS_2 << std::endl;
+    
+#endif
+    
     //All is OK
     return StatusTypeSuccess;
     

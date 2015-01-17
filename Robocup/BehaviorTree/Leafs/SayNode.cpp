@@ -11,7 +11,9 @@
 
 #define SAY_NODE_COMMAND "say"
 #define SAY_NODE_TARGET_ERROR "SayNode Error: No Target given"
-#define SAY_NODE_VALUE_ERROR "SayNode Error: No C string given in the Target"
+#define SAY_NODE_VALUE_ERROR "SayNode Error: No C string given in the "
+
+#define DEBUG_ACTION_DESCRIPTION "Saying a Message."
 
 using namespace behavior;
 
@@ -42,10 +44,17 @@ StatusType SayNode::process() {
     //If no coordinate is given, return failed
     if (chMessage == NULL) {
         
-        std::cerr << SAY_NODE_VALUE_ERROR << std::endl;
+        std::cerr << SAY_NODE_VALUE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

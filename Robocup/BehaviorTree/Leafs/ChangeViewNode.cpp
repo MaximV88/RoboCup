@@ -12,8 +12,8 @@
 
 #define CHANGE_VIEW_NODE_COMMAND "change_view"
 #define CHANGE_VIEW_NODE_TARGET_ERROR "ChangeViewNode Error: No Target given"
-#define CHANGE_VIEW_NODE_WIDTH_ERROR "ChangeViewNode Error: No Width type given in the Target"
-#define CHANGE_VIEW_NODE_QUALITY_ERROR "ChangeViewNode Error: No Quality type given in the Target"
+#define CHANGE_VIEW_NODE_WIDTH_ERROR "ChangeViewNode Error: No Width type given in the "
+#define CHANGE_VIEW_NODE_QUALITY_ERROR "ChangeViewNode Error: No Quality type given in the "
 
 #define CHANGE_VIEW_NODE_WIDTH_TYPE_NARROW "narrow"
 #define CHANGE_VIEW_NODE_WIDTH_TYPE_NORMAL "normal"
@@ -21,6 +21,8 @@
 
 #define CHANGE_VIEW_NODE_QUALITY_TYPE_HIGH "high"
 #define CHANGE_VIEW_NODE_QUALITY_TYPE_LOW "low"
+
+#define DEBUG_ACTION_DESCRIPTION "Changing view settings."
 
 using namespace behavior;
 
@@ -51,7 +53,7 @@ StatusType ChangeViewNode::process() {
     //If no coordinate is given, return failed
     if (eWidthType == NULL) {
         
-        std::cerr << CHANGE_VIEW_NODE_WIDTH_ERROR << std::endl;
+        std::cerr << CHANGE_VIEW_NODE_WIDTH_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
@@ -62,7 +64,7 @@ StatusType ChangeViewNode::process() {
     //If no coordinate is given, return failed
     if (eQualityType == NULL) {
         
-        std::cerr << CHANGE_VIEW_NODE_QUALITY_ERROR << std::endl;
+        std::cerr << CHANGE_VIEW_NODE_QUALITY_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
@@ -82,6 +84,12 @@ StatusType ChangeViewNode::process() {
         
     }
     
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

@@ -21,6 +21,9 @@
 #include "TurnMaximumMomentNode.h"
 #include "SuccessNode.h"
 #include "Player.h"
+
+#define NODE_NAME "SearchNode"
+
 using namespace behavior;
 
 SearchNode::SearchNode() : InverterNode(new SequenceNode()) {
@@ -55,7 +58,7 @@ SearchNode::SearchNode() : InverterNode(new SequenceNode()) {
     cCheckingSequence->addChild(new SuccessNode(new PushTargetToStackNode()));
     
     //Create our required target for view changing
-    cCheckingSequence->addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeWide, QualityTypeLow)));
+    cCheckingSequence->addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeWide, QualityTypeLow, NODE_NAME)));
     
     //Change the view
     cCheckingSequence->addChild(new ChangeViewNode());

@@ -12,11 +12,12 @@
 #include <stdio.h>
 #include "BehaviorTreeNode.h"
 #include "BehaviorContext.h"
+#include "Nameable.h"
 
 
 namespace behavior {
 
-    class BehaviorTree {
+    class BehaviorTree : public Nameable {
             
         //Root of the tree
         BehaviorTreeNode *m_cRoot;
@@ -26,7 +27,7 @@ namespace behavior {
                 
     public:
         
-        BehaviorTree(Player& cPlayer, Brain& cBrain);
+        BehaviorTree(Player& cPlayer, Brain& cBrain, const std::string& strName);
         ~BehaviorTree();
         
         void setRoot(BehaviorTreeNode *cRoot);

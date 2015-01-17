@@ -30,10 +30,10 @@ Brain::~Brain() {
     
 }
 
-void Brain::addBehavior(std::string strName, behavior::BehaviorTree &cBehaviorTree) {
+void Brain::addBehavior(behavior::BehaviorTree &cBehaviorTree) {
     
     //Map the Tree pointer to the name
-    m_mcBehaviors[strName] = &cBehaviorTree;
+    m_mcBehaviors[cBehaviorTree.getName()] = &cBehaviorTree;
     
 }
 

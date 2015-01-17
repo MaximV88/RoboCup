@@ -8,6 +8,11 @@
 
 #include "IsTargetEnemyNode.h"
 
+#define IS_TARGET_ENEMY_NODE_TARGET_ERROR "IsTargetEnemyNode Error: No Target given"
+#define IS_TARGET_ENEMY_NODE_VALUE_ERROR "IsTargetEnemyNode Error: No Observable value given in the "
+
+#define DEBUG_ACTION_DESCRIPTION "Checking if the Target is an Enemy."
+
 using namespace behavior;
 
 IsTargetEnemyNode::IsTargetEnemyNode() {
@@ -23,12 +28,30 @@ StatusType IsTargetEnemyNode::process() {
     //Get the current target
     BehaviorTarget* cTarget = getContext().getCurrentTarget();
     
+    if (cTarget == NULL) {
+        
+        std::cerr << IS_TARGET_ENEMY_NODE_TARGET_ERROR << std::endl;
+        return StatusTypeFailure;
+        
+    }
+    
     //Check if its a player
     const Observable* cObservable = cTarget->getObservable();
     
     //If its not observable, then it is surely not an enemy
-    if (cObservable == NULL)
+    if (cObservable == NULL) {
+        
+        std::cerr << IS_TARGET_ENEMY_NODE_VALUE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
+        
+    }
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //If the observable is not a player, then it is not an enemy (TODO: CHECK FOR GOALS?)
     if (cObservable->type != ObservableTypePlayer)

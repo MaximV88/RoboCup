@@ -14,7 +14,9 @@
 
 #define TURNNECK_NODE_COMMAND "turn_neck"
 #define TURNNECK_NODE_TARGET_ERROR "TurnNeckNode Error: No Target given"
-#define TURNNECK_NODE_VALUE_ERROR "TurnNeckNode Error: No double value given in the Target"
+#define TURNNECK_NODE_VALUE_ERROR "TurnNeckNode Error: No double value given in the "
+
+#define DEBUG_ACTION_DESCRIPTION "Turning the Neck."
 
 using namespace behavior;
 
@@ -65,10 +67,17 @@ StatusType TurnNeckNode::process() {
     //If no coordinate is given, return failed
     if (dValue == NULL) {
         
-        std::cerr << TURNNECK_NODE_VALUE_ERROR << std::endl;
+        std::cerr << TURNNECK_NODE_VALUE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

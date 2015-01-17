@@ -8,6 +8,8 @@
 
 #include "ClearTargetNode.h"
 
+#define DEBUG_ACTION_DESCRIPTION "Clearing the Target."
+
 using namespace behavior;
 
 ClearTargetNode::ClearTargetNode() {
@@ -19,6 +21,13 @@ ClearTargetNode::~ClearTargetNode() {
 }
 
 StatusType ClearTargetNode::process() {
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
+    
+#endif
     
     //Erase the context's target
     getContext().setCurrentTarget(NULL);

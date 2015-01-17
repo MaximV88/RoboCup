@@ -10,6 +10,7 @@
 #define __Ex3__IsTargetEnemyNode__
 
 #include "BehaviorTreeNode.h"
+#include "Nameable.h"
 
 namespace behavior {
     

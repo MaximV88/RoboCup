@@ -10,7 +10,10 @@
 #include "Player.h"
 
 #define IS_TARGET_VISIBLE_NODE_TARGET_ERROR "IsTargetVisibleNode Error: No Target given"
-#define IS_TARGET_VISIBLE_NODE_VALUE_ERROR "IsTargetVisibleNode Error: No ObservableType value given in the Target"
+#define IS_TARGET_VISIBLE_NODE_VALUE_ERROR "IsTargetVisibleNode Error: No ObservableType value given in the "
+
+#define DEBUG_ACTION_DESCRIPTION_SUCCESS "Successfuly seen the "
+#define DEBUG_ACTION_DESCRIPTION_FAILURE "Did not see the "
 
 using namespace behavior;
 
@@ -48,7 +51,7 @@ StatusType IsTargetVisibleNode::process() {
     //If no coordinate is given, return failed
     if (eObservableType == NULL) {
    
-        std::cerr << IS_TARGET_VISIBLE_NODE_VALUE_ERROR << std::endl;
+        std::cerr << IS_TARGET_VISIBLE_NODE_VALUE_ERROR << *cTarget << std::endl;
         return StatusTypeFailure;
         
     }
@@ -60,12 +63,26 @@ StatusType IsTargetVisibleNode::process() {
         
         if ((*iter)->type == ObservableTypeNone) {
             
+#if DEBUG_PRINT_ACTION
+            
+            //Print the action's description
+            std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS << **iter << std::endl;
+            
+#endif
+            
             //Found it - thus it's visible
             return StatusTypeSuccess;
             
         }
         
     }
+    
+#if DEBUG_PRINT_ACTION
+    
+    //Print the action's description
+    std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << *cTarget << std::endl;
+    
+#endif
     
     //Havnt found it
     return StatusTypeFailure;

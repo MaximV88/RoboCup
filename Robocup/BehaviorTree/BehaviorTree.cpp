@@ -13,8 +13,8 @@
 
 using namespace behavior;
 
-BehaviorTree::BehaviorTree(Player& cPlayer, Brain& cBrain) :
-m_cContext(cPlayer, cBrain), m_cRoot(NULL) {
+BehaviorTree::BehaviorTree(Player& cPlayer, Brain& cBrain, const std::string& strName) :
+Nameable(strName), m_cContext(cPlayer, cBrain), m_cRoot(NULL) {
     
 }
 
