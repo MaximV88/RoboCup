@@ -42,7 +42,12 @@ StatusType ChangeViewNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << CHANGE_VIEW_NODE_TARGET_ERROR << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }
@@ -53,7 +58,12 @@ StatusType ChangeViewNode::process() {
     //If no coordinate is given, return failed
     if (eWidthType == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << CHANGE_VIEW_NODE_WIDTH_ERROR << *cTarget << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }
@@ -64,7 +74,12 @@ StatusType ChangeViewNode::process() {
     //If no coordinate is given, return failed
     if (eQualityType == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << CHANGE_VIEW_NODE_QUALITY_ERROR << *cTarget << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }

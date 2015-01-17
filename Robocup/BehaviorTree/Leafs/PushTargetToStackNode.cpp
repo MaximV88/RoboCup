@@ -9,7 +9,7 @@
 #include "PushTargetToStackNode.h"
 
 #define DEBUG_ACTION_DESCRIPTION_SUCCESS_1 "Successfuly pushed to Stack the "
-#define DEBUG_ACTION_DESCRIPTION_SUCCESS_2 " clearing the Target."
+#define DEBUG_ACTION_DESCRIPTION_SUCCESS_2 " Clearing the Target."
 #define DEBUG_ACTION_DESCRIPTION_FAILURE "Could not push Target to Stack, no Target found"
 
 using namespace behavior;

@@ -255,8 +255,8 @@ Player(cConnection, chTeamName) {
     
     //Create all behaviors and add them to the brain
     BehaviorTree *cTree = new BehaviorTree(*this, getBrain(), "Attack");
-
-    cTree->setRoot(new SearchNode());
+    
+    cTree->setRoot(new SearchTurnNeckNode());
     
     getBrain().addBehavior(*cTree);
     

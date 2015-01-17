@@ -38,27 +38,31 @@ StatusType PopFromStackNode::process() {
         
         getContext().setCurrentTarget(NULL);
         
+        //An error has been encountered
         return StatusTypeFailure;
-    
+        
     }
-    
-    //Take an object from the stack and make it the target
-    BehaviorTarget *cTarget = cStack.top();
-    
-    //Pop the object from the stack
-    cStack.pop();
-    
+    else {
+        
+        //Take an object from the stack and make it the target
+        BehaviorTarget *cTarget = cStack.top();
+        
+        //Pop the object from the stack
+        cStack.pop();
+        
 #if DEBUG_PRINT_ACTION
-    
-    //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS  << *cTarget << std::endl;
-    
+        
+        //Print the action's description
+        std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS  << *cTarget << std::endl;
+        
 #endif
-    
-    //Make it the context's target
-    getContext().setCurrentTarget(cTarget);
-    
-    //All was OK
-    return StatusTypeSuccess;
+        
+        //Make it the context's target
+        getContext().setCurrentTarget(cTarget);
+        
+        //All was OK
+        return StatusTypeSuccess;
+        
+    }
     
 }

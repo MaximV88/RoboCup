@@ -33,7 +33,12 @@ StatusType SayNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << SAY_NODE_TARGET_ERROR << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }
@@ -44,7 +49,12 @@ StatusType SayNode::process() {
     //If no coordinate is given, return failed
     if (chMessage == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << SAY_NODE_VALUE_ERROR << *cTarget << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }

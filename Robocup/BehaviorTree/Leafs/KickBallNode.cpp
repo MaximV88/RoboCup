@@ -56,7 +56,12 @@ StatusType KickBallNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << KICKBALL_NODE_TARGET_ERROR << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }
@@ -67,7 +72,12 @@ StatusType KickBallNode::process() {
     //If no coordinate is given, return failed
     if (iValue == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << KICKBALL_NODE_INT_VALUE_ERROR << *cTarget << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }
@@ -77,7 +87,12 @@ StatusType KickBallNode::process() {
     //If no coordinate is given, return failed
     if (dValue == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << KICKBALL_NODE_DOUBLE_VALUE_ERROR << *cTarget << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }

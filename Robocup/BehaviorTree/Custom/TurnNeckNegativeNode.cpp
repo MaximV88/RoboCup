@@ -29,9 +29,6 @@ TurnNeckNegativeNode::TurnNeckNegativeNode() {
     //Perform the rotation
     addChild(new TurnNeckNode());
     
-    //Ask to update the body state
-    addChild(new SenseBodyNode());
-    
     //Pop the original target back - dont care if there isnt a target
     addChild(new SuccessNode(new PopFromStackNode()));
     

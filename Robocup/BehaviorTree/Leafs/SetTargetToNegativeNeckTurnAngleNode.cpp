@@ -9,9 +9,9 @@
 #include "SetTargetToNegativeNeckTurnAngleNode.h"
 #include "Player.h"
 
-#define VIEW_FACTOR_NARROW 2
+#define VIEW_FACTOR_NARROW 0.5
 #define VIEW_FACTOR_NORMAL 1
-#define VIEW_FACTOR_WIDE 0.5
+#define VIEW_FACTOR_WIDE 2
 
 #define NODE_NAME "SetTargetToNegativeNeckTurnAngle"
 

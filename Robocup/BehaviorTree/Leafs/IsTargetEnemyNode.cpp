@@ -30,7 +30,12 @@ StatusType IsTargetEnemyNode::process() {
     
     if (cTarget == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << IS_TARGET_ENEMY_NODE_TARGET_ERROR << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }
@@ -41,7 +46,12 @@ StatusType IsTargetEnemyNode::process() {
     //If its not observable, then it is surely not an enemy
     if (cObservable == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+        
         std::cerr << IS_TARGET_ENEMY_NODE_VALUE_ERROR << *cTarget << std::endl;
+        
+#endif
+        
         return StatusTypeFailure;
         
     }

@@ -26,8 +26,21 @@ StatusType SetTargetToNode::process() {
     
     
     //Set the target to the required pointer only if exists
-    if (m_cTarget != NULL)
+    if (m_cTarget != NULL) {
+        
         getContext().setCurrentTarget(new BehaviorTarget(*m_cTarget));
+        
+        
+#if DEBUG_PRINT_ACTION
+        
+        //Print the action's description
+        std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS << *m_cTarget << std::endl;
+        
+#endif
+        
+        return StatusTypeFailure;
+        
+    }
     else {
         
 #if DEBUG_PRINT_ACTION
@@ -37,16 +50,7 @@ StatusType SetTargetToNode::process() {
 
 #endif
 
-        return StatusTypeFailure;
-
     }
-    
-#if DEBUG_PRINT_ACTION
-    
-    //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS << *m_cTarget << std::endl;
-    
-#endif
     
     return StatusTypeSuccess;
     

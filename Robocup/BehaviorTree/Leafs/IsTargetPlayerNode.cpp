@@ -30,7 +30,12 @@ StatusType IsTargetPlayerNode::process() {
     
     if (cTarget == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << IS_TARGET_PLAYER_NODE_TARGET_ERROR << std::endl;
+
+#endif
+        
         return StatusTypeFailure;
         
     }
@@ -40,7 +45,12 @@ StatusType IsTargetPlayerNode::process() {
     //Check if we have something to check
     if (cObservable == NULL) {
         
+#if DEBUG_PRINT_ERRORS
+
         std::cerr << IS_TARGET_PLAYER_NODE_VALUE_ERROR << *cTarget << std::endl;
+
+#endif
+        
         return StatusTypeFailure;
         
     }
