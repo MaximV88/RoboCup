@@ -13,6 +13,7 @@
 #include "TurnNode.h"
 #include "EndActNode.h"
 #include "SuccessNode.h"
+#include "WaitBodyStateUpdateNode.h"
 
 using namespace behavior;
 
@@ -29,6 +30,9 @@ TurnMaximumMomentNode::TurnMaximumMomentNode() {
     
     //Pop the original target back - dont care if there isnt a target
     addChild(new SuccessNode(new PopFromStackNode()));
+
+    //Wait until there is a body update
+    addChild(new WaitBodyStateUpdateNode());
     
     //Update variables and body state
     addChild(new EndActNode());

@@ -66,6 +66,7 @@ SearchTurnNeckNode::SearchTurnNeckNode() : InverterNode(new SequenceNode()) {
 
     addVisibilityCheck(cCheckingSequence);
     
+    
     TurnNeckPositiveNode *cTurnPositive = new TurnNeckPositiveNode();
     
     //Also check visibility at each turn

@@ -8,7 +8,7 @@
 
 #include "SetTargetToNode.h"
 
-#define DEBUG_ACTION_DESCRIPTION_SUCCESS "Successfuly set the "
+#define DEBUG_ACTION_DESCRIPTION_SUCCESS "Successfuly set as Target the "
 #define DEBUG_ACTION_DESCRIPTION_FAILURE "Could not set the Target, does not exist."
 
 using namespace behavior;
@@ -38,7 +38,7 @@ StatusType SetTargetToNode::process() {
         
 #endif
         
-        return StatusTypeFailure;
+        return StatusTypeSuccess;
         
     }
     else {
@@ -50,8 +50,8 @@ StatusType SetTargetToNode::process() {
 
 #endif
 
+        return StatusTypeFailure;
+        
     }
-    
-    return StatusTypeSuccess;
     
 }

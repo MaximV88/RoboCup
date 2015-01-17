@@ -69,6 +69,8 @@ void Player::execute() {
                 
                 m_cBodyState = static_cast<BodyState*>(cState);
                 
+                m_cBrain.updateState(*m_cBodyState);
+                
                 break;
                 
             case StateTypeTeam:
@@ -80,6 +82,7 @@ void Player::execute() {
                 m_cTeamState = static_cast<TeamState*>(cState);
                 
                 actTeamState(*m_cTeamState);
+                m_cBrain.updateState(*m_cTeamState);
                 
                 break;
                 
@@ -111,6 +114,8 @@ void Player::execute() {
                 //Update the location using triangulation
                 updateOrigin(*m_cSeeState);
                 
+                m_cBrain.updateState(*m_cSeeState);
+
                 break;
                 
             case StateTypeHear:
@@ -123,7 +128,11 @@ void Player::execute() {
                 
                 //Update the team value (play mode)
                 m_cTeamState->convert(*m_cHearState);
-                    
+
+                //We use the PlayMode variable only in TeamState
+                actTeamState(*m_cTeamState);
+                m_cBrain.updateState(*m_cTeamState);
+                
                 break;
                 
             //Shouldnt reach here
@@ -131,8 +140,13 @@ void Player::execute() {
                 break;
         }
         
-        //Update the brain that an act has been started
-        m_cBrain.startAct();
+        //Dont update until has body and sight states
+        if (m_cSeeState != NULL && m_cBodyState != NULL) {
+        
+            //Update the brain that an act has been started
+            m_cBrain.startAct();
+            
+        }
         
     }
     

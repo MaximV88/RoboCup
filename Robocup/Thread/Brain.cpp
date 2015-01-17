@@ -10,7 +10,6 @@
 #include "Player.h"
 #include "BehaviorTree.h"
 
-#define DEBUG_PRINT_EXECUTION_INDEX 0
 #define DEBUG_PRINT_EXECUTION_INDEX_MESSAGE "Debug: At execution index "
 
 #define BRAIN_UNKNOWN_BEHAVIOR_NAME_ERROR "Brain Error: Behavior change to unknown name requested."
@@ -19,10 +18,18 @@
 #define BRAIN_TOO_MANY_UNIQUE_INSTRUCTIONS_ERROR "Brain Error: Too many unique instructions per message."
 #define BRAIN_UNIQUE_INSTRUCTION_PER_MESSAGE 1
 
+#define EXECUTE_ACTION_DESCRIPTION "Brain: Execution will end the Act."
+
 Brain::Brain(ThreadQueue<std::string*>& qInstructionQueue) :
 m_qInstructionQueue(qInstructionQueue), m_cConditionVariable(m_cMutualExclusion) {
  
-    m_bIsStarted = false;
+    m_bIsBodyStateUpdate = false;
+    m_bIsSeeStateUpdate = false;
+    
+    m_cBehavior = NULL;
+    
+    //Start playing
+    start();
     
 }
 
@@ -50,19 +57,19 @@ void Brain::setBehavior(std::string strName) {
     //Set the acting behavior
     m_cBehavior = m_mcBehaviors.find(strName)->second;
     
-    //Start the brain if not started yet
-    if (!m_bIsStarted) {
-        
-        m_bIsStarted = true;
-        
-        //Start playing
-        start();
-        
-    }
-    
 }
 
 void Brain::execute() {
+    
+    //Dont start doing anything until startAct has been called
+    m_cMutualExclusion.lock();
+    
+    //Dont start doing anything until startAct has been called
+    m_cConditionVariable.wait();
+    
+    //Unlock since we need it elsewhere
+    m_cMutualExclusion.unlock();
+
     
     //Always check before run that the selected tree is valid
     if (m_cBehavior == NULL) {
@@ -72,6 +79,7 @@ void Brain::execute() {
         return;
         
     }
+    
     
     while (true) {
         
@@ -89,7 +97,61 @@ void Brain::perform(const Instruction &cInstruction) {
     
 }
 
+void Brain::waitBodyStateUpdate() {
+    
+    m_bIsBodyStateUpdate = true;
+    
+}
+
+void Brain::waitSeeStateUpdate() {
+    
+    m_bIsSeeStateUpdate = true;
+    
+}
+
+void Brain::waitTeamStateUpdate() {
+    
+    m_bIsTeamStateUpdate = true;
+    
+}
+
+void Brain::updateState(const State &cState) {
+    
+    switch (cState.eType) {
+        case StateTypeBody:
+            m_bIsBodyStateUpdate = false;
+            break;
+            
+        case StateTypeSee:
+            m_bIsSeeStateUpdate = false;
+            break;
+            
+        case StateTypeTeam:
+            m_bIsTeamStateUpdate = false;
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
 void Brain::startAct() {
+    
+    /*
+     * Dont broadcast if any of the flags 
+     * still on (tree building should take that in mind)
+     */
+    
+    if (m_bIsBodyStateUpdate ||
+        m_bIsSeeStateUpdate ||
+        m_bIsTeamStateUpdate) {
+     
+        return;
+    
+    }
+    
+    //Continue as normal (per every update)
     
 #if DEBUG_PRINT_EXECUTION_INDEX
     
@@ -109,6 +171,12 @@ void Brain::executeAct() {
     
     //Check if there is something to execute
     if (!m_qInstructionWaitingQueue.empty()) {
+        
+#ifdef DEBUG_PRINT_ACTION
+      
+        std::cout << EXECUTE_ACTION_DESCRIPTION << std::endl;
+        
+#endif
         
         //Prevent duplicate code
         endAct();

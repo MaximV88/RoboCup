@@ -41,8 +41,14 @@ private:
     //Pauses and resumes the thread
     ConditionVariable m_cConditionVariable;
     
-    //Checks if the bain has started
-    bool m_bIsStarted;
+    //Checks if should wait until a body state update
+    bool m_bIsBodyStateUpdate;
+    
+    //Checks if should wait until a sight state update
+    bool m_bIsSeeStateUpdate;
+
+    //Checks if should wait until a sight state update
+    bool m_bIsTeamStateUpdate;
     
     /****************************************************************************************************
      * function name: execute                                                                           *
@@ -65,6 +71,14 @@ public:
     void setBehavior(std::string strName);
     
     void perform(const Instruction& cInstruction);
+    
+    void waitBodyStateUpdate();
+    
+    void waitSeeStateUpdate();
+    
+    void waitTeamStateUpdate();
+    
+    void updateState(const State& cState);
     
     void executeAct();
     

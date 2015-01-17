@@ -32,5 +32,8 @@
 #include "ClearStackNode.h"
 #include "ClearTargetNode.h"
 #include "SetTargetToMaximumMomentAngleNode.h"
+#include "WaitBodyStateUpdateNode.h"
+#include "WaitSeeStateUpdateNode.h"
+#include "WaitTeamStateUpdateNode.h"
 
 #endif

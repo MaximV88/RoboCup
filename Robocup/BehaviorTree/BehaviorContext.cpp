@@ -51,7 +51,7 @@ BehaviorTarget* BehaviorContext::getCurrentTarget() const {
     
 }
 
-void BehaviorContext::setCurrentTarget(behavior::BehaviorTarget *cTarget) {
+void BehaviorContext::setCurrentTarget(BehaviorTarget *cTarget) {
     
     //Always remove the previous target
     if (m_cCurrentTarget != NULL)

@@ -231,8 +231,12 @@ void Forward::actTeamState(const TeamState& cTeamState) {
             getBrain().setBehavior("Attack");
             break;
             
-        default:
+        case PlayModeBeforeKickOff:
+            
             getBrain().setBehavior("Attack");
+            break;
+            
+        default:
             break;
             
     }
@@ -256,10 +260,10 @@ Player(cConnection, chTeamName) {
     //Create all behaviors and add them to the brain
     BehaviorTree *cTree = new BehaviorTree(*this, getBrain(), "Attack");
     
-    cTree->setRoot(new SearchTurnNeckNode());
+    cTree->setRoot(new SearchNode());
     
     getBrain().addBehavior(*cTree);
-    
+        
 }
 
 /**********************************************************************************************

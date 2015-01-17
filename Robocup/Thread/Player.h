@@ -78,7 +78,6 @@ private:
     //Holds the player's brain
     Brain m_cBrain;
     
-    
     //  ---                         PRIVATE FUNCTIONS                       ---   //
     
     

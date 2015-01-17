@@ -85,6 +85,9 @@
 		BEBEF7971A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7951A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp */; };
 		BEBEF79A1A698A8E0094396A /* TurnMaximumMomentNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7981A698A8E0094396A /* TurnMaximumMomentNode.cpp */; };
 		BEE1F2C81A6A510500FBD90C /* Nameable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE1F2C61A6A510500FBD90C /* Nameable.cpp */; };
+		BEE1F2CF1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE1F2CD1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp */; };
+		BEE1F2D21A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE1F2D01A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp */; };
+		BEE1F2D51A6AA67000FBD90C /* WaitTeamStateUpdateNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE1F2D31A6AA67000FBD90C /* WaitTeamStateUpdateNode.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -264,6 +267,12 @@
 		BEBEF7991A698A8E0094396A /* TurnMaximumMomentNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnMaximumMomentNode.h; path = BehaviorTree/Custom/TurnMaximumMomentNode.h; sourceTree = "<group>"; };
 		BEE1F2C61A6A510500FBD90C /* Nameable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nameable.cpp; sourceTree = "<group>"; };
 		BEE1F2C71A6A510500FBD90C /* Nameable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nameable.h; sourceTree = "<group>"; };
+		BEE1F2CD1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaitBodyStateUpdateNode.cpp; path = BehaviorTree/Leafs/WaitBodyStateUpdateNode.cpp; sourceTree = "<group>"; };
+		BEE1F2CE1A6AA36500FBD90C /* WaitBodyStateUpdateNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitBodyStateUpdateNode.h; path = BehaviorTree/Leafs/WaitBodyStateUpdateNode.h; sourceTree = "<group>"; };
+		BEE1F2D01A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaitSeeStateUpdateNode.cpp; path = BehaviorTree/Leafs/WaitSeeStateUpdateNode.cpp; sourceTree = "<group>"; };
+		BEE1F2D11A6AA66100FBD90C /* WaitSeeStateUpdateNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitSeeStateUpdateNode.h; path = BehaviorTree/Leafs/WaitSeeStateUpdateNode.h; sourceTree = "<group>"; };
+		BEE1F2D31A6AA67000FBD90C /* WaitTeamStateUpdateNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaitTeamStateUpdateNode.cpp; path = BehaviorTree/Leafs/WaitTeamStateUpdateNode.cpp; sourceTree = "<group>"; };
+		BEE1F2D41A6AA67000FBD90C /* WaitTeamStateUpdateNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaitTeamStateUpdateNode.h; path = BehaviorTree/Leafs/WaitTeamStateUpdateNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -687,6 +696,12 @@
 				BE0C06B81A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.cpp */,
 				BEBEF7961A6989900094396A /* SetTargetToMaximumMomentAngleNode.h */,
 				BEBEF7951A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp */,
+				BEE1F2CE1A6AA36500FBD90C /* WaitBodyStateUpdateNode.h */,
+				BEE1F2CD1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp */,
+				BEE1F2D11A6AA66100FBD90C /* WaitSeeStateUpdateNode.h */,
+				BEE1F2D01A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp */,
+				BEE1F2D41A6AA67000FBD90C /* WaitTeamStateUpdateNode.h */,
+				BEE1F2D31A6AA67000FBD90C /* WaitTeamStateUpdateNode.cpp */,
 			);
 			name = Leafs;
 			sourceTree = "<group>";
@@ -814,7 +829,9 @@
 				BE0C06C01A67A7EA009065F8 /* TurnNeckNegativeNode.cpp in Sources */,
 				BE0C06811A66DDCD009065F8 /* IsTargetEnemyNode.cpp in Sources */,
 				BE0C05F81A66DB3E009065F8 /* ServerState.cpp in Sources */,
+				BEE1F2D21A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp in Sources */,
 				BE0C05F41A66DB38009065F8 /* PlayerState.cpp in Sources */,
+				BEE1F2CF1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp in Sources */,
 				BEBEF79A1A698A8E0094396A /* TurnMaximumMomentNode.cpp in Sources */,
 				BE0C05C81A66D9FF009065F8 /* Communicator.cpp in Sources */,
 				BE0C06171A66DC0F009065F8 /* ConditionVariable.cpp in Sources */,
@@ -845,6 +862,7 @@
 				BE0C05F51A66DB38009065F8 /* SeeState.cpp in Sources */,
 				BE0C05B61A66D90F009065F8 /* main.cpp in Sources */,
 				BE0C061E1A66DC57009065F8 /* Threadable.cpp in Sources */,
+				BEE1F2D51A6AA67000FBD90C /* WaitTeamStateUpdateNode.cpp in Sources */,
 				BE0C05FE1A66DB4C009065F8 /* State.cpp in Sources */,
 				BE0C060E1A66DBDE009065F8 /* Parser.cpp in Sources */,
 				BE0C05EF1A66DB31009065F8 /* HearState.cpp in Sources */,

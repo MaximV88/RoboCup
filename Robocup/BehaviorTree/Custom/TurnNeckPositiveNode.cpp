@@ -10,11 +10,11 @@
 #include "PushTargetToStackNode.h"
 #include "SetTargetToPositiveNeckTurnAngleNode.h"
 #include "TurnNeckNode.h"
-#include "SenseBodyNode.h"
 #include "PopFromStackNode.h"
 #include "EndActNode.h"
 #include "ClearTargetNode.h"
 #include "SuccessNode.h"
+#include "WaitBodyStateUpdateNode.h"
 
 using namespace behavior;
 
@@ -31,6 +31,9 @@ TurnNeckPositiveNode::TurnNeckPositiveNode() {
     
     //Pop the original target back - dont care if there isnt a target
     addChild(new SuccessNode(new PopFromStackNode()));
+    
+    //Wait until there is a body update
+    addChild(new WaitBodyStateUpdateNode());
     
     //Update variables and body state
     addChild(new EndActNode());
