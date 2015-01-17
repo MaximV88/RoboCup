@@ -67,21 +67,6 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
             
         }
         
-        //Clear the vector before - this is somewhat wierd that data persists...
-        if (!m_vcObservables.empty()) {
-            
-            for (vector<Observable*>::iterator iter = m_vcObservables.begin() ;
-                 iter != m_vcObservables.end() ;
-                 iter++) {
-                
-                delete *iter;
-                
-            }
-        
-            m_vcObservables.clear();
-            
-        }
-        
         //This input is more complex compared to the others, there can be several objects.
         switch (parseWord(strFirst)) {
                 
@@ -1152,6 +1137,8 @@ State(cParseMap, StateTypeSee) { }
 
 SeeState::~SeeState() {
     
+    m_cMutex.lock();
+
     //Remove all Observed objects from the vector
     for (vector<Observable*>::iterator iter = m_vcObservables.begin() ; iter != m_vcObservables.end() ; iter++) {
         
@@ -1159,6 +1146,8 @@ SeeState::~SeeState() {
         delete *iter;
         
     }
+    
+    m_cMutex.unlock();
     
 }
 
@@ -1171,6 +1160,7 @@ SeeState::~SeeState() {
 
 const vector<Observable*>& SeeState::getObservables() const {
     
+    //No point in locking just to return a pointer
     return m_vcObservables;
     
 }

@@ -37,28 +37,28 @@ StatusType IsTargetVisibleNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
-   //     std::cerr << IS_TARGET_VISIBLE_NODE_TARGET_ERROR << std::endl;
-    //    return StatusTypeFailure;
+        std::cerr << IS_TARGET_VISIBLE_NODE_TARGET_ERROR << std::endl;
+        return StatusTypeFailure;
         
     }
     
     //Check if our target has an origin to move to
-  //  const ObservableType *eObservableType = cTarget->getObservableType();
+    const ObservableType *eObservableType = cTarget->getObservableType();
     
     //If no coordinate is given, return failed
- //   if (eObservableType == NULL) {
-   //
-     //   std::cerr << IS_TARGET_VISIBLE_NODE_VALUE_ERROR << std::endl;
-  //      return StatusTypeFailure;
+    if (eObservableType == NULL) {
+   
+        std::cerr << IS_TARGET_VISIBLE_NODE_VALUE_ERROR << std::endl;
+        return StatusTypeFailure;
         
- //   }
+    }
     
     //Search in the see states visible observables for our target
     for (std::vector<Observable*>::const_iterator iter = cState->getObservables().begin() ;
          iter != cState->getObservables().end() ;
          iter++) {
         
-        if ((*iter)->type == ObservableTypeBall) {
+        if ((*iter)->type == ObservableTypeNone) {
             
             //Found it - thus it's visible
             return StatusTypeSuccess;

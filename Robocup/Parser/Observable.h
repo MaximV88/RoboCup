@@ -121,7 +121,7 @@ public:
     ObservablePropertyType knownProperties;
     
     //The Observable's origin
-    Coordinate* origin;
+   // Coordinate* origin;
     
     //  ---                         PUBLIC FUNCTIONS                       ---   //
     

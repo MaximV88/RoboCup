@@ -42,7 +42,7 @@ BehaviorTarget::BehaviorTarget(const Observable& cObservable) {
     initialize();
     
     //Copy the origin of the Observable
-    m_cOrigin = cObservable.origin;
+   // m_cOrigin = cObservable.origin;
     
 }
 

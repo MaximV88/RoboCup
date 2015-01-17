@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include "State.h"
 #include "Observable.h"
+#include "Mutex.h"
 
 /*******************************************************************************
  * SeeState Class: Represents the Visual input recieved from the server,       *
@@ -24,6 +25,9 @@ private:
 
     //Stores the obsereved objects.
     std::vector<Observable*> m_vcObservables;
+    
+    //Holds the mutex
+    Mutex m_cMutex;
     
     //  ---                         PRIVATE FUNCTIONS                       ---   //
 
