@@ -1,13 +1,13 @@
 //
-//  TurnMaximumMomentNode.cpp
+//  TurnTwiceMaximumHeadAngleNode.cpp
 //  Robocup
 //
-//  Created by Maxim Vainshtein on 1/16/15.
+//  Created by Maxim Vainshtein on 1/19/15.
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
-#include "TurnMaximumMomentNode.h"
-#include "SetTargetToMaximumMomentAngleNode.h"
+#include "TurnTwiceMaximumHeadAngleNode.h"
+#include "SetTargetToTwiceMaximumHeadAngleNode.h"
 #include "PushTargetToStackNode.h"
 #include "PopFromStackNode.h"
 #include "TurnNode.h"
@@ -17,20 +17,20 @@
 
 using namespace behavior;
 
-TurnMaximumMomentNode::TurnMaximumMomentNode() {
+TurnTwiceMaximumHeadAngleNode::TurnTwiceMaximumHeadAngleNode() {
     
     //Push the current target to the stack - dont care if there is a target
     addChild(new SuccessNode(new PushTargetToStackNode()));
     
     //Set the value for neck rotation as target
-    addChild(new SetTargetToMaximumMomentAngleNode());
+    addChild(new SetTargetToTwiceMaximumHeadAngleNode());
     
     //Perform the rotation
     addChild(new TurnNode());
     
     //Pop the original target back - dont care if there isnt a target
     addChild(new SuccessNode(new PopFromStackNode()));
-
+    
     //Wait until there is a body update
     addChild(new WaitBodyStateUpdateNode());
     
@@ -39,6 +39,6 @@ TurnMaximumMomentNode::TurnMaximumMomentNode() {
     
 }
 
-TurnMaximumMomentNode::~TurnMaximumMomentNode() {
+TurnTwiceMaximumHeadAngleNode::~TurnTwiceMaximumHeadAngleNode() {
     
 }

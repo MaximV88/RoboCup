@@ -18,10 +18,10 @@
 #include "Player.h"
 #include "SearchTurnNeckNode.h"
 #include "RepeatUntilFailNode.h"
-#include "TurnMaximumMomentNode.h"
 #include "SuccessNode.h"
 #include "Player.h"
 #include "TurnNode.h"
+#include "TurnTwiceMaximumHeadAngleNode.h"
 
 #define NODE_NAME "SearchNode"
 
@@ -91,7 +91,7 @@ SearchNode::SearchNode() : InverterNode(new SequenceNode()) {
      *  the maximum angle.                      *
      *******************************************/
     
-    cSequence->addChild(new TurnMaximumMomentNode());
+    cSequence->addChild(new TurnTwiceMaximumHeadAngleNode());
     
     //Implement the repeater
     cCheckingSequence->addChild(new RepeatUntilFailNode(cSequence));

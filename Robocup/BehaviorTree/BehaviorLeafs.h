@@ -31,9 +31,9 @@
 #include "TurnNeckToCenterNode.h"
 #include "ClearStackNode.h"
 #include "ClearTargetNode.h"
-#include "SetTargetToMaximumMomentAngleNode.h"
 #include "WaitBodyStateUpdateNode.h"
 #include "WaitSeeStateUpdateNode.h"
+#include "SetTargetToTwiceMaximumHeadAngleNode.h"
 #include "WaitTeamStateUpdateNode.h"
 
 #endif

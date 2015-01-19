@@ -13,8 +13,8 @@
 #include "SearchTurnNeckNode.h"
 #include "TurnNeckPositiveNode.h"
 #include "TurnNeckNegativeNode.h"
-#include "TurnMaximumMomentNode.h"
 #include "TurnTowardsTypeNode.h"
 #include "DashTowardsBallNode.h"
+#include "TurnTwiceMaximumHeadAngleNode.h"
 
 #endif

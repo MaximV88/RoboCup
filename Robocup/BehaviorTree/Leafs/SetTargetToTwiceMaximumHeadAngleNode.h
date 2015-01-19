@@ -1,13 +1,13 @@
 //
-//  SetTargetToMaximumMomentAngleNode.h
+//  SetTargetToTwiceMaximumHeadAngleNode.h
 //  Robocup
 //
-//  Created by Maxim Vainshtein on 1/16/15.
+//  Created by Maxim Vainshtein on 1/19/15.
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
-#ifndef __Robocup__SetTargetToMaximumMomentAngleNode__
-#define __Robocup__SetTargetToMaximumMomentAngleNode__
+#ifndef __Robocup__SetTargetToTwiceMaximumHeadAngleNode__
+#define __Robocup__SetTargetToTwiceMaximumHeadAngleNode__
 
 #include "BehaviorTreeNode.h"
 
@@ -20,11 +20,11 @@ namespace behavior {
      *      the server settings.                                                *
      ***************************************************************************/
     
-    class SetTargetToMaximumMomentAngleNode : public BehaviorTreeNode {
+    class SetTargetToTwiceMaximumHeadAngleNode : public BehaviorTreeNode {
         
     public:
-        SetTargetToMaximumMomentAngleNode();
-        ~SetTargetToMaximumMomentAngleNode();
+        SetTargetToTwiceMaximumHeadAngleNode();
+        ~SetTargetToTwiceMaximumHeadAngleNode();
         
         virtual StatusType process();
         
@@ -32,4 +32,4 @@ namespace behavior {
     
 }
 
-#endif 
+#endif

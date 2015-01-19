@@ -1,13 +1,13 @@
 //
-//  TurnMaximumMomentNode.h
+//  TurnTwiceMaximumHeadAngleNode.h
 //  Robocup
 //
-//  Created by Maxim Vainshtein on 1/16/15.
+//  Created by Maxim Vainshtein on 1/19/15.
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
-#ifndef __Robocup__TurnMaximumMomentNode__
-#define __Robocup__TurnMaximumMomentNode__
+#ifndef __Robocup__TurnTwiceMaximumHeadAngleNode__
+#define __Robocup__TurnTwiceMaximumHeadAngleNode__
 
 #include "SequenceNode.h"
 
@@ -18,15 +18,15 @@ namespace behavior {
      *                             false if cant do that, True otherwise.               *
      ***********************************************************************************/
     
-    class TurnMaximumMomentNode : public SequenceNode {
+    class TurnTwiceMaximumHeadAngleNode : public SequenceNode {
         
     public:
-        TurnMaximumMomentNode();
-        ~TurnMaximumMomentNode();
+        TurnTwiceMaximumHeadAngleNode();
+        ~TurnTwiceMaximumHeadAngleNode();
         
         
     };
     
 }
 
-#endif
+#endif 

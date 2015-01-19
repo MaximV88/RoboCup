@@ -80,13 +80,13 @@
 		BE4B24411A6D848D00D155C9 /* TurnTowardsTypeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */; };
 		BE4B24471A6D8DB700D155C9 /* DashTowardsBallNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B24451A6D8DB700D155C9 /* DashTowardsBallNode.cpp */; };
 		BE4B244A1A6D94D200D155C9 /* IsCloseToTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B24481A6D94D200D155C9 /* IsCloseToTargetNode.cpp */; };
+		BE4B244D1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B244B1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.cpp */; };
+		BE4B24501A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B244E1A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.cpp */; };
 		BEBEF77C1A6969650094396A /* TurnNeckToCenterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF77A1A6969650094396A /* TurnNeckToCenterNode.cpp */; };
 		BEBEF7851A6972130094396A /* ClearTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7831A6972130094396A /* ClearTargetNode.cpp */; };
 		BEBEF7881A6972290094396A /* ClearStackNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7861A6972290094396A /* ClearStackNode.cpp */; };
 		BEBEF78E1A697F390094396A /* SuccessNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF78C1A697F390094396A /* SuccessNode.cpp */; };
 		BEBEF7911A697F860094396A /* FailureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF78F1A697F860094396A /* FailureNode.cpp */; };
-		BEBEF7971A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7951A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp */; };
-		BEBEF79A1A698A8E0094396A /* TurnMaximumMomentNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7981A698A8E0094396A /* TurnMaximumMomentNode.cpp */; };
 		BEE1F2C81A6A510500FBD90C /* Nameable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE1F2C61A6A510500FBD90C /* Nameable.cpp */; };
 		BEE1F2CF1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE1F2CD1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp */; };
 		BEE1F2D21A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEE1F2D01A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp */; };
@@ -261,6 +261,10 @@
 		BE4B24461A6D8DB700D155C9 /* DashTowardsBallNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashTowardsBallNode.h; path = BehaviorTree/Custom/DashTowardsBallNode.h; sourceTree = "<group>"; };
 		BE4B24481A6D94D200D155C9 /* IsCloseToTargetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IsCloseToTargetNode.cpp; path = BehaviorTree/Leafs/IsCloseToTargetNode.cpp; sourceTree = "<group>"; };
 		BE4B24491A6D94D200D155C9 /* IsCloseToTargetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IsCloseToTargetNode.h; path = BehaviorTree/Leafs/IsCloseToTargetNode.h; sourceTree = "<group>"; };
+		BE4B244B1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetTargetToTwiceMaximumHeadAngleNode.cpp; path = BehaviorTree/Leafs/SetTargetToTwiceMaximumHeadAngleNode.cpp; sourceTree = "<group>"; };
+		BE4B244C1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetTargetToTwiceMaximumHeadAngleNode.h; path = BehaviorTree/Leafs/SetTargetToTwiceMaximumHeadAngleNode.h; sourceTree = "<group>"; };
+		BE4B244E1A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnTwiceMaximumHeadAngleNode.cpp; path = BehaviorTree/Custom/TurnTwiceMaximumHeadAngleNode.cpp; sourceTree = "<group>"; };
+		BE4B244F1A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnTwiceMaximumHeadAngleNode.h; path = BehaviorTree/Custom/TurnTwiceMaximumHeadAngleNode.h; sourceTree = "<group>"; };
 		BEBEF77A1A6969650094396A /* TurnNeckToCenterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnNeckToCenterNode.cpp; path = BehaviorTree/Leafs/TurnNeckToCenterNode.cpp; sourceTree = "<group>"; };
 		BEBEF77B1A6969650094396A /* TurnNeckToCenterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnNeckToCenterNode.h; path = BehaviorTree/Leafs/TurnNeckToCenterNode.h; sourceTree = "<group>"; };
 		BEBEF7831A6972130094396A /* ClearTargetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClearTargetNode.cpp; path = BehaviorTree/Leafs/ClearTargetNode.cpp; sourceTree = "<group>"; };
@@ -271,10 +275,6 @@
 		BEBEF78D1A697F390094396A /* SuccessNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SuccessNode.h; path = BehaviorTree/SuccessNode.h; sourceTree = "<group>"; };
 		BEBEF78F1A697F860094396A /* FailureNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FailureNode.cpp; path = BehaviorTree/FailureNode.cpp; sourceTree = "<group>"; };
 		BEBEF7901A697F860094396A /* FailureNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FailureNode.h; path = BehaviorTree/FailureNode.h; sourceTree = "<group>"; };
-		BEBEF7951A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetTargetToMaximumMomentAngleNode.cpp; path = BehaviorTree/Leafs/SetTargetToMaximumMomentAngleNode.cpp; sourceTree = "<group>"; };
-		BEBEF7961A6989900094396A /* SetTargetToMaximumMomentAngleNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetTargetToMaximumMomentAngleNode.h; path = BehaviorTree/Leafs/SetTargetToMaximumMomentAngleNode.h; sourceTree = "<group>"; };
-		BEBEF7981A698A8E0094396A /* TurnMaximumMomentNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnMaximumMomentNode.cpp; path = BehaviorTree/Custom/TurnMaximumMomentNode.cpp; sourceTree = "<group>"; };
-		BEBEF7991A698A8E0094396A /* TurnMaximumMomentNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnMaximumMomentNode.h; path = BehaviorTree/Custom/TurnMaximumMomentNode.h; sourceTree = "<group>"; };
 		BEE1F2C61A6A510500FBD90C /* Nameable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Nameable.cpp; sourceTree = "<group>"; };
 		BEE1F2C71A6A510500FBD90C /* Nameable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nameable.h; sourceTree = "<group>"; };
 		BEE1F2CD1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaitBodyStateUpdateNode.cpp; path = BehaviorTree/Leafs/WaitBodyStateUpdateNode.cpp; sourceTree = "<group>"; };
@@ -707,14 +707,14 @@
 				BE0C06B51A679B3E009065F8 /* SetTargetToPositiveNeckTurnAngleNode.cpp */,
 				BE0C06B91A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.h */,
 				BE0C06B81A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.cpp */,
-				BEBEF7961A6989900094396A /* SetTargetToMaximumMomentAngleNode.h */,
-				BEBEF7951A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp */,
 				BEE1F2CE1A6AA36500FBD90C /* WaitBodyStateUpdateNode.h */,
 				BEE1F2CD1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp */,
 				BEE1F2D11A6AA66100FBD90C /* WaitSeeStateUpdateNode.h */,
 				BEE1F2D01A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp */,
 				BEE1F2D41A6AA67000FBD90C /* WaitTeamStateUpdateNode.h */,
 				BEE1F2D31A6AA67000FBD90C /* WaitTeamStateUpdateNode.cpp */,
+				BE4B244C1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.h */,
+				BE4B244B1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.cpp */,
 			);
 			name = Leafs;
 			sourceTree = "<group>";
@@ -744,8 +744,8 @@
 				BE0C06A01A66E4DC009065F8 /* SearchNode.cpp */,
 				BE0C06AD1A670525009065F8 /* SearchTurnNeckNode.h */,
 				BE0C06AC1A670525009065F8 /* SearchTurnNeckNode.cpp */,
-				BEBEF7991A698A8E0094396A /* TurnMaximumMomentNode.h */,
-				BEBEF7981A698A8E0094396A /* TurnMaximumMomentNode.cpp */,
+				BE4B244F1A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.h */,
+				BE4B244E1A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.cpp */,
 				BE0C06BC1A67A702009065F8 /* TurnNeckPositiveNode.h */,
 				BE0C06BB1A67A702009065F8 /* TurnNeckPositiveNode.cpp */,
 				BE0C06BF1A67A7EA009065F8 /* TurnNeckNegativeNode.h */,
@@ -845,6 +845,7 @@
 				BE0C05C41A66D9E9009065F8 /* Instruction.cpp in Sources */,
 				BE0C06381A66DC99009065F8 /* Coordinate.cpp in Sources */,
 				BEBEF7881A6972290094396A /* ClearStackNode.cpp in Sources */,
+				BE4B24501A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.cpp in Sources */,
 				BE0C05EE1A66DB31009065F8 /* BodyState.cpp in Sources */,
 				BE0C06C01A67A7EA009065F8 /* TurnNeckNegativeNode.cpp in Sources */,
 				BE0C06811A66DDCD009065F8 /* IsTargetEnemyNode.cpp in Sources */,
@@ -852,7 +853,6 @@
 				BEE1F2D21A6AA66100FBD90C /* WaitSeeStateUpdateNode.cpp in Sources */,
 				BE0C05F41A66DB38009065F8 /* PlayerState.cpp in Sources */,
 				BEE1F2CF1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp in Sources */,
-				BEBEF79A1A698A8E0094396A /* TurnMaximumMomentNode.cpp in Sources */,
 				BE0C05C81A66D9FF009065F8 /* Communicator.cpp in Sources */,
 				BE0C06171A66DC0F009065F8 /* ConditionVariable.cpp in Sources */,
 				BE0C06AB1A66F09D009065F8 /* InverterNode.cpp in Sources */,
@@ -866,6 +866,7 @@
 				BE0C06A21A66E4DC009065F8 /* SearchNode.cpp in Sources */,
 				BE0C05DB1A66DA20009065F8 /* Connection.cpp in Sources */,
 				BE0C05D21A66DA18009065F8 /* Server.cpp in Sources */,
+				BE4B244D1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.cpp in Sources */,
 				BEBEF7911A697F860094396A /* FailureNode.cpp in Sources */,
 				BE0C06B71A679B3E009065F8 /* SetTargetToPositiveNeckTurnAngleNode.cpp in Sources */,
 				BE0C06861A66DDCD009065F8 /* ChangeViewNode.cpp in Sources */,
@@ -894,7 +895,6 @@
 				BE0C068E1A66DDCD009065F8 /* TurnNeckNode.cpp in Sources */,
 				BE0C06821A66DDCD009065F8 /* IsTargetPlayerNode.cpp in Sources */,
 				BE0C068C1A66DDCD009065F8 /* ScoreNode.cpp in Sources */,
-				BEBEF7971A6989900094396A /* SetTargetToMaximumMomentAngleNode.cpp in Sources */,
 				BEBEF7851A6972130094396A /* ClearTargetNode.cpp in Sources */,
 				BE0C06501A66DD4F009065F8 /* DecoratorNode.cpp in Sources */,
 				BE0C05E61A66DA28009065F8 /* UDPClient.cpp in Sources */,
