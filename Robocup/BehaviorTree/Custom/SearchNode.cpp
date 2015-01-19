@@ -58,7 +58,7 @@ SearchNode::SearchNode() : InverterNode(new SequenceNode()) {
     cCheckingSequence->addChild(new SuccessNode(new PushTargetToStackNode()));
     
     //Create our required target for view changing
-    cCheckingSequence->addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeWide, QualityTypeLow, NODE_NAME)));
+    cCheckingSequence->addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeNarrow, QualityTypeHigh, NODE_NAME)));
     
     //Change the view
     cCheckingSequence->addChild(new ChangeViewNode());

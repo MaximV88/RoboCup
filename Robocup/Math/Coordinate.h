@@ -10,6 +10,7 @@
 #define __Ex3__Coordinate__
 
 #include <stdio.h>
+#include <iostream>
 
 class Coordinate {
     
@@ -58,6 +59,17 @@ public:
      * *********************************************************************************/
     
     void setY(double dValueY);
+    
+    /************************************************************************************
+     * function name: operator<<                                                        *
+     * The Input: ostream object (reference), const Vector object (reference)           *
+     * The output: ostream object (reference)                                           *
+     * The Function Opertion: Prints the Vector to the terminal.                        *
+     * *********************************************************************************/
+    
+    
+    
+    friend std::ostream& operator<<(std::ostream &out, const Coordinate &cCoordinate);
     
 };
 

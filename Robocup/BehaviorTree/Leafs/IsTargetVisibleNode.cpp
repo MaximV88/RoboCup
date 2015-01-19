@@ -78,7 +78,7 @@ StatusType IsTargetVisibleNode::process() {
          iter != vcObservables.end() ;
          iter++) {
         
-        if ((*iter)->type == *eObservableType) {
+        if ((*iter)->type == ObservableTypeNone) {
             
 #if DEBUG_PRINT_ACTION
             

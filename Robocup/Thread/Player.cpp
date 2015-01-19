@@ -15,6 +15,8 @@
 #include "MidFielder.h"
 #include "Forward.h"
 
+#define PI 3.14159265
+
 /****************************************************************************************************
  * function name: convertToString                                                                   *
  * The Input: T type (template)                                                                     *
@@ -33,6 +35,8 @@ inline std::string convertToString(T tType) {
     return oss.str();
     
 }
+
+double cotan(double i) { return(1 / tan(i * PI / 180.0)); }
 
 //  ---                         PRIVATE FUNCTIONS                       ---   //
 
@@ -87,7 +91,7 @@ void Player::execute() {
                 
                 m_cMutualExclusion.unlock();
 
-                actTeamState(*m_cTeamState);
+                actPlayMode(m_cTeamState->playMode);
                 m_cBrain.updateState(*m_cTeamState);
                 
                 break;
@@ -121,9 +125,6 @@ void Player::execute() {
                 
                 m_cSeeState = static_cast<SeeState*>(cState);
                 
-                //Update the location using triangulation
-                updateOrigin(*m_cSeeState);
-                
                 m_cMutualExclusion.unlock();
 
                 m_cBrain.updateState(*m_cSeeState);
@@ -144,7 +145,7 @@ void Player::execute() {
                 m_cMutualExclusion.unlock();
 
                 //We use the PlayMode variable only in TeamState
-                actTeamState(*m_cTeamState);
+                actPlayMode(m_cTeamState->playMode);
                 m_cBrain.updateState(*m_cTeamState);
                 
                 break;
@@ -166,12 +167,6 @@ void Player::execute() {
         }
         
     }
-    
-}
-
-void Player::updateOrigin(const SeeState &cSeeState) {
-    
-    
     
 }
 
@@ -403,30 +398,6 @@ BodyState* Player::getLastBodyState() {
     m_cMutualExclusion.unlock();
     
     return cBodyState;
-    
-}
-
-/****************************************************************************************************
- * function name: getLastOrigin                                                                     *
- * The Input: none                                                                                  *
- * The output: const Coordinate object (pointer)                                                    *
- * The Function Opertion: Returns the appropriate pointer from the member variable.                 *
- * *************************************************************************************************/
-
-Coordinate* Player::getLastOrigin() {
-    
-    Coordinate *cPlayerOrigin = NULL;
-    
-    //Lock to prevent multiple access
-    m_cMutualExclusion.lock();
-    
-    if (cPlayerOrigin != NULL)
-        cPlayerOrigin = new Coordinate(*m_cPlayerOrigin);
-    
-    //Unlock to proceed
-    m_cMutualExclusion.unlock();
-    
-    return cPlayerOrigin;
     
 }
 

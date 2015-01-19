@@ -1053,7 +1053,7 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                         
                         //Change direction and finish
                         cObservable->direction = atof(strDirection.data());
-                        cObservable->knownProperties = ObservablePropertyTypeDistance;
+                        cObservable->knownProperties = ObservablePropertyTypeDirection;
                         break;
                         
                     }
@@ -1063,7 +1063,7 @@ void SeeState::assignValues(const std::vector<std::string>& vcSentences) {
                     
                     //This is the direction
                     cObservable->direction = atof((*runner).data());
-                    cObservable->knownProperties = ObservablePropertyTypeDirection;
+                    cObservable->knownProperties = ObservablePropertyTypeDistance;
                     
                     //Check if there is more data
                     ++runner;

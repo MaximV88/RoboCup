@@ -6,7 +6,7 @@
 
 #include "GoalKeeper.h"
 
-void GoalKeeper::actTeamState(const TeamState& cTeamState) {
+void GoalKeeper::actPlayMode(PlayMode ePlayMode)  {
     
 }
 

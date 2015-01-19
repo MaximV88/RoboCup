@@ -4,8 +4,9 @@
  * File description: Implementation of Observable Class     *
  ***********************************************************/
 
-#include "Observable.h"
 #include <iostream>
+#include "Observable.h"
+#include "LandMarker.h"
 
 #define OUTPUT_STRING_FLAG "Flag"
 #define OUTPUT_STRING_BALL "Ball"
@@ -29,6 +30,7 @@ Observable::Observable(ObservableType eType) : type(eType) {
     teamName = "";
     uniformNumber = 0;
     goalie = false;
+    origin = landmarks::LandMarker::getInstance().getOriginByType(eType);
     
     distance = 0;
     direction = 0;
@@ -38,7 +40,33 @@ Observable::Observable(ObservableType eType) : type(eType) {
     headFacingDirection = 0;
     
     knownProperties = ObservablePropertyTypeDistance;
+    
+}
 
+Observable::Observable(const Observable& cObservable) :
+type(cObservable.type) {
+    
+    //Copy all member values
+    teamName = cObservable.teamName;
+    uniformNumber = cObservable.uniformNumber;
+    goalie = cObservable.goalie;
+    
+    distance = cObservable.distance;
+    direction = cObservable.distance;
+    distanceChange = cObservable.distanceChange;
+    directionChange = cObservable.directionChange;
+    bodyFacingDirection = cObservable.bodyFacingDirection;
+    headFacingDirection = cObservable.headFacingDirection;
+    
+    //Stores the last known property
+    knownProperties = cObservable.knownProperties;
+    
+    //The Observable's origin
+    if (cObservable.origin != NULL)
+        origin = new Coordinate(*cObservable.origin);
+    else
+        origin = NULL;
+    
 }
 
 /**********************************************************************************************
@@ -48,7 +76,15 @@ Observable::Observable(ObservableType eType) : type(eType) {
  * The Function Opertion: Nothing.                                                            *
  * *******************************************************************************************/
 
-Observable::~Observable() { }
+Observable::~Observable() {
+
+    //Delete coordinate if exists
+    if (origin != NULL)
+        delete origin;
+
+}
+
+//Coordinate* Observable::calculateOrigin(double dPercentX, double dPercentY, const &c
 
 /************************************************************************************
  * function name: operator<<                                                        *
@@ -69,7 +105,6 @@ std::ostream& operator<<(std::ostream &out, const Observable &cObservable) {
         case ObservableTypeFlagCenter:
         case ObservableTypeFlagCenterTop:
         case ObservableTypeFlagCenterBottom:
-        case ObservableTypeFlagLeft:
         case ObservableTypeFlagLeftTop:
         case ObservableTypeFlagLeftTop30:
         case ObservableTypeFlagLeftTop20:
@@ -78,7 +113,6 @@ std::ostream& operator<<(std::ostream &out, const Observable &cObservable) {
         case ObservableTypeFlagLeftBottom30:
         case ObservableTypeFlagLeftBottom20:
         case ObservableTypeFlagLeftBottom10:
-        case ObservableTypeFlagRight:
         case ObservableTypeFlagRightTop:
         case ObservableTypeFlagRightTop30:
         case ObservableTypeFlagRightTop20:

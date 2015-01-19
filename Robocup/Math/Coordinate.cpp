@@ -72,3 +72,18 @@ void Coordinate::setY(double dValueY) {
     m_dValueY = dValueY;
     
 }
+
+/************************************************************************************
+ * function name: operator<<                                                        *
+ * The Input: ostream object (reference), const Vector object (reference)           *
+ * The output: ostream object (reference)                                           *
+ * The Function Opertion: Performs the operator<< on the ostream object, prints     *
+ *                        the X and Y values, and returns the ostream object.       *
+ * *********************************************************************************/
+
+std::ostream& operator<< (std::ostream &out, const Coordinate &cCoordinate) {
+    
+    out << "(X: " << cCoordinate.m_dValueX << ", Y: " << cCoordinate.m_dValueY << ")";
+    return out;
+    
+}

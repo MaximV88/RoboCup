@@ -20,7 +20,7 @@ class Defender : public Player {
     
 private:
     
-    void actTeamState(const TeamState& cTeamState);
+    void actPlayMode(PlayMode ePlayMode);
 
 public:
     

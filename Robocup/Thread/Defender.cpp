@@ -6,7 +6,7 @@
 
 #include "Defender.h"
 
-void Defender::actTeamState(const TeamState& cTeamState) {
+void Defender::actPlayMode(PlayMode ePlayMode)  {
     
 }
 

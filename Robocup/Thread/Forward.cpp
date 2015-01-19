@@ -223,10 +223,10 @@ bool Forward::findGoal() {
 
 */
 
-void Forward::actTeamState(const TeamState& cTeamState) {
+void Forward::actPlayMode(PlayMode ePlayMode) {
     
     //Decide which Behavior to perform based on the PlayMode
-    switch (cTeamState.playMode) {
+    switch (ePlayMode) {
         case PlayModePlayOn:
             getBrain().setBehavior("Attack");
             break;

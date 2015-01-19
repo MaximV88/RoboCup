@@ -9,95 +9,14 @@
 
 #include <stdio.h>
 #include <string>
+#include "ObservableTypes.h"
 #include "Coordinate.h"
-
-typedef enum {
-  
-    ObservableTypeFlagCenter,
-    ObservableTypeFlagCenterTop,
-    ObservableTypeFlagCenterBottom,
-    ObservableTypeFlagLeft,
-    ObservableTypeFlagLeftTop,
-    ObservableTypeFlagLeftTop30,
-    ObservableTypeFlagLeftTop20,
-    ObservableTypeFlagLeftTop10,
-    ObservableTypeFlagLeftBottom,
-    ObservableTypeFlagLeftBottom30,
-    ObservableTypeFlagLeftBottom20,
-    ObservableTypeFlagLeftBottom10,
-    ObservableTypeFlagRight,
-    ObservableTypeFlagRightTop,
-    ObservableTypeFlagRightTop30,
-    ObservableTypeFlagRightTop20,
-    ObservableTypeFlagRightTop10,
-    ObservableTypeFlagRightBottom,
-    ObservableTypeFlagRightBottom30,
-    ObservableTypeFlagRightBottom20,
-    ObservableTypeFlagRightBottom10,
-    ObservableTypeFlagPenLeftTop,
-    ObservableTypeFlagPenLeftCenter,
-    ObservableTypeFlagPenLeftBottom,
-    ObservableTypeFlagPenRightTop,
-    ObservableTypeFlagPenRightCenter,
-    ObservableTypeFlagPenRightBottom,
-    ObservableTypeFlagGoalLeftTop,
-    ObservableTypeFlagGoalLeftBottom,
-    ObservableTypeFlagGoalRightTop,
-    ObservableTypeFlagGoalRightBottom,
-    ObservableTypeGoalLeft,
-    ObservableTypeGoalRight,
-    ObservableTypeFlagLeft0,
-    ObservableTypeFlagRight0,
-    ObservableTypeFlagTop0,
-    ObservableTypeFlagBottom0,
-    ObservableTypeFlagTopLeft50,
-    ObservableTypeFlagTopLeft40,
-    ObservableTypeFlagTopLeft30,
-    ObservableTypeFlagTopLeft20,
-    ObservableTypeFlagTopLeft10,
-    ObservableTypeFlagTopRight50,
-    ObservableTypeFlagTopRight40,
-    ObservableTypeFlagTopRight30,
-    ObservableTypeFlagTopRight20,
-    ObservableTypeFlagTopRight10,
-    ObservableTypeFlagBottomLeft50,
-    ObservableTypeFlagBottomLeft40,
-    ObservableTypeFlagBottomLeft30,
-    ObservableTypeFlagBottomLeft20,
-    ObservableTypeFlagBottomLeft10,
-    ObservableTypeFlagBottomRight50,
-    ObservableTypeFlagBottomRight40,
-    ObservableTypeFlagBottomRight30,
-    ObservableTypeFlagBottomRight20,
-    ObservableTypeFlagBottomRight10,
-    ObservableTypeLineTop,
-    ObservableTypeLineBottom,
-    ObservableTypeLineRight,
-    ObservableTypeLineLeft,
-    ObservableTypeBall,
-    ObservableTypePlayer,
-    ObservableTypeGoal,
-    ObservableTypeFlag,
-    ObservableTypeNone
-    
-} ObservableType;
-
-typedef enum {
-    
-    ObservablePropertyTypeDistance = 1,
-    ObservablePropertyTypeDirection,
-    ObservablePropertyTypeDistChange,
-    ObservablePropertyTypeDirectionChange,
-    ObservablePropertyTypeBodyFacingDirection,
-    ObservablePropertyTypeHeadFacingDirection
-    
-} ObservablePropertyType;
 
 /*************************************************************************************
  * Observable Class: Represents an object that is seen by the player.                *
  ************************************************************************************/
 
-class Observable {
+class Observable { 
 
 public:
     
@@ -121,7 +40,7 @@ public:
     ObservablePropertyType knownProperties;
     
     //The Observable's origin
-   // Coordinate* origin;
+    Coordinate* origin;
     
     //  ---                         PUBLIC FUNCTIONS                       ---   //
     
@@ -134,6 +53,9 @@ public:
      * *********************************************************************************************/
     
     Observable(ObservableType eType);
+    
+    Observable(const Observable& cObservable);
+
     
     /**********************************************************************************************
      * function name: Observable Destructor                                                       *

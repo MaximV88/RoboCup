@@ -117,7 +117,7 @@ protected:
     
     Brain& getBrain();
     
-    virtual void actTeamState(const TeamState& cTeamState) = 0;
+    virtual void actPlayMode(PlayMode ePlayMode) = 0;
     
 public:
     
@@ -197,15 +197,6 @@ public:
     
     BodyState* getLastBodyState();
     
-    /****************************************************************************************************
-     * function name: getLastOrigin                                                                     *
-     * The Input: none                                                                                  *
-     * The output: const Coordinate object (pointer)                                                    *
-     * The Function Opertion: Returns the last known origin (may return NULL).                          *
-     * *************************************************************************************************/
-    
-    Coordinate* getLastOrigin();
-
     /**********************************************************************************************
      * function name: createPlayer                                                                *
      * The Input: PlayerType, const Connection object (pointer), const char (pointer), const      *

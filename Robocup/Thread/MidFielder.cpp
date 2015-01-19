@@ -6,7 +6,7 @@
 
 #include "MidFielder.h"
 
-void MidFielder::actTeamState(const TeamState& cTeamState) {
+void MidFielder::actPlayMode(PlayMode ePlayMode) {
     
 }
 
