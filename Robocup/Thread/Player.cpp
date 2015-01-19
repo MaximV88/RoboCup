@@ -36,8 +36,6 @@ inline std::string convertToString(T tType) {
     
 }
 
-double cotan(double i) { return(1 / tan(i * PI / 180.0)); }
-
 //  ---                         PRIVATE FUNCTIONS                       ---   //
 
 /****************************************************************************************************

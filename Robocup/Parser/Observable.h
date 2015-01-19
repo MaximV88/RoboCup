@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <string>
 #include "ObservableTypes.h"
-#include "Coordinate.h"
 
 /*************************************************************************************
  * Observable Class: Represents an object that is seen by the player.                *
@@ -38,9 +37,6 @@ public:
     
     //Stores the last known property
     ObservablePropertyType knownProperties;
-    
-    //The Observable's origin
-    Coordinate* origin;
     
     //  ---                         PUBLIC FUNCTIONS                       ---   //
     

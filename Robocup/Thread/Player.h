@@ -73,9 +73,6 @@ private:
     //Holds the last recieved SeeState from the State queue
     SeeState* m_cSeeState;
     
-    //Holds the player's location
-    Coordinate* m_cPlayerOrigin;
-    
     //Holds the player's brain
     Brain m_cBrain;
     
@@ -94,8 +91,6 @@ private:
     
     double convertDirectionVector(const Vector& cDirection) const;
     
-    void updateOrigin(const SeeState& cSeeState);
-
     /****************************************************************************************************
      * function name: execute                                                                           *
      * The Input: none                                                                                  *
@@ -196,7 +191,7 @@ public:
      * *************************************************************************************************/
     
     BodyState* getLastBodyState();
-    
+
     /**********************************************************************************************
      * function name: createPlayer                                                                *
      * The Input: PlayerType, const Connection object (pointer), const char (pointer), const      *

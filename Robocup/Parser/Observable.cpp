@@ -6,7 +6,6 @@
 
 #include <iostream>
 #include "Observable.h"
-#include "LandMarker.h"
 
 #define OUTPUT_STRING_FLAG "Flag"
 #define OUTPUT_STRING_BALL "Ball"
@@ -30,7 +29,6 @@ Observable::Observable(ObservableType eType) : type(eType) {
     teamName = "";
     uniformNumber = 0;
     goalie = false;
-    origin = landmarks::LandMarker::getInstance().getOriginByType(eType);
     
     distance = 0;
     direction = 0;
@@ -61,12 +59,6 @@ type(cObservable.type) {
     //Stores the last known property
     knownProperties = cObservable.knownProperties;
     
-    //The Observable's origin
-    if (cObservable.origin != NULL)
-        origin = new Coordinate(*cObservable.origin);
-    else
-        origin = NULL;
-    
 }
 
 /**********************************************************************************************
@@ -77,10 +69,6 @@ type(cObservable.type) {
  * *******************************************************************************************/
 
 Observable::~Observable() {
-
-    //Delete coordinate if exists
-    if (origin != NULL)
-        delete origin;
 
 }
 

@@ -9,10 +9,6 @@
 #ifndef Robocup_ObservableTypes_h
 #define Robocup_ObservableTypes_h
 
-class Rectangle;
-class Flag;
-class GoalMouth;
-
 typedef enum {
     
     ObservableTypeFlagCenter = 0,
