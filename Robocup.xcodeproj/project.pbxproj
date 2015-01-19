@@ -77,6 +77,9 @@
 		BE0C06BA1A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06B81A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.cpp */; };
 		BE0C06BD1A67A702009065F8 /* TurnNeckPositiveNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06BB1A67A702009065F8 /* TurnNeckPositiveNode.cpp */; };
 		BE0C06C01A67A7EA009065F8 /* TurnNeckNegativeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06BE1A67A7EA009065F8 /* TurnNeckNegativeNode.cpp */; };
+		BE4B24411A6D848D00D155C9 /* TurnTowardsTypeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */; };
+		BE4B24471A6D8DB700D155C9 /* DashTowardsBallNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B24451A6D8DB700D155C9 /* DashTowardsBallNode.cpp */; };
+		BE4B244A1A6D94D200D155C9 /* IsCloseToTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B24481A6D94D200D155C9 /* IsCloseToTargetNode.cpp */; };
 		BEBEF77C1A6969650094396A /* TurnNeckToCenterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF77A1A6969650094396A /* TurnNeckToCenterNode.cpp */; };
 		BEBEF7851A6972130094396A /* ClearTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7831A6972130094396A /* ClearTargetNode.cpp */; };
 		BEBEF7881A6972290094396A /* ClearStackNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7861A6972290094396A /* ClearStackNode.cpp */; };
@@ -252,6 +255,12 @@
 		BE0C06BE1A67A7EA009065F8 /* TurnNeckNegativeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnNeckNegativeNode.cpp; path = BehaviorTree/Custom/TurnNeckNegativeNode.cpp; sourceTree = "<group>"; };
 		BE0C06BF1A67A7EA009065F8 /* TurnNeckNegativeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnNeckNegativeNode.h; path = BehaviorTree/Custom/TurnNeckNegativeNode.h; sourceTree = "<group>"; };
 		BE4B242F1A6C234A00D155C9 /* ObservableTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObservableTypes.h; path = Parser/ObservableTypes.h; sourceTree = "<group>"; };
+		BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnTowardsTypeNode.cpp; path = BehaviorTree/Custom/TurnTowardsTypeNode.cpp; sourceTree = "<group>"; };
+		BE4B24401A6D848D00D155C9 /* TurnTowardsTypeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnTowardsTypeNode.h; path = BehaviorTree/Custom/TurnTowardsTypeNode.h; sourceTree = "<group>"; };
+		BE4B24451A6D8DB700D155C9 /* DashTowardsBallNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DashTowardsBallNode.cpp; path = BehaviorTree/Custom/DashTowardsBallNode.cpp; sourceTree = "<group>"; };
+		BE4B24461A6D8DB700D155C9 /* DashTowardsBallNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashTowardsBallNode.h; path = BehaviorTree/Custom/DashTowardsBallNode.h; sourceTree = "<group>"; };
+		BE4B24481A6D94D200D155C9 /* IsCloseToTargetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IsCloseToTargetNode.cpp; path = BehaviorTree/Leafs/IsCloseToTargetNode.cpp; sourceTree = "<group>"; };
+		BE4B24491A6D94D200D155C9 /* IsCloseToTargetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IsCloseToTargetNode.h; path = BehaviorTree/Leafs/IsCloseToTargetNode.h; sourceTree = "<group>"; };
 		BEBEF77A1A6969650094396A /* TurnNeckToCenterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnNeckToCenterNode.cpp; path = BehaviorTree/Leafs/TurnNeckToCenterNode.cpp; sourceTree = "<group>"; };
 		BEBEF77B1A6969650094396A /* TurnNeckToCenterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnNeckToCenterNode.h; path = BehaviorTree/Leafs/TurnNeckToCenterNode.h; sourceTree = "<group>"; };
 		BEBEF7831A6972130094396A /* ClearTargetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClearTargetNode.cpp; path = BehaviorTree/Leafs/ClearTargetNode.cpp; sourceTree = "<group>"; };
@@ -692,6 +701,8 @@
 				BE0C06A31A66E72E009065F8 /* SetTargetToNode.cpp */,
 				BE0C06A71A66EDD7009065F8 /* IsTargetVisibleNode.h */,
 				BE0C06A61A66EDD7009065F8 /* IsTargetVisibleNode.cpp */,
+				BE4B24491A6D94D200D155C9 /* IsCloseToTargetNode.h */,
+				BE4B24481A6D94D200D155C9 /* IsCloseToTargetNode.cpp */,
 				BE0C06B61A679B3E009065F8 /* SetTargetToPositiveNeckTurnAngleNode.h */,
 				BE0C06B51A679B3E009065F8 /* SetTargetToPositiveNeckTurnAngleNode.cpp */,
 				BE0C06B91A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.h */,
@@ -739,6 +750,10 @@
 				BE0C06BB1A67A702009065F8 /* TurnNeckPositiveNode.cpp */,
 				BE0C06BF1A67A7EA009065F8 /* TurnNeckNegativeNode.h */,
 				BE0C06BE1A67A7EA009065F8 /* TurnNeckNegativeNode.cpp */,
+				BE4B24401A6D848D00D155C9 /* TurnTowardsTypeNode.h */,
+				BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */,
+				BE4B24461A6D8DB700D155C9 /* DashTowardsBallNode.h */,
+				BE4B24451A6D8DB700D155C9 /* DashTowardsBallNode.cpp */,
 			);
 			name = CustomNodes;
 			sourceTree = "<group>";
@@ -809,10 +824,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE0C06831A66DDCD009065F8 /* PopFromStackNode.cpp in Sources */,
+				BE4B24411A6D848D00D155C9 /* TurnTowardsTypeNode.cpp in Sources */,
 				BEBEF78E1A697F390094396A /* SuccessNode.cpp in Sources */,
 				BE0C06051A66DB7D009065F8 /* Observable.cpp in Sources */,
 				BE0C05D41A66DA18009065F8 /* UDPServer.cpp in Sources */,
 				BE0C06481A66DD31009065F8 /* BehaviorTarget.cpp in Sources */,
+				BE4B24471A6D8DB700D155C9 /* DashTowardsBallNode.cpp in Sources */,
 				BE0C062F1A66DC88009065F8 /* Defender.cpp in Sources */,
 				BE0C06261A66DC7E009065F8 /* Player.cpp in Sources */,
 				BE0C065B1A66DDA6009065F8 /* RepeatUntilFailNode.cpp in Sources */,
@@ -824,6 +841,7 @@
 				BE0C05E41A66DA28009065F8 /* Client.cpp in Sources */,
 				BE0C06A51A66E72E009065F8 /* SetTargetToNode.cpp in Sources */,
 				BE0C068D1A66DDCD009065F8 /* SenseBodyNode.cpp in Sources */,
+				BE4B244A1A6D94D200D155C9 /* IsCloseToTargetNode.cpp in Sources */,
 				BE0C05C41A66D9E9009065F8 /* Instruction.cpp in Sources */,
 				BE0C06381A66DC99009065F8 /* Coordinate.cpp in Sources */,
 				BEBEF7881A6972290094396A /* ClearStackNode.cpp in Sources */,

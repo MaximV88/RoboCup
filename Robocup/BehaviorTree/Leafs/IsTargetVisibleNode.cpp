@@ -78,7 +78,7 @@ StatusType IsTargetVisibleNode::process() {
          iter != vcObservables.end() ;
          iter++) {
         
-        if ((*iter)->type == ObservableTypeNone) {
+        if ((*iter)->type == *eObservableType) {
             
 #if DEBUG_PRINT_ACTION
             
@@ -86,6 +86,10 @@ StatusType IsTargetVisibleNode::process() {
             std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS << **iter << std::endl;
             
 #endif
+      
+            //Add extra data to the target
+            cTarget->setObservable(**iter);
+            
             //Delete after usage
             delete cState;
             

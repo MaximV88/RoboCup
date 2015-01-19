@@ -14,5 +14,7 @@
 #include "TurnNeckPositiveNode.h"
 #include "TurnNeckNegativeNode.h"
 #include "TurnMaximumMomentNode.h"
+#include "TurnTowardsTypeNode.h"
+#include "DashTowardsBallNode.h"
 
 #endif

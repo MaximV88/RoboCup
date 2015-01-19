@@ -15,7 +15,8 @@ namespace behavior {
     
     /****************************************************************************************************
      * TurnNode Class:        This command will turn the player’s body direction Moment                 *
-     *                        degrees relative to the current direction.                                *
+     *                        degrees relative to the current direction. Updates the Target's           *
+     *                        Observable pointer.                                                       *
      ***************************************************************************************************/
     
     class IsTargetVisibleNode : public BehaviorTreeNode {

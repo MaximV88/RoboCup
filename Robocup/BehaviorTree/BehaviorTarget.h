@@ -50,9 +50,13 @@ namespace behavior {
         
         BehaviorTarget(double dValue, const std::string& strName);
         
+        BehaviorTarget(int iValue, const std::string& strName);
+
         ~BehaviorTarget();
         
         void initialize();
+        
+        void setObservable(const Observable& cObservable);
         
         const Coordinate* getOrigin() const;
         

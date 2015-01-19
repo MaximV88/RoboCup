@@ -12,7 +12,6 @@
 #include "TurnNeckNode.h"
 #include "PopFromStackNode.h"
 #include "EndActNode.h"
-#include "ClearTargetNode.h"
 #include "SuccessNode.h"
 #include "WaitBodyStateUpdateNode.h"
 

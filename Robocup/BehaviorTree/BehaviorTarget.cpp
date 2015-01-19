@@ -35,7 +35,10 @@ Nameable(cBehaviorTarget) {
     
     //Just copy the pointer for this one (its not our responsibility to delete it)
     if (cBehaviorTarget.m_cObservable != NULL)
-        m_cObservable =  cBehaviorTarget.m_cObservable;
+        m_cObservable =  new Observable(*cBehaviorTarget.m_cObservable);
+    
+    if (cBehaviorTarget.m_cOrigin != NULL)
+        m_cOrigin =  new Coordinate(*cBehaviorTarget.m_cOrigin);
     
     
 }
@@ -44,6 +47,9 @@ BehaviorTarget::BehaviorTarget(const Observable& cObservable, const std::string&
 Nameable(strName) {
     
     initialize();
+    
+    //Copy the input to the target
+    m_cObservable = new Observable(cObservable);
     
     //Copy the origin of the Observable
    // m_cOrigin = cObservable.origin;
@@ -56,7 +62,7 @@ Nameable(strName) {
     initialize();
     
     //Copy the origin of the Observable
-    m_cOrigin = &cCoordinate;
+    m_cOrigin = new Coordinate(cCoordinate);
     
 }
 
@@ -91,6 +97,16 @@ Nameable(strName) {
     
 }
 
+BehaviorTarget::BehaviorTarget(int iValue, const std::string& strName) :
+Nameable(strName) {
+    
+    initialize();
+    
+    //Copy the parameter
+    m_iValue = new int(iValue);
+    
+}
+
 BehaviorTarget::~BehaviorTarget() {
     
     //Remove all non-object member variables
@@ -108,6 +124,12 @@ BehaviorTarget::~BehaviorTarget() {
     
     if (m_eObservableType != NULL)
         delete m_eObservableType;
+    
+    if (m_cObservable != NULL)
+        delete m_cObservable;
+    
+    if (m_cOrigin != NULL)
+        delete m_cOrigin;
     
     //Should delete c string? check for memory leaks
  //   if (m_chCString != NULL)
@@ -127,6 +149,16 @@ void BehaviorTarget::initialize() {
     m_cObservable = NULL;
     
     //TODO: convert to memset?
+    
+}
+
+void BehaviorTarget::setObservable(const Observable& cObservable) {
+    
+    //Remove the current Observable object
+    if (m_cObservable != NULL)
+        delete m_cObservable;
+    
+    m_cObservable = new Observable(cObservable);
     
 }
 

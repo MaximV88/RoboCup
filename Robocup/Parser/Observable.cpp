@@ -50,7 +50,7 @@ type(cObservable.type) {
     goalie = cObservable.goalie;
     
     distance = cObservable.distance;
-    direction = cObservable.distance;
+    direction = cObservable.direction;
     distanceChange = cObservable.distanceChange;
     directionChange = cObservable.directionChange;
     bodyFacingDirection = cObservable.bodyFacingDirection;

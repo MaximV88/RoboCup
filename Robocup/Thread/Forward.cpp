@@ -261,8 +261,7 @@ Player(cConnection, chTeamName) {
     BehaviorTree *cTree = new BehaviorTree(*this, getBrain(), "Attack");
     
     SequenceNode *cs = new SequenceNode();
-    cs->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "lala")));
-    cs->addChild(new SearchNode());
+    cs->addChild(new DashTowardsBallNode());
     cTree->setRoot(cs);
     
     getBrain().addBehavior(*cTree);

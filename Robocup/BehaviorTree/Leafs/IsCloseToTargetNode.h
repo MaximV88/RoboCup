@@ -1,13 +1,13 @@
 //
-//  TurnNode.h
-//  Ex3
+//  IsCloseToTargetNode.h
+//  Robocup
 //
-//  Created by Maxim Vainshtein on 1/10/15.
+//  Created by Maxim Vainshtein on 1/19/15.
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
-#ifndef __Ex3__TurnNode__
-#define __Ex3__TurnNode__
+#ifndef __Robocup__IsCloseToTargetNode__
+#define __Robocup__IsCloseToTargetNode__
 
 #include "BehaviorTreeNode.h"
 
@@ -15,19 +15,18 @@ namespace behavior {
     
     /****************************************************************************************************
      * TurnNode Class:        This command will turn the player’s body direction Moment                 *
-     *                        degrees relative to the current direction. Turns towards the Observable   *
-     *                        set in the Target. Otherwise if not present, turns toward the Double value*
+     *                        degrees relative to the current direction. Updates the Target's           *
+     *                        Observable pointer.                                                       *
      ***************************************************************************************************/
-
-    class TurnNode : public BehaviorTreeNode {
-        
+    
+    class IsCloseToTargetNode : public BehaviorTreeNode {
         
     public:
-        TurnNode();
-        ~TurnNode();
-    
+        IsCloseToTargetNode();
+        ~IsCloseToTargetNode();
+        
         virtual StatusType process();
-
+        
     };
     
 }
