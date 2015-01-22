@@ -77,6 +77,7 @@
 		BE0C06BA1A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06B81A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.cpp */; };
 		BE0C06BD1A67A702009065F8 /* TurnNeckPositiveNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06BB1A67A702009065F8 /* TurnNeckPositiveNode.cpp */; };
 		BE0C06C01A67A7EA009065F8 /* TurnNeckNegativeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06BE1A67A7EA009065F8 /* TurnNeckNegativeNode.cpp */; };
+		BE375D391A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE375D371A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp */; };
 		BE4B24411A6D848D00D155C9 /* TurnTowardsTypeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */; };
 		BE4B24471A6D8DB700D155C9 /* DashTowardsBallNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B24451A6D8DB700D155C9 /* DashTowardsBallNode.cpp */; };
 		BE4B244A1A6D94D200D155C9 /* IsCloseToTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B24481A6D94D200D155C9 /* IsCloseToTargetNode.cpp */; };
@@ -254,6 +255,8 @@
 		BE0C06BC1A67A702009065F8 /* TurnNeckPositiveNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnNeckPositiveNode.h; path = BehaviorTree/Custom/TurnNeckPositiveNode.h; sourceTree = "<group>"; };
 		BE0C06BE1A67A7EA009065F8 /* TurnNeckNegativeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnNeckNegativeNode.cpp; path = BehaviorTree/Custom/TurnNeckNegativeNode.cpp; sourceTree = "<group>"; };
 		BE0C06BF1A67A7EA009065F8 /* TurnNeckNegativeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnNeckNegativeNode.h; path = BehaviorTree/Custom/TurnNeckNegativeNode.h; sourceTree = "<group>"; };
+		BE375D371A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IsTurnedOnTargetNode.cpp; path = BehaviorTree/Leafs/IsTurnedOnTargetNode.cpp; sourceTree = "<group>"; };
+		BE375D381A6FD49B0084AF6D /* IsTurnedOnTargetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IsTurnedOnTargetNode.h; path = BehaviorTree/Leafs/IsTurnedOnTargetNode.h; sourceTree = "<group>"; };
 		BE4B242F1A6C234A00D155C9 /* ObservableTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObservableTypes.h; path = Parser/ObservableTypes.h; sourceTree = "<group>"; };
 		BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnTowardsTypeNode.cpp; path = BehaviorTree/Custom/TurnTowardsTypeNode.cpp; sourceTree = "<group>"; };
 		BE4B24401A6D848D00D155C9 /* TurnTowardsTypeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnTowardsTypeNode.h; path = BehaviorTree/Custom/TurnTowardsTypeNode.h; sourceTree = "<group>"; };
@@ -336,8 +339,9 @@
 				BE0C05CB1A66DA0D009065F8 /* Connection */,
 				BE0C05CA1A66DA07009065F8 /* Server */,
 				BE0C05C91A66DA01009065F8 /* Client */,
-				BE0C05C61A66D9FF009065F8 /* Communicator.cpp */,
 				BE0C05C71A66D9FF009065F8 /* Communicator.h */,
+				BE0C06091A66DBA1009065F8 /* BodyState */,
+				BE0C05C61A66D9FF009065F8 /* Communicator.cpp */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -400,7 +404,6 @@
 			children = (
 				BE0C05FD1A66DB4C009065F8 /* State.h */,
 				BE0C05FC1A66DB4C009065F8 /* State.cpp */,
-				BE0C06091A66DBA1009065F8 /* BodyState */,
 				BE0C06081A66DB99009065F8 /* HearState */,
 				BE0C06071A66DB8F009065F8 /* PlayerState */,
 				BE0C06061A66DB7F009065F8 /* SeeState */,
@@ -715,6 +718,8 @@
 				BEE1F2D31A6AA67000FBD90C /* WaitTeamStateUpdateNode.cpp */,
 				BE4B244C1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.h */,
 				BE4B244B1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.cpp */,
+				BE375D381A6FD49B0084AF6D /* IsTurnedOnTargetNode.h */,
+				BE375D371A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp */,
 			);
 			name = Leafs;
 			sourceTree = "<group>";
@@ -893,6 +898,7 @@
 				BE0C06881A66DDCD009065F8 /* EndActNode.cpp in Sources */,
 				BE0C06851A66DDCD009065F8 /* CatchBallNode.cpp in Sources */,
 				BE0C068E1A66DDCD009065F8 /* TurnNeckNode.cpp in Sources */,
+				BE375D391A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp in Sources */,
 				BE0C06821A66DDCD009065F8 /* IsTargetPlayerNode.cpp in Sources */,
 				BE0C068C1A66DDCD009065F8 /* ScoreNode.cpp in Sources */,
 				BEBEF7851A6972130094396A /* ClearTargetNode.cpp in Sources */,

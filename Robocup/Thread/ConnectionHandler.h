@@ -16,6 +16,8 @@
 #include "State.h"
 #include "Parser.h"
 
+#define DEBUG_SHOW_OUTGOING_MESSAGES 0
+
 /*******************************************************************************
  * ConnectionHandler Class: Handles incoming and outgoing information.         *
  *                          Sends instructions to server and incoming          *

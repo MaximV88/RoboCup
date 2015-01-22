@@ -66,6 +66,28 @@ StatusType TurnNeckNode::process() {
         
     }
     
+    const Observable *cObservable = cTarget->getObservable();
+    
+    if (cObservable != NULL) {
+        
+        //Construct the instruction and send it to the brain
+        Instruction *cInstruction = new Instruction();
+        
+        //Add the required input
+        cInstruction->addCommand(TURNNECK_NODE_COMMAND);
+        cInstruction->addCommand(convertToString(cObservable->direction));
+        
+        //Can be attached to other instructions (not unique per cycle)
+        cInstruction->setAttachable(true);
+        
+        //Send the instruction to the brain
+        perform(*cInstruction);
+        
+        //It ends here
+        return StatusTypeSuccess;
+        
+    }
+    
     //Check if our target has an origin to move to
     const double *dValue = cTarget->getDoubleValue();
     

@@ -10,6 +10,11 @@
 #include "Player.h"
 #include "BehaviorTree.h"
 
+
+#define WAIT_UPDATES 1
+
+
+
 #define DEBUG_PRINT_EXECUTION_INDEX_MESSAGE "Debug: At execution index "
 
 #define BRAIN_UNKNOWN_BEHAVIOR_NAME_ERROR "Brain Error: Behavior change to unknown name requested."
@@ -23,8 +28,9 @@
 Brain::Brain(ThreadQueue<std::string*>& qInstructionQueue) :
 m_qInstructionQueue(qInstructionQueue), m_cConditionVariable(m_cMutualExclusion) {
  
-    m_bIsBodyStateUpdate = false;
-    m_bIsSeeStateUpdate = false;
+    m_dIsBodyStateUpdate = 0;
+    m_dIsSeeStateUpdate = 0;
+    m_dIsTeamStateUpdate = 0;
     
     m_cBehavior = NULL;
     
@@ -99,19 +105,19 @@ void Brain::perform(const Instruction &cInstruction) {
 
 void Brain::waitBodyStateUpdate() {
     
-    m_bIsBodyStateUpdate = true;
+    m_dIsBodyStateUpdate = 1;
     
 }
 
 void Brain::waitSeeStateUpdate() {
     
-    m_bIsSeeStateUpdate = true;
+    m_dIsSeeStateUpdate = 1;
     
 }
 
 void Brain::waitTeamStateUpdate() {
     
-    m_bIsTeamStateUpdate = true;
+    m_dIsTeamStateUpdate = 1;
     
 }
 
@@ -119,15 +125,15 @@ void Brain::updateState(const State &cState) {
     
     switch (cState.eType) {
         case StateTypeBody:
-            m_bIsBodyStateUpdate = false;
+            m_dIsBodyStateUpdate -= double(1/WAIT_UPDATES);
             break;
             
         case StateTypeSee:
-            m_bIsSeeStateUpdate = false;
+            m_dIsSeeStateUpdate -= double(1/WAIT_UPDATES);
             break;
             
         case StateTypeTeam:
-            m_bIsTeamStateUpdate = false;
+            m_dIsTeamStateUpdate -= double(1/WAIT_UPDATES);
             break;
             
         default:
@@ -143,9 +149,9 @@ void Brain::startAct() {
      * still on (tree building should take that in mind)
      */
     
-    if (m_bIsBodyStateUpdate ||
-        m_bIsSeeStateUpdate ||
-        m_bIsTeamStateUpdate) {
+    if (m_dIsBodyStateUpdate > 0 ||
+        m_dIsSeeStateUpdate > 0 ||
+        m_dIsTeamStateUpdate > 0) {
      
         return;
     
@@ -234,6 +240,12 @@ void Brain::endAct() {
             m_qInstructionQueue.push(strToTransmit);
             
         }
+        
+    }
+    else {
+        
+        //Add a NULL instruction to show a response
+        m_qInstructionQueue.push(NULL);
         
     }
     

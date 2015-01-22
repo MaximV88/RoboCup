@@ -13,8 +13,8 @@
 #include <stack>
 #include "BehaviorContext.h"
 
-#define DEBUG_PRINT_ACTION 0
-#define DEBUG_PRINT_ERRORS 1
+#define DEBUG_PRINT_ACTION 1
+#define DEBUG_PRINT_ERRORS 0
 
 namespace behavior {
     

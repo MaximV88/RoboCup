@@ -16,6 +16,9 @@
 #include "PushTargetToStackNode.h"
 #include "PopFromStackNode.h"
 #include "ChangeViewNode.h"
+#include "TurnNeckNode.h"
+#include "IsTurnedOnTargetNode.h"
+#include "RepeatUntilFailNode.h"
 
 #define NODE_NAME "TurnTowardsTypeNode"
 
@@ -26,11 +29,16 @@ TurnTowardsTypeNode::TurnTowardsTypeNode() {
     //Search for the current Target
     addChild(new SearchNode());
     
-    //Turn the body to the target
-    addChild(new TurnNode());
-        
     //Rotate neck to center
     addChild(new TurnNeckToCenterNode());
+    
+    SequenceNode *cSequence = new SequenceNode();
+    cSequence->addChild(new InverterNode(new IsTurnedOnTargetNode()));
+    cSequence->addChild(new TurnNode());
+    addChild(new RepeatUntilFailNode(cSequence));
+    
+    //Turn the body to the target
+    addChild(new TurnNode());
     
     addChild(new PushTargetToStackNode());
     

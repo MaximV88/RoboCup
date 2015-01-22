@@ -42,13 +42,13 @@ private:
     ConditionVariable m_cConditionVariable;
     
     //Checks if should wait until a body state update
-    bool m_bIsBodyStateUpdate;
+    double m_dIsBodyStateUpdate;
     
     //Checks if should wait until a sight state update
-    bool m_bIsSeeStateUpdate;
+    double m_dIsSeeStateUpdate;
 
     //Checks if should wait until a sight state update
-    bool m_bIsTeamStateUpdate;
+    double m_dIsTeamStateUpdate;
     
     /****************************************************************************************************
      * function name: execute                                                                           *
@@ -59,7 +59,7 @@ private:
      * *************************************************************************************************/
     
     virtual void execute();
-    
+        
 public:
     
     Brain(ThreadQueue<std::string*>& qInstructionQueue);

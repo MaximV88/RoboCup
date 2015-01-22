@@ -27,7 +27,7 @@
  * *************************************************************************************************/
 
 void ConnectionHandler::execute() {
-    
+        
     //Do it as long as the object lives
     while (true) {
         
@@ -43,6 +43,7 @@ void ConnectionHandler::execute() {
         
         //-------HANDLE ERRORS--------//
         
+        
         //There was an error, handle it
         if (!m_qErrorQueue.empty()) {
             
@@ -53,18 +54,28 @@ void ConnectionHandler::execute() {
         //-------TRANSMIT--------//
 
         
-        //Transmit only if there are instructions
+        //Valid to continue only when there are no errors
         if (!m_qInstructionQueue.empty()) {
-            
+
             //Take what was given - this will hold the thread as long as nessecery
             std::string* strToTransmit = m_qInstructionQueue.pop();
             
-            //Add another for ending character '\0' - this is not a threaded function so deletion is afterwards
-            m_cConnection->transmit(strToTransmit->c_str(), (strToTransmit->length() + 1) * sizeof(char));
+            if (strToTransmit != NULL) {
+                
+#if DEBUG_SHOW_OUTGOING_MESSAGES
+      
+                std::cout << *strToTransmit << std::endl;
+                
+#endif
+                
+                //Add another for ending character '\0' - this is not a threaded function so deletion is afterwards
+                m_cConnection->transmit(strToTransmit->c_str(), (strToTransmit->length() + 1) * sizeof(char));
+                
+                //Delete the instruction
+                delete strToTransmit;
+                
+            }
             
-            //Delete the instruction
-            delete strToTransmit;
-        
         }
         
     }
