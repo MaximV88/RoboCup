@@ -11,7 +11,7 @@
 #include "BehaviorTree.h"
 
 
-#define WAIT_UPDATES 1
+#define WAIT_UPDATES 2
 
 
 
@@ -123,17 +123,19 @@ void Brain::waitTeamStateUpdate() {
 
 void Brain::updateState(const State &cState) {
     
+    double dDifference = 1.f/WAIT_UPDATES;
+    
     switch (cState.eType) {
         case StateTypeBody:
-            m_dIsBodyStateUpdate -= double(1/WAIT_UPDATES);
+            m_dIsBodyStateUpdate -= dDifference;
             break;
             
         case StateTypeSee:
-            m_dIsSeeStateUpdate -= double(1/WAIT_UPDATES);
+            m_dIsSeeStateUpdate -= dDifference;
             break;
             
         case StateTypeTeam:
-            m_dIsTeamStateUpdate -= double(1/WAIT_UPDATES);
+            m_dIsTeamStateUpdate -= dDifference;
             break;
             
         default:

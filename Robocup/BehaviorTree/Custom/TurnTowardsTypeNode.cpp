@@ -13,6 +13,7 @@
 #include "TurnNode.h"
 #include "WaitBodyStateUpdateNode.h"
 #include "EndActNode.h"
+#include "WaitSeeStateUpdateNode.h"
 #include "PushTargetToStackNode.h"
 #include "PopFromStackNode.h"
 #include "ChangeViewNode.h"
@@ -29,16 +30,15 @@ TurnTowardsTypeNode::TurnTowardsTypeNode() {
     //Search for the current Target
     addChild(new SearchNode());
     
-    //Rotate neck to center
-    addChild(new TurnNeckToCenterNode());
-    
     SequenceNode *cSequence = new SequenceNode();
     cSequence->addChild(new InverterNode(new IsTurnedOnTargetNode()));
     cSequence->addChild(new TurnNode());
+    cSequence->addChild(new WaitSeeStateUpdateNode());
+    cSequence->addChild(new EndActNode());
     addChild(new RepeatUntilFailNode(cSequence));
     
-    //Turn the body to the target
-    addChild(new TurnNode());
+    //Rotate neck to center
+    addChild(new TurnNeckToCenterNode());
     
     addChild(new PushTargetToStackNode());
     

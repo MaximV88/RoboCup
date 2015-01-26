@@ -340,8 +340,8 @@
 				BE0C05CA1A66DA07009065F8 /* Server */,
 				BE0C05C91A66DA01009065F8 /* Client */,
 				BE0C05C71A66D9FF009065F8 /* Communicator.h */,
-				BE0C06091A66DBA1009065F8 /* BodyState */,
 				BE0C05C61A66D9FF009065F8 /* Communicator.cpp */,
+				BE0C06091A66DBA1009065F8 /* BodyState */,
 			);
 			name = Communication;
 			sourceTree = "<group>";

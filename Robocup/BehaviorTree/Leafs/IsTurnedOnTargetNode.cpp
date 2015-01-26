@@ -83,7 +83,7 @@ StatusType IsTurnedOnTargetNode::process() {
                 
                 //Remove the copy
                 delete cState;
-                
+
                 return StatusTypeFailure;
                 
             }
@@ -92,6 +92,9 @@ StatusType IsTurnedOnTargetNode::process() {
         
         
     }
+    
+    //Remove the copy
+    delete cState;
     
     //Havnt found it
     return StatusTypeFailure;
