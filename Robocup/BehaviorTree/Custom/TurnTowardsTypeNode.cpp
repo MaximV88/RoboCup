@@ -20,6 +20,7 @@
 #include "TurnNeckNode.h"
 #include "IsTurnedOnTargetNode.h"
 #include "RepeatUntilFailNode.h"
+#include "SuccessNode.h"
 
 #define NODE_NAME "TurnTowardsTypeNode"
 
@@ -27,18 +28,17 @@ using namespace behavior;
 
 TurnTowardsTypeNode::TurnTowardsTypeNode() {
     
-    //Search for the current Target
-    addChild(new SearchNode());
-    
+    //Search and turn for the current Target    
     SequenceNode *cSequence = new SequenceNode();
+    cSequence->addChild(new SearchNode());
     cSequence->addChild(new InverterNode(new IsTurnedOnTargetNode()));
     cSequence->addChild(new TurnNode());
+    cSequence-> addChild(new TurnNeckToCenterNode());
     cSequence->addChild(new WaitSeeStateUpdateNode());
+    cSequence->addChild(new WaitBodyStateUpdateNode());
     cSequence->addChild(new EndActNode());
-    addChild(new RepeatUntilFailNode(cSequence));
-    
-    //Rotate neck to center
-    addChild(new TurnNeckToCenterNode());
+    addChild(new SuccessNode(new RepeatUntilFailNode(cSequence)));
+
     
     addChild(new PushTargetToStackNode());
     

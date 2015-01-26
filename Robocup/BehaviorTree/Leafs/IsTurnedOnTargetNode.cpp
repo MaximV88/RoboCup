@@ -58,23 +58,29 @@ StatusType IsTurnedOnTargetNode::process() {
         
     }
     
-    SeeState *cState = getContext().getPlayer().getLastSeeState();
+    SeeState *cCState = getContext().getPlayer().getLastSeeState();
+    BodyState *cBState = getContext().getPlayer().getLastBodyState();
     
-    for (std::vector<Observable*>::const_iterator iter = cState->getObservables().begin();
-         iter != cState->getObservables().end();
+    for (std::vector<Observable*>::const_iterator iter = cCState->getObservables().begin();
+         iter != cCState->getObservables().end();
          iter++) {
         
         //Need to adjust it to players
         if ((*iter)->type == cObservable->type) {
             
+            Observable* cAdjusted = *iter;
+            
+            cAdjusted->direction += cBState->headAngle;
+        
             //Update the held target
-            cTarget->setObservable(**iter);
+            cTarget->setObservable(*cAdjusted);
         
             //Check too see that the angle is less than limit
-            if (abs((*iter)->direction) < CLOSE_VALUE) {
+            if (abs((*iter)->direction) <= CLOSE_VALUE) {
                 
                 //Remove the copy
-                delete cState;
+                delete cCState;
+                delete cBState;
                 
                 return StatusTypeSuccess;
                 
@@ -82,7 +88,8 @@ StatusType IsTurnedOnTargetNode::process() {
             else {
                 
                 //Remove the copy
-                delete cState;
+                delete cCState;
+                delete cBState;
 
                 return StatusTypeFailure;
                 
@@ -94,8 +101,9 @@ StatusType IsTurnedOnTargetNode::process() {
     }
     
     //Remove the copy
-    delete cState;
-    
+    delete cCState;
+    delete cBState;
+
     //Havnt found it
     return StatusTypeFailure;
     
