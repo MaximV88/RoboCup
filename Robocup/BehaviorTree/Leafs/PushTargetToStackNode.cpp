@@ -46,7 +46,7 @@ StatusType PushTargetToStackNode::process() {
     else {
         
         //Print the action's description
-        DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_FAILURE);
+        DebugLogError(DEBUG_ACTION_DESCRIPTION_FAILURE);
         
         //Operation was not successful
         return StatusTypeFailure;

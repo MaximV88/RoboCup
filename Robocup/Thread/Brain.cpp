@@ -11,7 +11,7 @@
 #include "BehaviorTree.h"
 
 
-//How many updates required to continue on Wait command
+//How many updates required to continue on Wait command 
 #define WAIT_UPDATES 2
 
 

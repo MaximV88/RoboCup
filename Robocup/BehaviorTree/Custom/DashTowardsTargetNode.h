@@ -19,11 +19,11 @@ namespace behavior {
      *                            Observable information.                               *
      ***********************************************************************************/
     
-    class DashTowardsBallNode : public SequenceNode {
+    class DashTowardsTargetNode : public SequenceNode {
         
     public:
-        DashTowardsBallNode();
-        ~DashTowardsBallNode();
+        DashTowardsTargetNode();
+        ~DashTowardsTargetNode();
         
         
     };

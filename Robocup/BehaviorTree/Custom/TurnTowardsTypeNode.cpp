@@ -31,7 +31,7 @@ TurnTowardsTypeNode::TurnTowardsTypeNode() {
     //Search and turn for the current Target    
     SequenceNode *cSequence = new SequenceNode();
     cSequence->addChild(new SearchNode());
-    cSequence->addChild(new InverterNode(new IsTurnedOnTargetNode(5)));
+    cSequence->addChild(new InverterNode(new IsTurnedOnTargetNode(2)));
     cSequence->addChild(new TurnNode());
     cSequence->addChild(new TurnNeckToCenterNode());
     cSequence->addChild(new WaitSeeStateUpdateNode());
@@ -40,16 +40,10 @@ TurnTowardsTypeNode::TurnTowardsTypeNode() {
     addChild(new SuccessNode(new RepeatUntilFailNode(cSequence)));
 
     
-    addChild(new PushTargetToStackNode());
-    
+    addChild(new SuccessNode(new PushTargetToStackNode()));
     addChild(new SetTargetToNode(new BehaviorTarget(WidthTypeNarrow, QualityTypeHigh, NODE_NAME)));
-    
     addChild(new ChangeViewNode());
-    
-    addChild(new PopFromStackNode());
-    
-    //Wait until there is a body update
-    addChild(new WaitBodyStateUpdateNode());
+    addChild(new SuccessNode(new PopFromStackNode()));
     
     //Update variables and body state
     addChild(new EndActNode());

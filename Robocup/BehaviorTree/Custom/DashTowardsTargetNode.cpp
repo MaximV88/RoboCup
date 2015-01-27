@@ -6,39 +6,35 @@
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
-#include "DashTowardsBallNode.h"
+#include "DashTowardsTargetNode.h"
 #include "TurnTowardsTypeNode.h"
 #include "PushTargetToStackNode.h"
 #include "PopFromStackNode.h"
 #include "SetTargetToNode.h"
+#include "RepeatUntilSuccessNode.h"
 #include "RepeatUntilFailNode.h"
 #include "DashNode.h"
 #include "EndActNode.h"
 #include "SuccessNode.h"
+#include "FailureNode.h"
 #include "IsCloseToTargetNode.h"
 #include "IsTargetVisibleNode.h"
 #include "SuccessNode.h"
 #include "InverterNode.h"
 #include "WaitSeeStateUpdateNode.h"
 
-#define NODE_NAME "DashTowardsBallNode"
+#define NODE_NAME "DashTowardsTargetNode"
 
 using namespace behavior;
 
-DashTowardsBallNode::DashTowardsBallNode() {
-    
-    //Push the current target
-    addChild(new SuccessNode(new PushTargetToStackNode()));
-    
-    //Set the target as the Ball
-    addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, NODE_NAME)));
-    
+DashTowardsTargetNode::DashTowardsTargetNode() {
+
     //Turn the body towards the ball
     addChild(new TurnTowardsTypeNode());
     
-    
+    //Dash towards the target
     SequenceNode *cSequence = new SequenceNode();
-    
+    cSequence->addChild(new IsTargetVisibleNode());
     cSequence->addChild(new SuccessNode(new PushTargetToStackNode()));
     cSequence->addChild(new SetTargetToNode(new BehaviorTarget(int(100), NODE_NAME)));
     cSequence->addChild(new DashNode());
@@ -50,11 +46,8 @@ DashTowardsBallNode::DashTowardsBallNode() {
     
     addChild(new InverterNode(new RepeatUntilFailNode(cSequence)));
     
-    addChild(new SuccessNode(new PopFromStackNode()));
-
-    
 }
 
-DashTowardsBallNode::~DashTowardsBallNode() {
+DashTowardsTargetNode::~DashTowardsTargetNode() {
     
 }

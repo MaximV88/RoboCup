@@ -56,7 +56,8 @@ Player(cConnection, chTeamName) {
     cIsBallNear->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "GoalKeeper")));
     cIsBallNear->addChild(new SearchNode());
     cIsBallNear->addChild(new IsCloseToTargetNode(15));
-    cIsBallNear->addChild(new DashTowardsBallNode());
+    cIsBallNear->addChild(new DashTowardsTargetNode());
+    cIsBallNear->addChild(new KickBallNode());
     cIsBallNear->addChild(new WaitSeeStateUpdateNode());
     cIsBallNear->addChild(new EndActNode());
     

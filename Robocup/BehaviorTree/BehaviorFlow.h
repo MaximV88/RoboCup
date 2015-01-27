@@ -11,6 +11,7 @@
 
 #include "RepeaterNode.h"
 #include "RepeatUntilFailNode.h"
+#include "RepeatUntilSuccessNode.h"
 #include "SequenceNode.h"
 #include "SelectorNode.h"
 #include "SuccessNode.h"

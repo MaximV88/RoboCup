@@ -20,6 +20,7 @@
 #include "SenseBodyNode.h"
 #include "ScoreNode.h"
 #include "EndActNode.h"
+#include "PushTargetToStackNode.h"
 #include "PopFromStackNode.h"
 #include "IsTargetEnemyNode.h"
 #include "IsTargetPlayerNode.h"
@@ -37,5 +38,6 @@
 #include "WaitTeamStateUpdateNode.h"
 #include "IsTurnedOnTargetNode.h"
 #include "IsCloseToTargetNode.h"
+#include "SetTargetToOpponentGoalNode.h"
 
 #endif

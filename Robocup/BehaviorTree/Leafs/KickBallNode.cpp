@@ -11,6 +11,7 @@
 #include <string>
 #include "KickBallNode.h"
 #include "Brain.h"
+#include "Player.h"
 
 #define KICKBALL_NODE_COMMAND "kick"
 #define KICKBALL_NODE_TARGET_ERROR "KickBallNode Error: No Target given"
@@ -62,28 +63,38 @@ StatusType KickBallNode::process() {
         
     }
     
-    //Check if our target has an origin to move to
-    const int *iValue = cTarget->getIntValue();
-    
-    //If no coordinate is given, return failed
-    if (iValue == NULL) {
-        
-        //Print error and return
-        DebugLogError(KICKBALL_NODE_INT_VALUE_ERROR << *cTarget);
-        return StatusTypeFailure;
-        
-    }
-    
+    const Observable *cObservable = cTarget->getObservable();
     const double* dValue = cTarget->getDoubleValue();
     
-    //If no coordinate is given, return failed
-    if (dValue == NULL) {
+    //If no coordinate is given, just kick as hard as possible
+    if (dValue == NULL && cObservable == NULL) {
     
         //Print error and return
         DebugLogError(KICKBALL_NODE_DOUBLE_VALUE_ERROR << *cTarget);
         return StatusTypeFailure;
         
     }
+    
+    //Override the direction if present
+    if (cObservable != NULL)
+        dValue = &cObservable->direction;
+
+    //Check if our target has an origin to move to
+    const int *iValue = cTarget->getIntValue();
+    const int *tValue = NULL;
+    
+    ServerState *cState = getContext().getPlayer().getLastServerState();
+    
+    //If no coordinate is given, return failed
+    if (iValue == NULL) {
+        
+        tValue = new int(cState->maxPower);
+
+        //Aliase...
+        iValue = tValue;
+        
+    }
+    
     
     //Print the action's description
     DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
@@ -98,6 +109,11 @@ StatusType KickBallNode::process() {
     
     //Send the instruction to the brain
     perform(*cInstruction);
+    
+    if (tValue != NULL)
+        delete tValue;
+    
+    delete cState;
     
     return StatusTypeSuccess;
     

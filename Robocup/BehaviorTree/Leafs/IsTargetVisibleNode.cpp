@@ -29,9 +29,10 @@ StatusType IsTargetVisibleNode::process() {
     
     //Set the target to the required pointer
     SeeState* cState = getContext().getPlayer().getLastSeeState();
+    BodyState *cBody = getContext().getPlayer().getLastBodyState();
     
     //Check if the player has even seen anything
-    if (cState == NULL)
+    if (cState == NULL || cBody == NULL)
         return StatusTypeFailure;
     
     //Add the required input from the target
@@ -45,6 +46,7 @@ StatusType IsTargetVisibleNode::process() {
         
         //Delete after usage
         delete cState;
+        delete cBody;
         
         return StatusTypeFailure;
         
@@ -61,7 +63,8 @@ StatusType IsTargetVisibleNode::process() {
         
         //Delete after usage
         delete cState;
-        
+        delete cBody;
+
         return StatusTypeFailure;
         
     }
@@ -78,12 +81,15 @@ StatusType IsTargetVisibleNode::process() {
             //Print the action's description
             DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_SUCCESS << **iter);
             
+            (*iter)->direction += cBody->headAngle;
+            
             //Add extra data to the target
             cTarget->setObservable(**iter);
             
             //Delete after usage
             delete cState;
-            
+            delete cBody;
+
             //Found it - thus it's visible
             return StatusTypeSuccess;
             
@@ -96,7 +102,8 @@ StatusType IsTargetVisibleNode::process() {
     
     //Delete after usage
     delete cState;
-    
+    delete cBody;
+
     //Havnt found it
     return StatusTypeFailure;
     

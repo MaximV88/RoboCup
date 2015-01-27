@@ -298,6 +298,8 @@ TeamState::~TeamState() { }
 
 bool TeamState::convert(const HearState& cHearState) {
     
+    //TODO: parse the goal information
+    
     //Parse the message - only PlayModes can be updated from this
     int iMessage = parseWord(cHearState.message);
     

@@ -13,9 +13,10 @@
 #include <stack>
 #include "BehaviorContext.h"
 
-#define DEBUG 1
-#define DebugLogVerbose(Input) if (DEBUG) std::cout << Input << std::endl;
-#define DebugLogError(Input) if (DEBUG) std::cerr << Input << std::endl;
+#define DEBUG_VERBOSE 0
+#define DEBUG_ERROR 1
+#define DebugLogVerbose(Input) if (DEBUG_VERBOSE) std::cout << Input << std::endl;
+#define DebugLogError(Input) if (DEBUG_ERROR) std::cerr << Input << std::endl;
 
 namespace behavior {
     

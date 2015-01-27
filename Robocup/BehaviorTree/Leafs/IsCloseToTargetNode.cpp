@@ -38,17 +38,7 @@ StatusType IsCloseToTargetNode::process() {
         return StatusTypeFailure;
         
     }
-    
-    const int *iDistance = cTarget->getIntValue();
-    
-    if (iDistance == NULL) {
-        
-        //Print error and return
-        DebugLogError(IS_CLOSE_TO_TARGET_NODE_INT_ERROR);
-        return StatusTypeFailure;
-        
-    }
-    
+
     //Check if our target has an origin to move to
     const Observable *cObservable = cTarget->getObservable();
     

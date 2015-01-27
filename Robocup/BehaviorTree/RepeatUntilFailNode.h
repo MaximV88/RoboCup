@@ -9,17 +9,11 @@
 #ifndef __Ex3__RepeatUntilFailNode__
 #define __Ex3__RepeatUntilFailNode__
 
-#include <stdio.h>
 #include "DecoratorNode.h"
 
 namespace behavior {
     
     class RepeatUntilFailNode : public DecoratorNode {
-        
-    private:
-        
-        unsigned int m_uiCounter;
-        unsigned int m_uiRepeats;
         
     public:
         
