@@ -100,12 +100,8 @@ StatusType SetTargetToNegativeNeckTurnAngleNode::process() {
     //Fail if the current angle is already at max
     if (dCurrentAngle == dMinAngle) {
      
-#if DEBUG_PRINT_ACTION
-        
         //Print the action's description
-        std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << std::endl;
-        
-#endif
+        DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_FAILURE);
         
         //Delete after usage
         delete cBodyState;
@@ -121,14 +117,10 @@ StatusType SetTargetToNegativeNeckTurnAngleNode::process() {
     //Set the rotation as the target
     getContext().setCurrentTarget(new BehaviorTarget(dRotation, NODE_NAME));
     
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS_1 << dRotation <<
-    DEBUG_ACTION_DESCRIPTION_SUCCESS_2 << std::endl;
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_SUCCESS_1 << dRotation <<
+                    DEBUG_ACTION_DESCRIPTION_SUCCESS_2);
     
-#endif
-
     //Delete after usage
     delete cBodyState;
     delete cServerState;

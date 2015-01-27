@@ -21,8 +21,12 @@ namespace behavior {
     
     class IsCloseToTargetNode : public BehaviorTreeNode {
         
+    private:
+        
+        double m_dDistanceThreshold;
+        
     public:
-        IsCloseToTargetNode();
+        IsCloseToTargetNode(double dDistanceThreshold);
         ~IsCloseToTargetNode();
         
         virtual StatusType process();

@@ -31,9 +31,9 @@ TurnTowardsTypeNode::TurnTowardsTypeNode() {
     //Search and turn for the current Target    
     SequenceNode *cSequence = new SequenceNode();
     cSequence->addChild(new SearchNode());
-    cSequence->addChild(new InverterNode(new IsTurnedOnTargetNode()));
+    cSequence->addChild(new InverterNode(new IsTurnedOnTargetNode(5)));
     cSequence->addChild(new TurnNode());
-    cSequence-> addChild(new TurnNeckToCenterNode());
+    cSequence->addChild(new TurnNeckToCenterNode());
     cSequence->addChild(new WaitSeeStateUpdateNode());
     cSequence->addChild(new WaitBodyStateUpdateNode());
     cSequence->addChild(new EndActNode());

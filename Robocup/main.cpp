@@ -5,7 +5,7 @@
 #include "Client.h"
 #include "Player.h"
 
-#define NAME_INPUT "maxim_va"
+#define NAME_INPUT "TreeBots"
 
 int main(int argc, const char * argv[]) {
     

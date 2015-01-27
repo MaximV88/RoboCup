@@ -42,13 +42,9 @@ StatusType SetTargetToTwiceMaximumHeadAngleNode::process() {
     //Set the rotation as the target
     getContext().setCurrentTarget(new BehaviorTarget(dMaxMomentAngle, NODE_NAME));
     
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS_1 << dMaxMomentAngle <<
-    DEBUG_ACTION_DESCRIPTION_SUCCESS_2 << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_SUCCESS_1 << dMaxMomentAngle <<
+                    DEBUG_ACTION_DESCRIPTION_SUCCESS_2);
     
     //Delete after usage
     delete cServerState;

@@ -57,12 +57,8 @@ StatusType TurnNeckToCenterNode::process() {
     //Get the value needed to turn to center
     double dRotation = cState->headAngle;
     
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
     
     //No need to rotate
     if (dRotation == 0) {

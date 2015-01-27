@@ -25,13 +25,9 @@ StatusType ClearStackNode::process() {
     
     std::stack<BehaviorTarget*>& cStack = getContext().getStack();
 
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION_1 << cStack.size() <<
-    DEBUG_ACTION_DESCRIPTION_2 << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_1 << cStack.size() <<
+                    DEBUG_ACTION_DESCRIPTION_2);
     
     //Erase the object held in the stack
     while (!cStack.empty()) {

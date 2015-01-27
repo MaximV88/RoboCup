@@ -36,5 +36,6 @@
 #include "SetTargetToTwiceMaximumHeadAngleNode.h"
 #include "WaitTeamStateUpdateNode.h"
 #include "IsTurnedOnTargetNode.h"
+#include "IsCloseToTargetNode.h"
 
 #endif

@@ -46,7 +46,7 @@ DashTowardsBallNode::DashTowardsBallNode() {
     cSequence->addChild(new WaitSeeStateUpdateNode());
     cSequence->addChild(new EndActNode());
     cSequence->addChild(new IsTargetVisibleNode());
-    cSequence->addChild(new InverterNode(new IsCloseToTargetNode()));
+    cSequence->addChild(new InverterNode(new IsCloseToTargetNode(1)));
     
     addChild(new InverterNode(new RepeatUntilFailNode(cSequence)));
     

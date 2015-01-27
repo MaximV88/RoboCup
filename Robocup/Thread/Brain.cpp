@@ -11,6 +11,7 @@
 #include "BehaviorTree.h"
 
 
+//How many updates required to continue on Wait command
 #define WAIT_UPDATES 2
 
 
@@ -242,12 +243,6 @@ void Brain::endAct() {
             m_qInstructionQueue.push(strToTransmit);
             
         }
-        
-    }
-    else {
-        
-        //Add a NULL instruction to show a response
-        m_qInstructionQueue.push(NULL);
         
     }
     

@@ -23,12 +23,8 @@ WaitTeamStateUpdateNode::~WaitTeamStateUpdateNode() {
 
 StatusType WaitTeamStateUpdateNode::process() {
     
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
     
     //Make the brain send the instructions gathered
     getContext().getBrain().waitTeamStateUpdate();

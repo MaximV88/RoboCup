@@ -42,12 +42,8 @@ StatusType ChangeViewNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << CHANGE_VIEW_NODE_TARGET_ERROR << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(CHANGE_VIEW_NODE_TARGET_ERROR);
         return StatusTypeFailure;
         
     }
@@ -58,12 +54,8 @@ StatusType ChangeViewNode::process() {
     //If no coordinate is given, return failed
     if (eWidthType == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << CHANGE_VIEW_NODE_WIDTH_ERROR << *cTarget << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(CHANGE_VIEW_NODE_WIDTH_ERROR << *cTarget);
         return StatusTypeFailure;
         
     }
@@ -74,12 +66,8 @@ StatusType ChangeViewNode::process() {
     //If no coordinate is given, return failed
     if (eQualityType == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << CHANGE_VIEW_NODE_QUALITY_ERROR << *cTarget << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(CHANGE_VIEW_NODE_QUALITY_ERROR << *cTarget);
         return StatusTypeFailure;
         
     }
@@ -101,13 +89,9 @@ StatusType ChangeViewNode::process() {
         return StatusTypeSuccess;
         
     }
-    
-#if DEBUG_PRINT_ACTION
-    
+        
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

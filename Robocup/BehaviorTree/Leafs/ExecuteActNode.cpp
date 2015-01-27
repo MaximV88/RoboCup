@@ -28,12 +28,8 @@ StatusType ExecuteActNode::process() {
      * but dont wait if there are none.
      */
     
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
     
     getContext().getBrain().executeAct();
     

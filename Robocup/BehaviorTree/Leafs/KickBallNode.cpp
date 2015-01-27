@@ -56,12 +56,8 @@ StatusType KickBallNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << KICKBALL_NODE_TARGET_ERROR << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(KICKBALL_NODE_TARGET_ERROR);
         return StatusTypeFailure;
         
     }
@@ -72,12 +68,8 @@ StatusType KickBallNode::process() {
     //If no coordinate is given, return failed
     if (iValue == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << KICKBALL_NODE_INT_VALUE_ERROR << *cTarget << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(KICKBALL_NODE_INT_VALUE_ERROR << *cTarget);
         return StatusTypeFailure;
         
     }
@@ -86,23 +78,15 @@ StatusType KickBallNode::process() {
     
     //If no coordinate is given, return failed
     if (dValue == NULL) {
-        
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << KICKBALL_NODE_DOUBLE_VALUE_ERROR << *cTarget << std::endl;
-        
-#endif
-        
+    
+        //Print error and return
+        DebugLogError(KICKBALL_NODE_DOUBLE_VALUE_ERROR << *cTarget);
         return StatusTypeFailure;
         
     }
     
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

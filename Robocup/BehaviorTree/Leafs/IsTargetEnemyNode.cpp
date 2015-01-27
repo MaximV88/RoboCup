@@ -30,12 +30,8 @@ StatusType IsTargetEnemyNode::process() {
     
     if (cTarget == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << IS_TARGET_ENEMY_NODE_TARGET_ERROR << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(IS_TARGET_ENEMY_NODE_TARGET_ERROR);
         return StatusTypeFailure;
         
     }
@@ -46,22 +42,15 @@ StatusType IsTargetEnemyNode::process() {
     //If its not observable, then it is surely not an enemy
     if (cObservable == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-        
-        std::cerr << IS_TARGET_ENEMY_NODE_VALUE_ERROR << *cTarget << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(IS_TARGET_ENEMY_NODE_VALUE_ERROR << *cTarget);
         return StatusTypeFailure;
         
     }
     
-#if DEBUG_PRINT_ACTION
-    
+
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
     
     //If the observable is not a player, then it is not an enemy (TODO: CHECK FOR GOALS?)
     if (cObservable->type != ObservableTypePlayer)

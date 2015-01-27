@@ -31,25 +31,17 @@ StatusType SetTargetToNode::process() {
         getContext().setCurrentTarget(new BehaviorTarget(*m_cTarget));
         
         
-#if DEBUG_PRINT_ACTION
-        
         //Print the action's description
-        std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS << *m_cTarget << std::endl;
-        
-#endif
-        
+        DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_SUCCESS << *m_cTarget);
+
         return StatusTypeSuccess;
         
     }
     else {
         
-#if DEBUG_PRINT_ACTION
-        
         //Print the action's description
-        std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << std::endl;
-
-#endif
-
+        DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_FAILURE);
+        
         return StatusTypeFailure;
         
     }

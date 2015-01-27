@@ -28,13 +28,9 @@ StatusType PopFromStackNode::process() {
     
     //No target to aquire - clear the target in this case
     if (cStack.empty()) {
-        
-#if DEBUG_PRINT_ACTION
-        
+
         //Print the action's description
-        std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << std::endl;
-        
-#endif
+        DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_FAILURE);
         
         getContext().setCurrentTarget(NULL);
         
@@ -50,12 +46,8 @@ StatusType PopFromStackNode::process() {
         //Pop the object from the stack
         cStack.pop();
         
-#if DEBUG_PRINT_ACTION
-        
         //Print the action's description
-        std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS  << *cTarget << std::endl;
-        
-#endif
+        DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_SUCCESS  << *cTarget);
         
         //Make it the context's target
         getContext().setCurrentTarget(cTarget);

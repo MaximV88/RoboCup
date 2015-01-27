@@ -12,11 +12,12 @@
 #define IS_TURNED_ON_TARGET_NODE_TARGET_ERROR "IsTurnedOnTargetNode Error: No Target given"
 #define IS_TURNED_ON_TARGET_NODE_VALUE_ERROR "IsTurnedOnTargetNode Error: No Observable value given in the "
 
-#define CLOSE_VALUE 5
-
 using namespace behavior;
 
-IsTurnedOnTargetNode::IsTurnedOnTargetNode() {
+IsTurnedOnTargetNode::IsTurnedOnTargetNode(double dDegreeThreshold) {
+    
+    //Set the internal member's value to be used later on
+    m_dDegreeThreshold = dDegreeThreshold;
     
 }
 
@@ -32,12 +33,8 @@ StatusType IsTurnedOnTargetNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-        
-        std::cerr << IS_TURNED_ON_TARGET_NODE_TARGET_ERROR << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(IS_TURNED_ON_TARGET_NODE_TARGET_ERROR);
         return StatusTypeFailure;
         
     }
@@ -48,12 +45,8 @@ StatusType IsTurnedOnTargetNode::process() {
     //If no coordinate is given, return failed
     if (cObservable == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-        
-        std::cerr << IS_TURNED_ON_TARGET_NODE_VALUE_ERROR << *cTarget << std::endl;
-        
-#endif
-        
+        //Print error and return
+        DebugLogError(IS_TURNED_ON_TARGET_NODE_VALUE_ERROR << *cTarget)
         return StatusTypeFailure;
         
     }
@@ -76,7 +69,7 @@ StatusType IsTurnedOnTargetNode::process() {
             cTarget->setObservable(*cAdjusted);
         
             //Check too see that the angle is less than limit
-            if (abs((*iter)->direction) <= CLOSE_VALUE) {
+            if (abs((*iter)->direction) <= m_dDegreeThreshold) {
                 
                 //Remove the copy
                 delete cCState;

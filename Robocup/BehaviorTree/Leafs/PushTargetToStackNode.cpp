@@ -33,13 +33,9 @@ StatusType PushTargetToStackNode::process() {
         //Push it to the stack
         getContext().getStack().push(cTarget);
         
-#if DEBUG_PRINT_ACTION
-        
         //Print the action's description
-        std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS_1 << *cTarget <<
-        DEBUG_ACTION_DESCRIPTION_SUCCESS_2 << std::endl;
-        
-#endif
+        DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_SUCCESS_1 << *cTarget <<
+                        DEBUG_ACTION_DESCRIPTION_SUCCESS_2);
         
         //Clear the current target once pointer is saved
         getContext().setCurrentTarget(NULL);
@@ -49,12 +45,8 @@ StatusType PushTargetToStackNode::process() {
     }
     else {
         
-#if DEBUG_PRINT_ACTION
-        
         //Print the action's description
-        std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << std::endl;
-        
-#endif
+        DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_FAILURE);
         
         //Operation was not successful
         return StatusTypeFailure;

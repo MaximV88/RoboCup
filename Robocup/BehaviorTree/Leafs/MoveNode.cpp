@@ -61,12 +61,9 @@ StatusType MoveNode::process() {
     
     //Cannot move when in PlayOn mode
     if (cState->playMode == PlayModePlayOn) {
-     
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << MOVE_NODE_PLAYMODE_ERROR << std::endl;
         
-#endif
+        //Print error and return
+        DebugLogError(MOVE_NODE_PLAYMODE_ERROR);
         
         //Delete after usage
         delete cState;
@@ -80,12 +77,9 @@ StatusType MoveNode::process() {
     
     //If no target is present, return failed
     if (cTarget == NULL) {
-     
-#if DEBUG_PRINT_ERRORS
 
-        std::cerr << MOVE_NODE_TARGET_ERROR << std::endl;
-        
-#endif
+        //Print error and return
+        DebugLogError(MOVE_NODE_TARGET_ERROR);
         
         //Delete after usage
         delete cState;
@@ -100,11 +94,9 @@ StatusType MoveNode::process() {
     //If no coordinate is given, return failed
     if (cCoordinate == NULL) {
      
-#if DEBUG_PRINT_ERRORS
 
-        std::cerr << MOVE_NODE_COORDINATE_ERROR << *cTarget << std::endl;
-        
-#endif
+        //Print error and return
+        DebugLogError(MOVE_NODE_COORDINATE_ERROR << *cTarget);
         
         //Delete after usage
         delete cState;
@@ -113,12 +105,7 @@ StatusType MoveNode::process() {
         
     }
     
-#if DEBUG_PRINT_ACTION
-    
-    //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

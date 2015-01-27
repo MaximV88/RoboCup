@@ -21,8 +21,12 @@ namespace behavior {
     
     class IsTurnedOnTargetNode : public BehaviorTreeNode {
         
+    private:
+        
+        double m_dDegreeThreshold;
+        
     public:
-        IsTurnedOnTargetNode();
+        IsTurnedOnTargetNode(double dDegreeThreshold);
         ~IsTurnedOnTargetNode();
         
         virtual StatusType process();

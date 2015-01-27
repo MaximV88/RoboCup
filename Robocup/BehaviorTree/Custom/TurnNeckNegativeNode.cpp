@@ -14,6 +14,7 @@
 #include "EndActNode.h"
 #include "SuccessNode.h"
 #include "WaitBodyStateUpdateNode.h"
+#include "WaitSeeStateUpdateNode.h"
 
 using namespace behavior;
 
@@ -32,7 +33,7 @@ TurnNeckNegativeNode::TurnNeckNegativeNode() {
     addChild(new SuccessNode(new PopFromStackNode()));
         
     //Wait until there is a body update
-    addChild(new WaitBodyStateUpdateNode());
+    addChild(new WaitSeeStateUpdateNode());
     
     //Update variables and body state
     addChild(new EndActNode());

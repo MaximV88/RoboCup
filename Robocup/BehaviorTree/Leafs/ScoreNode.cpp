@@ -25,12 +25,8 @@ ScoreNode::~ScoreNode() {
 
 StatusType ScoreNode::process() {
     
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
     
     //Construct the instruction and send it to the brain
     Instruction *cInstruction = new Instruction();

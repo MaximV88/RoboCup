@@ -40,11 +40,8 @@ StatusType IsTargetVisibleNode::process() {
     //If no target is present, return failed
     if (cTarget == NULL) {
         
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << IS_TARGET_VISIBLE_NODE_TARGET_ERROR << std::endl;
-        
-#endif
+        //Print error and return
+        DebugLogError(IS_TARGET_VISIBLE_NODE_TARGET_ERROR);
         
         //Delete after usage
         delete cState;
@@ -59,11 +56,9 @@ StatusType IsTargetVisibleNode::process() {
     //If no coordinate is given, return failed
     if (eObservableType == NULL) {
    
-#if DEBUG_PRINT_ERRORS
-
-        std::cerr << IS_TARGET_VISIBLE_NODE_VALUE_ERROR << *cTarget << std::endl;
+        //Print error and return
+        DebugLogError(IS_TARGET_VISIBLE_NODE_VALUE_ERROR << *cTarget);
         
-#endif
         //Delete after usage
         delete cState;
         
@@ -80,13 +75,9 @@ StatusType IsTargetVisibleNode::process() {
         
         if ((*iter)->type == *eObservableType) {
             
-#if DEBUG_PRINT_ACTION
-            
             //Print the action's description
-            std::cout << DEBUG_ACTION_DESCRIPTION_SUCCESS << **iter << std::endl;
+            DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_SUCCESS << **iter);
             
-#endif
-      
             //Add extra data to the target
             cTarget->setObservable(**iter);
             
@@ -100,12 +91,8 @@ StatusType IsTargetVisibleNode::process() {
         
     }
     
-#if DEBUG_PRINT_ACTION
-    
     //Print the action's description
-    std::cout << DEBUG_ACTION_DESCRIPTION_FAILURE << *cTarget << std::endl;
-    
-#endif
+    DebugLogVerbose(DEBUG_ACTION_DESCRIPTION_FAILURE << *cTarget);
     
     //Delete after usage
     delete cState;
