@@ -36,7 +36,10 @@ private:
     behavior::BehaviorTree* m_cBehavior;
     
     //Responsible for holding the thread until an update has been recieved
-    Mutex m_cMutualExclusion;
+    Mutex m_cMutualExclusionPrimary;
+
+    //Responsible for holding the tree pointer while performing ticks
+    Mutex m_cMutualExclusionSecondary;
     
     //Pauses and resumes the thread
     ConditionVariable m_cConditionVariable;

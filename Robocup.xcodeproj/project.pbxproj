@@ -85,6 +85,9 @@
 		BE4B24501A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B244E1A6DA09100D155C9 /* TurnTwiceMaximumHeadAngleNode.cpp */; };
 		BE6C1D2C1A78043E008E12C5 /* SetTargetToOpponentGoalNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE6C1D2A1A78043E008E12C5 /* SetTargetToOpponentGoalNode.cpp */; };
 		BE6C1D2F1A7815F6008E12C5 /* RepeatUntilSuccessNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE6C1D2D1A7815F6008E12C5 /* RepeatUntilSuccessNode.cpp */; };
+		BE6C1D351A782904008E12C5 /* SetTargetToTeamGoalNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE6C1D331A782904008E12C5 /* SetTargetToTeamGoalNode.cpp */; };
+		BE6C1D381A789C5F008E12C5 /* DashTowardsTargetUntilDistanceNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE6C1D361A789C5F008E12C5 /* DashTowardsTargetUntilDistanceNode.cpp */; };
+		BE6C1D3B1A78A48E008E12C5 /* RepeatForeverNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE6C1D391A78A48E008E12C5 /* RepeatForeverNode.cpp */; };
 		BEBEF77C1A6969650094396A /* TurnNeckToCenterNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF77A1A6969650094396A /* TurnNeckToCenterNode.cpp */; };
 		BEBEF7851A6972130094396A /* ClearTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7831A6972130094396A /* ClearTargetNode.cpp */; };
 		BEBEF7881A6972290094396A /* ClearStackNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BEBEF7861A6972290094396A /* ClearStackNode.cpp */; };
@@ -274,6 +277,12 @@
 		BE6C1D2B1A78043E008E12C5 /* SetTargetToOpponentGoalNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetTargetToOpponentGoalNode.h; path = BehaviorTree/Leafs/SetTargetToOpponentGoalNode.h; sourceTree = "<group>"; };
 		BE6C1D2D1A7815F6008E12C5 /* RepeatUntilSuccessNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RepeatUntilSuccessNode.cpp; path = BehaviorTree/RepeatUntilSuccessNode.cpp; sourceTree = "<group>"; };
 		BE6C1D2E1A7815F6008E12C5 /* RepeatUntilSuccessNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RepeatUntilSuccessNode.h; path = BehaviorTree/RepeatUntilSuccessNode.h; sourceTree = "<group>"; };
+		BE6C1D331A782904008E12C5 /* SetTargetToTeamGoalNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SetTargetToTeamGoalNode.cpp; path = BehaviorTree/Leafs/SetTargetToTeamGoalNode.cpp; sourceTree = "<group>"; };
+		BE6C1D341A782904008E12C5 /* SetTargetToTeamGoalNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetTargetToTeamGoalNode.h; path = BehaviorTree/Leafs/SetTargetToTeamGoalNode.h; sourceTree = "<group>"; };
+		BE6C1D361A789C5F008E12C5 /* DashTowardsTargetUntilDistanceNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DashTowardsTargetUntilDistanceNode.cpp; path = BehaviorTree/Custom/DashTowardsTargetUntilDistanceNode.cpp; sourceTree = "<group>"; };
+		BE6C1D371A789C5F008E12C5 /* DashTowardsTargetUntilDistanceNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DashTowardsTargetUntilDistanceNode.h; path = BehaviorTree/Custom/DashTowardsTargetUntilDistanceNode.h; sourceTree = "<group>"; };
+		BE6C1D391A78A48E008E12C5 /* RepeatForeverNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RepeatForeverNode.cpp; path = BehaviorTree/RepeatForeverNode.cpp; sourceTree = "<group>"; };
+		BE6C1D3A1A78A48E008E12C5 /* RepeatForeverNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RepeatForeverNode.h; path = BehaviorTree/RepeatForeverNode.h; sourceTree = "<group>"; };
 		BEBEF77A1A6969650094396A /* TurnNeckToCenterNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnNeckToCenterNode.cpp; path = BehaviorTree/Leafs/TurnNeckToCenterNode.cpp; sourceTree = "<group>"; };
 		BEBEF77B1A6969650094396A /* TurnNeckToCenterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnNeckToCenterNode.h; path = BehaviorTree/Leafs/TurnNeckToCenterNode.h; sourceTree = "<group>"; };
 		BEBEF7831A6972130094396A /* ClearTargetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClearTargetNode.cpp; path = BehaviorTree/Leafs/ClearTargetNode.cpp; sourceTree = "<group>"; };
@@ -642,6 +651,8 @@
 			children = (
 				BE0C06571A66DDA6009065F8 /* RepeaterNode.h */,
 				BE0C06561A66DDA6009065F8 /* RepeaterNode.cpp */,
+				BE6C1D3A1A78A48E008E12C5 /* RepeatForeverNode.h */,
+				BE6C1D391A78A48E008E12C5 /* RepeatForeverNode.cpp */,
 				BE0C06591A66DDA6009065F8 /* RepeatUntilFailNode.h */,
 				BE0C06581A66DDA6009065F8 /* RepeatUntilFailNode.cpp */,
 				BE6C1D2E1A7815F6008E12C5 /* RepeatUntilSuccessNode.h */,
@@ -730,6 +741,8 @@
 				BE375D371A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp */,
 				BE6C1D2B1A78043E008E12C5 /* SetTargetToOpponentGoalNode.h */,
 				BE6C1D2A1A78043E008E12C5 /* SetTargetToOpponentGoalNode.cpp */,
+				BE6C1D341A782904008E12C5 /* SetTargetToTeamGoalNode.h */,
+				BE6C1D331A782904008E12C5 /* SetTargetToTeamGoalNode.cpp */,
 			);
 			name = Leafs;
 			sourceTree = "<group>";
@@ -769,6 +782,8 @@
 				BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */,
 				BE4B24461A6D8DB700D155C9 /* DashTowardsTargetNode.h */,
 				BE4B24451A6D8DB700D155C9 /* DashTowardsTargetNode.cpp */,
+				BE6C1D371A789C5F008E12C5 /* DashTowardsTargetUntilDistanceNode.h */,
+				BE6C1D361A789C5F008E12C5 /* DashTowardsTargetUntilDistanceNode.cpp */,
 			);
 			name = CustomNodes;
 			sourceTree = "<group>";
@@ -871,15 +886,18 @@
 				BEE1F2CF1A6AA36500FBD90C /* WaitBodyStateUpdateNode.cpp in Sources */,
 				BE0C05C81A66D9FF009065F8 /* Communicator.cpp in Sources */,
 				BE0C06171A66DC0F009065F8 /* ConditionVariable.cpp in Sources */,
+				BE6C1D381A789C5F008E12C5 /* DashTowardsTargetUntilDistanceNode.cpp in Sources */,
 				BE0C06AB1A66F09D009065F8 /* InverterNode.cpp in Sources */,
 				BE0C05D31A66DA18009065F8 /* TCPServer.cpp in Sources */,
 				BE6C1D2F1A7815F6008E12C5 /* RepeatUntilSuccessNode.cpp in Sources */,
 				BE0C06931A66DE17009065F8 /* Brain.cpp in Sources */,
+				BE6C1D3B1A78A48E008E12C5 /* RepeatForeverNode.cpp in Sources */,
 				BE0C06BA1A679F7D009065F8 /* SetTargetToNegativeNeckTurnAngleNode.cpp in Sources */,
 				BE0C05E51A66DA28009065F8 /* TCPClient.cpp in Sources */,
 				BE0C06A81A66EDD7009065F8 /* IsTargetVisibleNode.cpp in Sources */,
 				BE0C06611A66DDB5009065F8 /* SequenceNode.cpp in Sources */,
 				BE0C06451A66DD28009065F8 /* BehaviorContext.cpp in Sources */,
+				BE6C1D351A782904008E12C5 /* SetTargetToTeamGoalNode.cpp in Sources */,
 				BE0C06A21A66E4DC009065F8 /* SearchNode.cpp in Sources */,
 				BE0C05DB1A66DA20009065F8 /* Connection.cpp in Sources */,
 				BE0C05D21A66DA18009065F8 /* Server.cpp in Sources */,

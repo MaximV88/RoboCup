@@ -6,21 +6,22 @@
 #include "Player.h"
 
 #define NAME_INPUT "TreeBots"
+#define NAME_INPUT_OPPONENT "Opponent"
 
 int main(int argc, const char * argv[]) {
     
     //First create a client for all the players
     Client *udpClient = Client::createClient(ProtocolTypeUDP, 6000);
     
- //   Player *goalie = Player::createPlayer(PlayerTypeGoalKeeper, udpClient->connection(), NAME_INPUT);
-  //  goalie->start();
+    Player *goalie = Player::createPlayer(PlayerTypeGoalKeeper, udpClient->connection(), NAME_INPUT);
+    goalie->start();
     
-    Player *striker = Player::createPlayer(PlayerTypeForward, udpClient->connection(), NAME_INPUT);
+    Player *striker = Player::createPlayer(PlayerTypeForward, udpClient->connection(), NAME_INPUT_OPPONENT);
     striker->start();
     
     
     //Waits for the player to finish playing
-  //  goalie->waitCompletion();
+    goalie->waitCompletion();
     striker->waitCompletion();
 
     return 0;

@@ -27,7 +27,7 @@
 #define EXECUTE_ACTION_DESCRIPTION "Brain: Execution will end the Act."
 
 Brain::Brain(ThreadQueue<std::string*>& qInstructionQueue) :
-m_qInstructionQueue(qInstructionQueue), m_cConditionVariable(m_cMutualExclusion) {
+m_qInstructionQueue(qInstructionQueue), m_cConditionVariable(m_cMutualExclusionPrimary) {
  
     m_dIsBodyStateUpdate = 0;
     m_dIsSeeStateUpdate = 0;
@@ -61,21 +61,29 @@ void Brain::setBehavior(std::string strName) {
         
     }
     
+    m_cMutualExclusionSecondary.lock();
+    
+    //Reset the current tree
+    if (m_cBehavior != NULL)
+        m_cBehavior->abort();
+    
     //Set the acting behavior
     m_cBehavior = m_mcBehaviors.find(strName)->second;
+    
+    m_cMutualExclusionSecondary.unlock();
     
 }
 
 void Brain::execute() {
     
     //Dont start doing anything until startAct has been called
-    m_cMutualExclusion.lock();
+    m_cMutualExclusionPrimary.lock();
     
     //Dont start doing anything until startAct has been called
     m_cConditionVariable.wait();
     
     //Unlock since we need it elsewhere
-    m_cMutualExclusion.unlock();
+    m_cMutualExclusionPrimary.unlock();
 
     
     //Always check before run that the selected tree is valid
@@ -90,8 +98,12 @@ void Brain::execute() {
     
     while (true) {
         
+        m_cMutualExclusionSecondary.lock();
+        
         //Always tick the behavior tree
         m_cBehavior->tick();
+        
+        m_cMutualExclusionSecondary.unlock();
         
     }
     
@@ -208,7 +220,7 @@ void Brain::executeAct() {
 void Brain::endAct() {
     
     //Put a lock on the thread
-    m_cMutualExclusion.lock();
+    m_cMutualExclusionPrimary.lock();
     
     //Put all of the waiting instructions to the threaded queue (will start process elsewhere)
     if (!m_qInstructionWaitingQueue.empty()) {
@@ -250,6 +262,6 @@ void Brain::endAct() {
     m_cConditionVariable.wait();
     
     //Unlock after wait has been released
-    m_cMutualExclusion.unlock();
+    m_cMutualExclusionPrimary.unlock();
     
 }

@@ -21,6 +21,8 @@ namespace behavior {
         
         std::vector<BehaviorTreeNode*> m_vcChildren;
         
+        void terminate(StatusType eStatus);
+        
     protected:
         
         std::vector<BehaviorTreeNode*>& getChildren();

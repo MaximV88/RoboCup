@@ -18,11 +18,11 @@ void GoalKeeper::actPlayMode(PlayMode ePlayMode)  {
             break;
             
         case PlayModeBeforeKickOff:
-            
-            getBrain().setBehavior("Guard");
+            getBrain().setBehavior("MoveToPosition");
             break;
             
         default:
+            getBrain().setBehavior("GoToPosition");
             break;
             
     }
@@ -40,32 +40,53 @@ void GoalKeeper::actPlayMode(PlayMode ePlayMode)  {
  * *********************************************************************************************/
 
 GoalKeeper::GoalKeeper(const Connection* cConnection, const char* chTeamName) :
-Player(cConnection, chTeamName) {
+Player(cConnection, chTeamName, true) {
     
-    //Create all behaviors and add them to the brain
-    BehaviorTree *cTree = new BehaviorTree(*this, getBrain(), "Guard");
+    //      ---     MOVE TO POSITION      ---     //
+
+    BehaviorTree *cMove = new BehaviorTree(*this, getBrain(), "MoveToPosition");
     
-    SequenceNode *cStart = new SequenceNode();
-    cStart->addChild(new SetTargetToNode(new BehaviorTarget(Coordinate(-50, 0), "GoalKeeper")));
-    cStart->addChild(new MoveNode());
-    cStart->addChild(new WaitSeeStateUpdateNode());
-    cStart->addChild(new EndActNode());
+    SequenceNode *cMoveStart = new SequenceNode();
+    cMoveStart->addChild(new SetTargetToNode(new BehaviorTarget(Coordinate(-50, 0), "GoalKeeper")));
+    cMoveStart->addChild(new MoveNode());
+    cMoveStart->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "GoalKeeper")));
+    cMoveStart->addChild(new RepeatForeverNode( new TurnTowardsTypeNode()));
     
+    cMove->setRoot(cMoveStart);
+    
+    //      ---     GO TO POSITION      ---     //
+    
+    BehaviorTree *cGo = new BehaviorTree(*this, getBrain(), "GoToPosition");
+    
+    SequenceNode *cGoStart = new SequenceNode();
+    cGoStart->addChild(new SetTargetToTeamGoalNode());
+    cGoStart->addChild(new DashTowardsTargetNode());
+    cGoStart->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "GoalKeeper")));
+    cGoStart->addChild(new RepeatForeverNode(new TurnTowardsTypeNode()));
+    
+    cGo->setRoot(cGoStart);
+    
+    //      ---     GUARD      ---     //
+    
+    BehaviorTree *cGuard = new BehaviorTree(*this, getBrain(), "Guard");
+
     //Add Checking to see if the ball is close
     SequenceNode *cIsBallNear = new SequenceNode();
     cIsBallNear->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "GoalKeeper")));
-    cIsBallNear->addChild(new SearchNode());
+    cIsBallNear->addChild(new TurnTowardsTypeNode());
     cIsBallNear->addChild(new IsCloseToTargetNode(15));
-    cIsBallNear->addChild(new DashTowardsTargetNode());
+    cIsBallNear->addChild(new DashTowardsTargetUntilDistanceNode(15));
+    cIsBallNear->addChild(new CatchBallNode());
+    cIsBallNear->addChild(new SetTargetToOpponentGoalNode());
     cIsBallNear->addChild(new KickBallNode());
-    cIsBallNear->addChild(new WaitSeeStateUpdateNode());
     cIsBallNear->addChild(new EndActNode());
     
-    cStart->addChild(new RepeatUntilFailNode(new SuccessNode(cIsBallNear)));
+    cGuard->setRoot(cIsBallNear);
     
-    cTree->setRoot(cStart);
     
-    getBrain().addBehavior(*cTree);
+    getBrain().addBehavior(*cGuard);
+    getBrain().addBehavior(*cMove);
+    getBrain().addBehavior(*cGo);
     
 }
 

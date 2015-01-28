@@ -21,7 +21,7 @@ void Defender::actPlayMode(PlayMode ePlayMode)  {
  * *********************************************************************************************/
 
 Defender::Defender(const Connection* cConnection, const char* chTeamName) :
-Player(cConnection, chTeamName) {
+Player(cConnection, chTeamName, false) {
     
 }
 

@@ -20,6 +20,8 @@ namespace behavior {
         
         BehaviorTreeNode * const m_cChild;
         
+        void terminate(StatusType eStatus);
+        
     protected:
         
         BehaviorTreeNode& getChild();

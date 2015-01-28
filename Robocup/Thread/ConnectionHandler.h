@@ -91,7 +91,7 @@ public:
      * The Function Opertion: This enlists the player to the Robocup server.                      *
      * *******************************************************************************************/
     
-    bool enlistRobocup(const char* chTeamName);
+    bool enlistRobocup(const char* chTeamName, bool bIsGoalie);
     
 };
 

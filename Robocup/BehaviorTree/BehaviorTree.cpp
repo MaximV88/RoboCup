@@ -67,3 +67,31 @@ void BehaviorTree::tick() {
     }
     
 }
+
+void BehaviorTree::abort() {
+    
+    //Abort the root if exists
+    if (m_cRoot != NULL)
+        m_cRoot->abort();
+    else {
+        
+        //Present error message
+        std::cerr << ERROR_NO_ROOT << std::endl;
+        
+    }
+    
+}
+
+void BehaviorTree::reset() {
+    
+    //Abort the root if exists
+    if (m_cRoot != NULL)
+        m_cRoot->reset();
+    else {
+        
+        //Present error message
+        std::cerr << ERROR_NO_ROOT << std::endl;
+        
+    }
+    
+}

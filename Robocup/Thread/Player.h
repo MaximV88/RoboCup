@@ -127,7 +127,7 @@ public:
      * The Function Opertion: Initializes the object with input client connection and position.     *
      * *********************************************************************************************/
     
-    Player(const Connection* cConnection, const char* chTeamName);
+    Player(const Connection* cConnection, const char* chTeamName, bool bIsGoalie);
     
     /**********************************************************************************************
      * function name: Player Destructor                                                           *

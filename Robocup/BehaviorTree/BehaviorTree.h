@@ -36,6 +36,10 @@ namespace behavior {
                 
         void tick();
         
+        void abort();
+        
+        void reset();
+        
     };
     
 }

@@ -197,7 +197,7 @@ Brain& Player::getBrain() {
  *                        and moves to the appropriate place, otherwise stops.                  *
  * *********************************************************************************************/
 
-Player::Player(const Connection* cConnection, const char* chTeamName) :
+Player::Player(const Connection* cConnection, const char* chTeamName, bool bIsGoalie) :
 m_cConnectionHandler(*cConnection, m_qInstructionQueue, m_qStateQueue), m_cBrain(m_qInstructionQueue) {
 
     //Initialise the member variables
@@ -208,7 +208,7 @@ m_cConnectionHandler(*cConnection, m_qInstructionQueue, m_qStateQueue), m_cBrain
     m_cHearState = NULL;
     
     //First enlist the robot to the server - if not successful then this is fatal, so dont start the player
-    if(!m_cConnectionHandler.enlistRobocup(chTeamName))
+    if(!m_cConnectionHandler.enlistRobocup(chTeamName, bIsGoalie))
         return;
     
     //Once the player is enlisted - start running the internal ConnectionHandler - it will work with the shared queues

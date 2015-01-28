@@ -16,5 +16,6 @@
 #include "TurnTowardsTypeNode.h"
 #include "DashTowardsTargetNode.h"
 #include "TurnTwiceMaximumHeadAngleNode.h"
+#include "DashTowardsTargetUntilDistanceNode.h"
 
 #endif

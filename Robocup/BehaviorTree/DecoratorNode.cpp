@@ -37,3 +37,23 @@ BehaviorTreeNode& DecoratorNode::getChild() {
     return *m_cChild;
     
 }
+
+void DecoratorNode::terminate(StatusType eStatus) {
+    
+    switch (eStatus) {
+            
+        //Send Abort message downwards
+        case StatusTypeAborted:
+            
+            if (m_cChild != NULL && m_cChild->isRunning())
+                m_cChild->abort();
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+
+    
+}

@@ -39,5 +39,6 @@
 #include "IsTurnedOnTargetNode.h"
 #include "IsCloseToTargetNode.h"
 #include "SetTargetToOpponentGoalNode.h"
+#include "SetTargetToTeamGoalNode.h"
 
 #endif

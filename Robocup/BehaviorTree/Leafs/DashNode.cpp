@@ -11,6 +11,7 @@
 #include <string>
 #include "DashNode.h"
 #include "Brain.h"
+#include "Player.h"
 
 #define DASH_NODE_COMMAND "dash"
 #define DASH_NODE_TARGET_ERROR "DashNode Error: No Target given"
@@ -64,13 +65,17 @@ StatusType DashNode::process() {
     
     //Check if our target has an origin to move to
     const int *iValue = cTarget->getIntValue();
+    const int *tValue = NULL;
+    
+    ServerState *cState = getContext().getPlayer().getLastServerState();
     
     //If no coordinate is given, return failed
     if (iValue == NULL) {
         
-        //Print error and return
-        DebugLogError(DASH_NODE_VALUE_ERROR << *cTarget);
-        return StatusTypeFailure;
+        tValue = new int(cState->maxPower);
+        
+        //Aliase...
+        iValue = tValue;
         
     }
     
@@ -86,6 +91,11 @@ StatusType DashNode::process() {
     
     //Send the instruction to the brain
     perform(*cInstruction);
+    
+    if (tValue != NULL)
+        delete tValue;
+    
+    delete cState;
     
     return StatusTypeSuccess;
     

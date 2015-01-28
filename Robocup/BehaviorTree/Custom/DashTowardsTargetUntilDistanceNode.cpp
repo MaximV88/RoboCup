@@ -1,12 +1,12 @@
 //
-//  DashTowardsBallNode.cpp
+//  DashTowardsTargetUntilDistanceNode.cpp
 //  Robocup
 //
-//  Created by Maxim Vainshtein on 1/19/15.
+//  Created by Maxim Vainshtein on 1/28/15.
 //  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
 //
 
-#include "DashTowardsTargetNode.h"
+#include "DashTowardsTargetUntilDistanceNode.h"
 #include "TurnTowardsTypeNode.h"
 #include "PushTargetToStackNode.h"
 #include "PopFromStackNode.h"
@@ -27,14 +27,15 @@
 
 using namespace behavior;
 
-DashTowardsTargetNode::DashTowardsTargetNode() {
-
+DashTowardsTargetUntilDistanceNode::DashTowardsTargetUntilDistanceNode(double dDistanceThreshold) {
+    
     //Turn the body towards the ball
     addChild(new TurnTowardsTypeNode());
     
     //Dash towards the target
     SequenceNode *cSequence = new SequenceNode();
     cSequence->addChild(new IsTargetVisibleNode());
+    cSequence->addChild(new IsCloseToTargetNode(dDistanceThreshold));
     cSequence->addChild(new DashNode());
     cSequence->addChild(new WaitSeeStateUpdateNode());
     cSequence->addChild(new EndActNode());
@@ -45,6 +46,6 @@ DashTowardsTargetNode::DashTowardsTargetNode() {
     
 }
 
-DashTowardsTargetNode::~DashTowardsTargetNode() {
+DashTowardsTargetUntilDistanceNode::~DashTowardsTargetUntilDistanceNode() {
     
 }

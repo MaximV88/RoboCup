@@ -44,7 +44,7 @@ void Forward::actPlayMode(PlayMode ePlayMode) {
  * *********************************************************************************************/
 
 Forward::Forward(const Connection* cConnection, const char* chTeamName) :
-Player(cConnection, chTeamName) {
+Player(cConnection, chTeamName, false) {
     
     //      ---     ATTACK      ---     //
     

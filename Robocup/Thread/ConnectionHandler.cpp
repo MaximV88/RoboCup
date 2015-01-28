@@ -13,6 +13,7 @@
 
 #define ENLIST_MESSAGE_INITIALISATION "init"
 #define ENLIST_MESSAGE_ROBOCUP_VERSION "(version 15)"
+#define ENLIST_MESSAGE_ROBOCUP_GOALIE   "(goalie)"
 
 //  ---                         PRIVATE FUNCTIONS                       ---   //
 
@@ -123,7 +124,7 @@ ConnectionHandler::~ConnectionHandler() {
  *                        If successful, parses the incoming ServerState and TeamState.       *
  * *******************************************************************************************/
 
-bool ConnectionHandler::enlistRobocup(const char* chTeamName) {
+bool ConnectionHandler::enlistRobocup(const char* chTeamName, bool bIsGoalie) {
     
     //Create the enlist message
     Instruction cEnlistInstruction;
@@ -136,6 +137,9 @@ bool ConnectionHandler::enlistRobocup(const char* chTeamName) {
     
     //Followed by the server version
     cEnlistInstruction.addCommand(ENLIST_MESSAGE_ROBOCUP_VERSION);
+    
+    if (bIsGoalie)
+        cEnlistInstruction.addCommand(ENLIST_MESSAGE_ROBOCUP_GOALIE);
     
     std::string strToTransmit = cEnlistInstruction.getInstruction();
     

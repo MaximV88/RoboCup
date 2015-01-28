@@ -63,15 +63,20 @@ StatusType CatchBallNode::process() {
     
     //Check if our target has an origin to move to
     const double *dValue = cTarget->getDoubleValue();
-    
+    const Observable *cObservable = cTarget->getObservable();
+
     //If no coordinate is given, return failed
-    if (dValue == NULL) {
+    if (dValue == NULL && cObservable == NULL) {
         
         //Print error and return
         DebugLogError(CATCHBALL_NODE_VALUE_ERROR << *cTarget);
         return StatusTypeFailure;
         
     }
+    
+    //Override the direction if present
+    if (cObservable != NULL)
+        dValue = &cObservable->direction;
     
     //Print the action's description
     DebugLogVerbose(DEBUG_ACTION_DESCRIPTION);
@@ -81,7 +86,7 @@ StatusType CatchBallNode::process() {
     
     //Add the required input
     cInstruction->addCommand(CATCHBALL_NODE_COMMAND);
-    cInstruction->addCommand(convertToString(dValue));
+    cInstruction->addCommand(convertToString(*dValue));
     
     //Send the instruction to the brain
     perform(*cInstruction);

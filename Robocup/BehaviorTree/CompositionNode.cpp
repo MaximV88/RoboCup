@@ -79,3 +79,32 @@ void CompositionNode::setContext(BehaviorContext& cContext) {
     }
     
 }
+
+void CompositionNode::terminate(StatusType eStatus) {
+    
+    switch (eStatus) {
+            
+            //Send Abort message downwards
+        case StatusTypeAborted:
+            
+            //Set the children
+            for (std::vector<BehaviorTreeNode*>::iterator iter = m_vcChildren.begin() ; iter != m_vcChildren.end() ; iter++) {
+                
+                //Set the node
+                if ((*iter)->isRunning()) {
+                    
+                    (*iter)->abort();
+                    
+                }
+                
+            }
+                        
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    
+}
