@@ -27,7 +27,7 @@
 
 using namespace behavior;
 
-DashTowardsTargetNode::DashTowardsTargetNode() {
+DashTowardsTargetNode::DashTowardsTargetNode(int iDistance) {
 
     //Turn the body towards the ball
     addChild(new TurnTowardsTypeNode());
@@ -39,7 +39,7 @@ DashTowardsTargetNode::DashTowardsTargetNode() {
     cSequence->addChild(new WaitSeeStateUpdateNode());
     cSequence->addChild(new EndActNode());
     cSequence->addChild(new IsTargetVisibleNode());
-    cSequence->addChild(new InverterNode(new IsCloseToTargetNode(1)));
+    cSequence->addChild(new InverterNode(new IsCloseToTargetNode(iDistance)));
     
     addChild(new InverterNode(new RepeatUntilFailNode(cSequence)));
     

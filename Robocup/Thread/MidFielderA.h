@@ -1,52 +1,53 @@
-/************************************************************
- * Student Name:     Maxim Vainshtein                       *
- * Exercise Name:    Ex3                                    *
- * File description: Declaration of Forward Class           *
- ***********************************************************/
+//
+//  MidFielderA.h
+//  Robocup
+//
+//  Created by Maxim Vainshtein on 1/29/15.
+//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
+//
 
-#ifndef __Ex3__Forward__
-#define __Ex3__Forward__
+#ifndef __Robocup__MidFielderA__
+#define __Robocup__MidFielderA__
 
-#include <stdio.h>
 #include "Player.h"
 
 /**********************************************************************************
- * Forward Class: Represents a player that plays like a Forward.                  *
+ * MidFielder Class: Represents a player that plays like a MidFielder.            *
  *                   It deals with the information recieved from the states       *
  *                   by sending instructions.                                     *
  *********************************************************************************/
 
-class Forward : public Player {
+class MidFielderA : public Player {
     
 private:
     
     void actPlayMode(PlayMode ePlayMode);
-
+    
 public:
     
     //  ---                         PUBLIC FUNCTIONS                       ---   //
     
     
     /************************************************************************************************
-     * function name: Forward Constructor                                                           *
+     * function name: MidFielder Constructor                                                        *
      * The Input: const Connection object (pointer), const char (pointer), const Vector (reference) *
      * The output: none                                                                             *
      * The Function Opertion: Initializes the object with input client connection,                  *
      *                        team name and position.                                               *
      * *********************************************************************************************/
     
-    Forward(const Connection* cConnection, const char* chTeamName);
+    MidFielderA(const Connection* cConnection, const char* chTeamName);
     
     /**********************************************************************************************
-     * function name: Forward Destructor                                                          *
+     * function name: MidFielder Destructor                                                       *
      * The Input: none                                                                            *
      * The output: none                                                                           *
      * The Function Opertion: Destroys the current object.                                        *
      * *******************************************************************************************/
     
-    ~Forward();
+    ~MidFielderA();
     
-
+    
 };
 
-#endif 
+#endif

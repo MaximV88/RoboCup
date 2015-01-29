@@ -13,7 +13,14 @@
 #include "GoalKeeper.h"
 #include "Defender.h"
 #include "MidFielder.h"
-#include "Forward.h"
+#include "MidFielderA.h"
+#include "MidFielderB.h"
+#include "Striker.h"
+#include "StrikerA.h"
+#include "StrikerB.h"
+#include "StrikerC.h"
+#include "StrikerD.h"
+#include "DefenderA.h"
 
 #define PI 3.14159265
 
@@ -423,6 +430,13 @@ Player* Player::createPlayer(PlayerType eType, const Connection* cConnection, co
             //Create and return a Defender
             return new Defender(cConnection, chTeamName);
             break;
+            
+        case PlayerTypeDefenderTop:
+            
+            //Create and return a Defender
+            return new DefenderA(cConnection, chTeamName);
+            break;
+
 
         case PlayerTypeMidFielder:
             
@@ -430,10 +444,46 @@ Player* Player::createPlayer(PlayerType eType, const Connection* cConnection, co
             return new MidFielder(cConnection, chTeamName);
             break;
             
-        case PlayerTypeForward:
+        case PlayerTypeMidFielderTop:
             
             //Create and return a Defender
-            return new Forward(cConnection, chTeamName);
+            return new MidFielderA(cConnection, chTeamName);
+            break;
+            
+        case PlayerTypeMidFielderBottom:
+            
+            //Create and return a Defender
+            return new MidFielderB(cConnection, chTeamName);
+            break;
+            
+        case PlayerTypeStriker:
+            
+            //Create and return a Defender
+            return new Striker(cConnection, chTeamName);
+            break;
+            
+        case PlayerTypeStrikerBottom:
+            
+            //Create and return a Defender
+            return new StrikerA(cConnection, chTeamName);
+            break;
+            
+        case PlayerTypeStrikerTop:
+            
+            //Create and return a Defender
+            return new StrikerB(cConnection, chTeamName);
+            break;
+            
+        case PlayerTypeStrikerCenter:
+            
+            //Create and return a Defender
+            return new StrikerC(cConnection, chTeamName);
+            break;
+            
+        case PlayerTypeStrikerAux:
+            
+            //Create and return a Defender
+            return new StrikerD(cConnection, chTeamName);
             break;
             
         //Shouldnt reach here

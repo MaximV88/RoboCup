@@ -37,7 +37,7 @@ BehaviorTreeNode& DecoratorNode::getChild() {
     return *m_cChild;
     
 }
-
+/*
 void DecoratorNode::terminate(StatusType eStatus) {
     
     switch (eStatus) {
@@ -57,3 +57,4 @@ void DecoratorNode::terminate(StatusType eStatus) {
 
     
 }
+*/

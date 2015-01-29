@@ -1,20 +1,22 @@
-/************************************************************
- * Student Name:     Maxim Vainshtein                       *
- * Exercise Name:    Ex3                                    *
- * File description: Implementation of GoalKeeper Class     *
- ***********************************************************/
+//
+//  DefenderAA.cpp
+//  Robocup
+//
+//  Created by Maxim Vainshtein on 1/28/15.
+//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
+//
 
-#include "GoalKeeper.h"
+#include "DefenderA.h"
 #include "Behavior.h"
 
 using namespace behavior;
 
-void GoalKeeper::actPlayMode(PlayMode ePlayMode)  {
+void DefenderA::actPlayMode(PlayMode ePlayMode)  {
     
     //Decide which Behavior to perform based on the PlayMode
     switch (ePlayMode) {
         case PlayModePlayOn:
-            getBrain().setBehavior("Guard");
+            getBrain().setBehavior("GoToPosition");
             break;
             
         case PlayModeBeforeKickOff:
@@ -33,24 +35,25 @@ void GoalKeeper::actPlayMode(PlayMode ePlayMode)  {
 
 
 /************************************************************************************************
- * function name: GoalKeeper Constructor                                                        *
+ * function name: DefenderA Constructor                                                          *
  * The Input: const Connection object (pointer), const char (pointer), const Vector (reference) *
  * The output: none                                                                             *
  * The Function Opertion: Initializes the base class.                                           *
  * *********************************************************************************************/
 
-GoalKeeper::GoalKeeper(const Connection* cConnection, const char* chTeamName) :
-Player(cConnection, chTeamName, true) {
+DefenderA::DefenderA(const Connection* cConnection, const char* chTeamName) :
+Player(cConnection, chTeamName, false) {
     
     //      ---     MOVE TO POSITION      ---     //
-
+    
     BehaviorTree *cMove = new BehaviorTree(*this, getBrain(), "MoveToPosition");
     
     SequenceNode *cMoveStart = new SequenceNode();
-    cMoveStart->addChild(new SetTargetToNode(new BehaviorTarget(Coordinate(-50, 0), "GoalKeeper")));
+    cMoveStart->addChild(new SetTargetToNode(new BehaviorTarget(Coordinate(-36, 20), "DefenderA")));
     cMoveStart->addChild(new MoveNode());
-    cMoveStart->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "GoalKeeper")));
-    cMoveStart->addChild( new TurnTowardsTypeNode());
+    cMoveStart->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "DefenderA")));
+    cMoveStart->addChild(new TurnTowardsTypeNode());
+    cMoveStart->addChild(new EndActNode());
     
     cMove->setRoot(cMoveStart);
     
@@ -59,45 +62,32 @@ Player(cConnection, chTeamName, true) {
     BehaviorTree *cGo = new BehaviorTree(*this, getBrain(), "GoToPosition");
     
     SequenceNode *cGoStart = new SequenceNode();
-    cGoStart->addChild(new SetTargetToTeamGoalNode());
-    cGoStart->addChild(new DashTowardsTargetNode(2));
-    cGoStart->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "GoalKeeper")));
+    cGoStart->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeFlagPenLeftBottom, "DefenderA")));
+    cGoStart->addChild(new DashTowardsTargetNode(3));
+    cGoStart->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "DefenderA")));
     cGoStart->addChild(new TurnTowardsTypeNode());
+    cGoStart->addChild(new IsCloseToTargetNode(20));
+    cGoStart->addChild(new DashTowardsTargetUntilDistanceNode(20));
+    cGoStart->addChild(new SetTargetToOpponentGoalNode());
+    cGoStart->addChild(new TurnTowardsTypeNode());
+    cGoStart->addChild(new KickBallNode());
+    cGoStart->addChild(new EndActNode());
     
     cGo->setRoot(cGoStart);
     
-    //      ---     GUARD      ---     //
-    
-    BehaviorTree *cGuard = new BehaviorTree(*this, getBrain(), "Guard");
-
-    //Add Checking to see if the ball is close
-    SequenceNode *cIsBallNear = new SequenceNode();
-    cIsBallNear->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "GoalKeeper")));
-    cIsBallNear->addChild(new TurnTowardsTypeNode());
-    cIsBallNear->addChild(new IsCloseToTargetNode(20));
-    cIsBallNear->addChild(new DashTowardsTargetUntilDistanceNode(20));
-    cIsBallNear->addChild(new CatchBallNode());
-    cIsBallNear->addChild(new SetTargetToOpponentGoalNode());
-    cIsBallNear->addChild(new TurnTowardsTypeNode());
-    cIsBallNear->addChild(new KickBallNode());
-    cIsBallNear->addChild(new EndActNode());
-    
-    cGuard->setRoot(cIsBallNear);
-    
-    
-    getBrain().addBehavior(*cGuard);
     getBrain().addBehavior(*cMove);
     getBrain().addBehavior(*cGo);
+    
     
 }
 
 /**********************************************************************************************
- * function name: GoalKeeper Destructor                                                       *
+ * function name: DefenderA Destructor                                                         *
  * The Input: none                                                                            *
  * The output: none                                                                           *
  * The Function Opertion: Nothing.                                                            *
  * *******************************************************************************************/
 
-GoalKeeper::~GoalKeeper() {
+DefenderA::~DefenderA() {
     
 }

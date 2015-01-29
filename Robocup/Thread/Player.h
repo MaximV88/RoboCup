@@ -25,8 +25,15 @@
 typedef enum {
     PlayerTypeGoalKeeper,
     PlayerTypeDefender,
+    PlayerTypeDefenderTop,
     PlayerTypeMidFielder,
-    PlayerTypeForward
+    PlayerTypeMidFielderTop,
+    PlayerTypeMidFielderBottom,
+    PlayerTypeStriker,
+    PlayerTypeStrikerBottom,
+    PlayerTypeStrikerTop,
+    PlayerTypeStrikerCenter,
+    PlayerTypeStrikerAux
 } PlayerType;
 
 class Brain;

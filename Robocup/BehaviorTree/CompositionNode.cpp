@@ -79,7 +79,7 @@ void CompositionNode::setContext(BehaviorContext& cContext) {
     }
     
 }
-
+/*
 void CompositionNode::terminate(StatusType eStatus) {
     
     switch (eStatus) {
@@ -108,3 +108,4 @@ void CompositionNode::terminate(StatusType eStatus) {
     
     
 }
+*/

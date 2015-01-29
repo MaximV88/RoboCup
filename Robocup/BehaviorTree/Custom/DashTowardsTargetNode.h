@@ -22,7 +22,7 @@ namespace behavior {
     class DashTowardsTargetNode : public SequenceNode {
         
     public:
-        DashTowardsTargetNode();
+        DashTowardsTargetNode(int iDistance);
         ~DashTowardsTargetNode();
         
         

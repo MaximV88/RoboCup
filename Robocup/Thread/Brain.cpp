@@ -61,16 +61,16 @@ void Brain::setBehavior(std::string strName) {
         
     }
     
-    m_cMutualExclusionSecondary.lock();
+  //  m_cMutualExclusionSecondary.lock();
     
     //Reset the current tree
-    if (m_cBehavior != NULL)
-        m_cBehavior->abort();
+   // if (m_cBehavior != NULL)
+   //     m_cBehavior->abort();
     
     //Set the acting behavior
     m_cBehavior = m_mcBehaviors.find(strName)->second;
     
-    m_cMutualExclusionSecondary.unlock();
+ //   m_cMutualExclusionSecondary.unlock();
     
 }
 
@@ -98,12 +98,12 @@ void Brain::execute() {
     
     while (true) {
         
-        m_cMutualExclusionSecondary.lock();
+      //  m_cMutualExclusionSecondary.lock();
         
         //Always tick the behavior tree
         m_cBehavior->tick();
         
-        m_cMutualExclusionSecondary.unlock();
+      //  m_cMutualExclusionSecondary.unlock();
         
     }
     

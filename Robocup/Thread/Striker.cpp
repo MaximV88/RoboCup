@@ -5,7 +5,7 @@
  ***********************************************************/
 
 #include <iostream>
-#include "Forward.h"
+#include "Striker.h"
 #include "Behavior.h"
 
 
@@ -16,8 +16,8 @@
 using namespace std;
 using namespace behavior;
 
-void Forward::actPlayMode(PlayMode ePlayMode) {
-    
+void Striker::actPlayMode(PlayMode ePlayMode) {
+        
     //Decide which Behavior to perform based on the PlayMode
     switch (ePlayMode) {
         case PlayModePlayOn:
@@ -43,7 +43,7 @@ void Forward::actPlayMode(PlayMode ePlayMode) {
  * The Function Opertion: Initializes the base class, and the member variables to default value.*
  * *********************************************************************************************/
 
-Forward::Forward(const Connection* cConnection, const char* chTeamName) :
+Striker::Striker(const Connection* cConnection, const char* chTeamName) :
 Player(cConnection, chTeamName, false) {
     
     //      ---     ATTACK      ---     //
@@ -52,7 +52,7 @@ Player(cConnection, chTeamName, false) {
     
     SequenceNode *cAttackStart = new SequenceNode();
     cAttackStart->addChild(new SetTargetToNode(new BehaviorTarget(ObservableTypeBall, "Striker")));
-    cAttackStart->addChild(new RepeatUntilSuccessNode(new DashTowardsTargetNode()));
+    cAttackStart->addChild(new RepeatUntilSuccessNode(new DashTowardsTargetNode(1)));
     cAttackStart->addChild(new SetTargetToOpponentGoalNode());
     cAttackStart->addChild(new SearchNode());
     cAttackStart->addChild(new KickBallNode());
@@ -86,6 +86,6 @@ Player(cConnection, chTeamName, false) {
  * The Function Opertion: Nothing.                                                            *
  * *******************************************************************************************/
 
-Forward::~Forward() {
+Striker::~Striker() {
     
 }

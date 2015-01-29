@@ -67,7 +67,7 @@ void BehaviorTree::tick() {
     }
     
 }
-
+/*
 void BehaviorTree::abort() {
     
     //Abort the root if exists
@@ -95,3 +95,4 @@ void BehaviorTree::reset() {
     }
     
 }
+*/

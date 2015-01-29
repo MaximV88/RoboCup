@@ -35,7 +35,7 @@
 		BE0C06221A66DC64009065F8 /* ThreadQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06201A66DC64009065F8 /* ThreadQueue.cpp */; };
 		BE0C06261A66DC7E009065F8 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06241A66DC7E009065F8 /* Player.cpp */; };
 		BE0C062F1A66DC88009065F8 /* Defender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06271A66DC88009065F8 /* Defender.cpp */; };
-		BE0C06301A66DC88009065F8 /* Forward.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06291A66DC88009065F8 /* Forward.cpp */; };
+		BE0C06301A66DC88009065F8 /* Striker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06291A66DC88009065F8 /* Striker.cpp */; };
 		BE0C06311A66DC88009065F8 /* GoalKeeper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C062B1A66DC88009065F8 /* GoalKeeper.cpp */; };
 		BE0C06321A66DC88009065F8 /* MidFielder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C062D1A66DC88009065F8 /* MidFielder.cpp */; };
 		BE0C06381A66DC99009065F8 /* Coordinate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06341A66DC99009065F8 /* Coordinate.cpp */; };
@@ -78,6 +78,13 @@
 		BE0C06BD1A67A702009065F8 /* TurnNeckPositiveNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06BB1A67A702009065F8 /* TurnNeckPositiveNode.cpp */; };
 		BE0C06C01A67A7EA009065F8 /* TurnNeckNegativeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE0C06BE1A67A7EA009065F8 /* TurnNeckNegativeNode.cpp */; };
 		BE375D391A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE375D371A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp */; };
+		BE3BBC251A7982BA00EA79A1 /* StrikerA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE3BBC231A7982BA00EA79A1 /* StrikerA.cpp */; };
+		BE3BBC281A79837300EA79A1 /* StrikerB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE3BBC261A79837300EA79A1 /* StrikerB.cpp */; };
+		BE3BBC2B1A7983B200EA79A1 /* StrikerC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE3BBC291A7983B200EA79A1 /* StrikerC.cpp */; };
+		BE3BBC2E1A79845E00EA79A1 /* DefenderA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE3BBC2C1A79845E00EA79A1 /* DefenderA.cpp */; };
+		BE3BBC311A7A072000EA79A1 /* MidFielderA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE3BBC2F1A7A072000EA79A1 /* MidFielderA.cpp */; };
+		BE3BBC341A7A080E00EA79A1 /* MidFielderB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE3BBC321A7A080E00EA79A1 /* MidFielderB.cpp */; };
+		BE3BBC371A7A096D00EA79A1 /* StrikerD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE3BBC351A7A096D00EA79A1 /* StrikerD.cpp */; };
 		BE4B24411A6D848D00D155C9 /* TurnTowardsTypeNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */; };
 		BE4B24471A6D8DB700D155C9 /* DashTowardsTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B24451A6D8DB700D155C9 /* DashTowardsTargetNode.cpp */; };
 		BE4B244A1A6D94D200D155C9 /* IsCloseToTargetNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE4B24481A6D94D200D155C9 /* IsCloseToTargetNode.cpp */; };
@@ -172,8 +179,8 @@
 		BE0C06251A66DC7E009065F8 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Thread/Player.h; sourceTree = "<group>"; };
 		BE0C06271A66DC88009065F8 /* Defender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Defender.cpp; path = Thread/Defender.cpp; sourceTree = "<group>"; };
 		BE0C06281A66DC88009065F8 /* Defender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Defender.h; path = Thread/Defender.h; sourceTree = "<group>"; };
-		BE0C06291A66DC88009065F8 /* Forward.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Forward.cpp; path = Thread/Forward.cpp; sourceTree = "<group>"; };
-		BE0C062A1A66DC88009065F8 /* Forward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Forward.h; path = Thread/Forward.h; sourceTree = "<group>"; };
+		BE0C06291A66DC88009065F8 /* Striker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Striker.cpp; path = Thread/Striker.cpp; sourceTree = "<group>"; };
+		BE0C062A1A66DC88009065F8 /* Striker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Striker.h; path = Thread/Striker.h; sourceTree = "<group>"; };
 		BE0C062B1A66DC88009065F8 /* GoalKeeper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GoalKeeper.cpp; path = Thread/GoalKeeper.cpp; sourceTree = "<group>"; };
 		BE0C062C1A66DC88009065F8 /* GoalKeeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoalKeeper.h; path = Thread/GoalKeeper.h; sourceTree = "<group>"; };
 		BE0C062D1A66DC88009065F8 /* MidFielder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MidFielder.cpp; path = Thread/MidFielder.cpp; sourceTree = "<group>"; };
@@ -262,6 +269,20 @@
 		BE0C06BF1A67A7EA009065F8 /* TurnNeckNegativeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnNeckNegativeNode.h; path = BehaviorTree/Custom/TurnNeckNegativeNode.h; sourceTree = "<group>"; };
 		BE375D371A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IsTurnedOnTargetNode.cpp; path = BehaviorTree/Leafs/IsTurnedOnTargetNode.cpp; sourceTree = "<group>"; };
 		BE375D381A6FD49B0084AF6D /* IsTurnedOnTargetNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IsTurnedOnTargetNode.h; path = BehaviorTree/Leafs/IsTurnedOnTargetNode.h; sourceTree = "<group>"; };
+		BE3BBC231A7982BA00EA79A1 /* StrikerA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StrikerA.cpp; path = Thread/StrikerA.cpp; sourceTree = "<group>"; };
+		BE3BBC241A7982BA00EA79A1 /* StrikerA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StrikerA.h; path = Thread/StrikerA.h; sourceTree = "<group>"; };
+		BE3BBC261A79837300EA79A1 /* StrikerB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StrikerB.cpp; path = Thread/StrikerB.cpp; sourceTree = "<group>"; };
+		BE3BBC271A79837300EA79A1 /* StrikerB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StrikerB.h; path = Thread/StrikerB.h; sourceTree = "<group>"; };
+		BE3BBC291A7983B200EA79A1 /* StrikerC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StrikerC.cpp; path = Thread/StrikerC.cpp; sourceTree = "<group>"; };
+		BE3BBC2A1A7983B200EA79A1 /* StrikerC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StrikerC.h; path = Thread/StrikerC.h; sourceTree = "<group>"; };
+		BE3BBC2C1A79845E00EA79A1 /* DefenderA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DefenderA.cpp; path = Thread/DefenderA.cpp; sourceTree = "<group>"; };
+		BE3BBC2D1A79845E00EA79A1 /* DefenderA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DefenderA.h; path = Thread/DefenderA.h; sourceTree = "<group>"; };
+		BE3BBC2F1A7A072000EA79A1 /* MidFielderA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MidFielderA.cpp; path = Thread/MidFielderA.cpp; sourceTree = "<group>"; };
+		BE3BBC301A7A072000EA79A1 /* MidFielderA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MidFielderA.h; path = Thread/MidFielderA.h; sourceTree = "<group>"; };
+		BE3BBC321A7A080E00EA79A1 /* MidFielderB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MidFielderB.cpp; path = Thread/MidFielderB.cpp; sourceTree = "<group>"; };
+		BE3BBC331A7A080E00EA79A1 /* MidFielderB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MidFielderB.h; path = Thread/MidFielderB.h; sourceTree = "<group>"; };
+		BE3BBC351A7A096D00EA79A1 /* StrikerD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StrikerD.cpp; path = Thread/StrikerD.cpp; sourceTree = "<group>"; };
+		BE3BBC361A7A096D00EA79A1 /* StrikerD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StrikerD.h; path = Thread/StrikerD.h; sourceTree = "<group>"; };
 		BE4B242F1A6C234A00D155C9 /* ObservableTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ObservableTypes.h; path = Parser/ObservableTypes.h; sourceTree = "<group>"; };
 		BE4B243F1A6D848D00D155C9 /* TurnTowardsTypeNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TurnTowardsTypeNode.cpp; path = BehaviorTree/Custom/TurnTowardsTypeNode.cpp; sourceTree = "<group>"; };
 		BE4B24401A6D848D00D155C9 /* TurnTowardsTypeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurnTowardsTypeNode.h; path = BehaviorTree/Custom/TurnTowardsTypeNode.h; sourceTree = "<group>"; };
@@ -563,6 +584,8 @@
 			children = (
 				BE0C06281A66DC88009065F8 /* Defender.h */,
 				BE0C06271A66DC88009065F8 /* Defender.cpp */,
+				BE3BBC2D1A79845E00EA79A1 /* DefenderA.h */,
+				BE3BBC2C1A79845E00EA79A1 /* DefenderA.cpp */,
 			);
 			name = Defender;
 			sourceTree = "<group>";
@@ -581,6 +604,10 @@
 			children = (
 				BE0C062E1A66DC88009065F8 /* MidFielder.h */,
 				BE0C062D1A66DC88009065F8 /* MidFielder.cpp */,
+				BE3BBC301A7A072000EA79A1 /* MidFielderA.h */,
+				BE3BBC2F1A7A072000EA79A1 /* MidFielderA.cpp */,
+				BE3BBC331A7A080E00EA79A1 /* MidFielderB.h */,
+				BE3BBC321A7A080E00EA79A1 /* MidFielderB.cpp */,
 			);
 			name = MidFielder;
 			sourceTree = "<group>";
@@ -588,8 +615,16 @@
 		BE0C063D1A66DCB3009065F8 /* Striker */ = {
 			isa = PBXGroup;
 			children = (
-				BE0C062A1A66DC88009065F8 /* Forward.h */,
-				BE0C06291A66DC88009065F8 /* Forward.cpp */,
+				BE0C062A1A66DC88009065F8 /* Striker.h */,
+				BE0C06291A66DC88009065F8 /* Striker.cpp */,
+				BE3BBC241A7982BA00EA79A1 /* StrikerA.h */,
+				BE3BBC231A7982BA00EA79A1 /* StrikerA.cpp */,
+				BE3BBC271A79837300EA79A1 /* StrikerB.h */,
+				BE3BBC261A79837300EA79A1 /* StrikerB.cpp */,
+				BE3BBC2A1A7983B200EA79A1 /* StrikerC.h */,
+				BE3BBC291A7983B200EA79A1 /* StrikerC.cpp */,
+				BE3BBC361A7A096D00EA79A1 /* StrikerD.h */,
+				BE3BBC351A7A096D00EA79A1 /* StrikerD.cpp */,
 			);
 			name = Striker;
 			sourceTree = "<group>";
@@ -860,6 +895,7 @@
 				BE0C05D41A66DA18009065F8 /* UDPServer.cpp in Sources */,
 				BE0C06481A66DD31009065F8 /* BehaviorTarget.cpp in Sources */,
 				BE4B24471A6D8DB700D155C9 /* DashTowardsTargetNode.cpp in Sources */,
+				BE3BBC281A79837300EA79A1 /* StrikerB.cpp in Sources */,
 				BE0C062F1A66DC88009065F8 /* Defender.cpp in Sources */,
 				BE0C06261A66DC7E009065F8 /* Player.cpp in Sources */,
 				BE0C065B1A66DDA6009065F8 /* RepeatUntilFailNode.cpp in Sources */,
@@ -896,6 +932,7 @@
 				BE0C05E51A66DA28009065F8 /* TCPClient.cpp in Sources */,
 				BE0C06A81A66EDD7009065F8 /* IsTargetVisibleNode.cpp in Sources */,
 				BE0C06611A66DDB5009065F8 /* SequenceNode.cpp in Sources */,
+				BE3BBC251A7982BA00EA79A1 /* StrikerA.cpp in Sources */,
 				BE0C06451A66DD28009065F8 /* BehaviorContext.cpp in Sources */,
 				BE6C1D351A782904008E12C5 /* SetTargetToTeamGoalNode.cpp in Sources */,
 				BE0C06A21A66E4DC009065F8 /* SearchNode.cpp in Sources */,
@@ -904,7 +941,9 @@
 				BE4B244D1A6D9F9600D155C9 /* SetTargetToTwiceMaximumHeadAngleNode.cpp in Sources */,
 				BEBEF7911A697F860094396A /* FailureNode.cpp in Sources */,
 				BE0C06B71A679B3E009065F8 /* SetTargetToPositiveNeckTurnAngleNode.cpp in Sources */,
+				BE3BBC311A7A072000EA79A1 /* MidFielderA.cpp in Sources */,
 				BE0C06861A66DDCD009065F8 /* ChangeViewNode.cpp in Sources */,
+				BE3BBC341A7A080E00EA79A1 /* MidFielderB.cpp in Sources */,
 				BE0C06531A66DD54009065F8 /* CompositionNode.cpp in Sources */,
 				BE0C06871A66DDCD009065F8 /* DashNode.cpp in Sources */,
 				BE0C06AE1A670525009065F8 /* SearchTurnNeckNode.cpp in Sources */,
@@ -914,7 +953,7 @@
 				BE0C06971A66DEA4009065F8 /* BehaviorException.cpp in Sources */,
 				BE0C06141A66DC09009065F8 /* Mutex.cpp in Sources */,
 				BE0C068A1A66DDCD009065F8 /* MoveNode.cpp in Sources */,
-				BE0C06301A66DC88009065F8 /* Forward.cpp in Sources */,
+				BE0C06301A66DC88009065F8 /* Striker.cpp in Sources */,
 				BE0C05F51A66DB38009065F8 /* SeeState.cpp in Sources */,
 				BE0C05B61A66D90F009065F8 /* main.cpp in Sources */,
 				BE0C061E1A66DC57009065F8 /* Threadable.cpp in Sources */,
@@ -922,12 +961,15 @@
 				BE0C05FE1A66DB4C009065F8 /* State.cpp in Sources */,
 				BE0C060E1A66DBDE009065F8 /* Parser.cpp in Sources */,
 				BE0C05EF1A66DB31009065F8 /* HearState.cpp in Sources */,
+				BE3BBC2B1A7983B200EA79A1 /* StrikerC.cpp in Sources */,
 				BE0C06221A66DC64009065F8 /* ThreadQueue.cpp in Sources */,
 				BE0C06411A66DD1B009065F8 /* BehaviorTree.cpp in Sources */,
 				BE0C061B1A66DC46009065F8 /* ConnectionHandler.cpp in Sources */,
+				BE3BBC371A7A096D00EA79A1 /* StrikerD.cpp in Sources */,
 				BE0C06881A66DDCD009065F8 /* EndActNode.cpp in Sources */,
 				BE0C06851A66DDCD009065F8 /* CatchBallNode.cpp in Sources */,
 				BE0C068E1A66DDCD009065F8 /* TurnNeckNode.cpp in Sources */,
+				BE3BBC2E1A79845E00EA79A1 /* DefenderA.cpp in Sources */,
 				BE375D391A6FD49B0084AF6D /* IsTurnedOnTargetNode.cpp in Sources */,
 				BE0C06821A66DDCD009065F8 /* IsTargetPlayerNode.cpp in Sources */,
 				BE0C068C1A66DDCD009065F8 /* ScoreNode.cpp in Sources */,

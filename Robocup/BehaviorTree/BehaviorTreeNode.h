@@ -14,7 +14,7 @@
 #include "BehaviorContext.h"
 
 #define DEBUG_VERBOSE 0
-#define DEBUG_ERROR 1
+#define DEBUG_ERROR 0
 #define DebugLogVerbose(Input) if (DEBUG_VERBOSE) std::cout << Input << std::endl;
 #define DebugLogError(Input) if (DEBUG_ERROR) std::cerr << Input << std::endl;
 
