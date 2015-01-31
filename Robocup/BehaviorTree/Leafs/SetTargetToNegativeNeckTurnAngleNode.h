@@ -1,10 +1,8 @@
-//
-//  SetTargetToNegativeNeckTurnAngleNode.h
-//  Robocup
-//
-//  Created by Maxim Vainshtein on 1/15/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Declaration of Vector Class            *
+ ***********************************************************/
 
 #ifndef __Robocup__SetTargetToNegativeNeckTurnAngleNode__
 #define __Robocup__SetTargetToNegativeNeckTurnAngleNode__

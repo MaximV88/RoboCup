@@ -1,10 +1,8 @@
-//
-//  WaitBodyStateUpdateNode.cpp
-//  Robocup
-//
-//  Created by Maxim Vainshtein on 1/17/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Implementation of Nameable Class       *
+ ***********************************************************/
 
 #include "WaitBodyStateUpdateNode.h"
 #include "Brain.h"

@@ -1,5 +1,5 @@
 /************************************************************
- * Student Name:     Maxim Vainshtein                       *
+ * Student Name:     TreeBots                               *
  * Exercise Name:    Ex6                                    *
  * File description: Implementation of Nameable Class       *
  ***********************************************************/

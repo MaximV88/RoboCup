@@ -1,10 +1,8 @@
-//
-//  IsTargetPlayerNode.h
-//  Ex3
-//
-//  Created by Maxim Vainshtein on 1/14/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Declaration of Vector Class            *
+ ***********************************************************/
 
 #ifndef __Ex3__IsTargetPlayerNode__
 #define __Ex3__IsTargetPlayerNode__

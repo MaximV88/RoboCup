@@ -1,10 +1,8 @@
-//
-//  SetTargetToTwiceMaximumHeadAngleNode.cpp
-//  Robocup
-//
-//  Created by Maxim Vainshtein on 1/19/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Implementation of Nameable Class       *
+ ***********************************************************/
 
 #include "SetTargetToTwiceMaximumHeadAngleNode.h"
 #include "Player.h"

@@ -1,10 +1,8 @@
-//
-//  TurnTwiceMaximumHeadAngleNode.h
-//  Robocup
-//
-//  Created by Maxim Vainshtein on 1/19/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Declaration of Vector Class            *
+ ***********************************************************/
 
 #ifndef __Robocup__TurnTwiceMaximumHeadAngleNode__
 #define __Robocup__TurnTwiceMaximumHeadAngleNode__

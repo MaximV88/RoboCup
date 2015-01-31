@@ -1,10 +1,8 @@
-//
-//  MidFielderA.h
-//  Robocup
-//
-//  Created by Maxim Vainshtein on 1/29/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Declaration of Vector Class            *
+ ***********************************************************/
 
 #ifndef __Robocup__MidFielderA__
 #define __Robocup__MidFielderA__

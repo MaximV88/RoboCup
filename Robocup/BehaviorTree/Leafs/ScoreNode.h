@@ -1,10 +1,8 @@
-//
-//  ScoreNode.h
-//  Ex3
-//
-//  Created by Maxim Vainshtein on 1/10/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Declaration of Vector Class            *
+ ***********************************************************/
 
 #ifndef __Ex3__ScoreNode__
 #define __Ex3__ScoreNode__

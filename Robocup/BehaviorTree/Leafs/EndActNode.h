@@ -1,10 +1,8 @@
-//
-//  EndActNode.h
-//  Ex3
-//
-//  Created by Maxim Vainshtein on 1/11/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Declaration of Vector Class            *
+ ***********************************************************/
 
 #ifndef __Ex3__EndActNode__
 #define __Ex3__EndActNode__

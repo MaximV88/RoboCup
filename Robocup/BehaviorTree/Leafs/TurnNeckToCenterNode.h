@@ -1,10 +1,8 @@
-//
-//  TurnNeckToCenterNode.h
-//  Robocup
-//
-//  Created by Maxim Vainshtein on 1/16/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/************************************************************
+ * Student Name:     TreeBots                               *
+ * Exercise Name:    Ex6                                    *
+ * File description: Declaration of Vector Class            *
+ ***********************************************************/
 
 #ifndef __Robocup__TurnNeckToCenterNode__
 #define __Robocup__TurnNeckToCenterNode__

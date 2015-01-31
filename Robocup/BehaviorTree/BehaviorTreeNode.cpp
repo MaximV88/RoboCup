@@ -1,10 +1,8 @@
-//
-//  BehaviorTreeNode.cpp
-//  Ex3
-//
-//  Created by Maxim Vainshtein on 1/9/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/****************************************************************
+ * Student Name:     TreeBots                                   *
+ * Exercise Name:    Ex6                                        *
+ * File description: Implementation of BehaviorTreeNode Class   *
+ ***************************************************************/
 
 #include <math.h>
 #include "BehaviorTreeNode.h"

@@ -1,10 +1,8 @@
-//
-//  BehaviorException.cpp
-//  Ex3
-//
-//  Created by Maxim Vainshtein on 1/14/15.
-//  Copyright (c) 2015 Maxim Vainshtein. All rights reserved.
-//
+/****************************************************************
+ * Student Name:     TreeBots                                   *
+ * Exercise Name:    Ex6                                        *
+ * File description: Implementation of BehaviorException Class  *
+ ***************************************************************/
 
 #include "BehaviorException.h"
 
