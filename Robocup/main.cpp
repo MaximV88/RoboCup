@@ -6,7 +6,6 @@
 #include "Player.h"
 
 #define NAME_INPUT "TreeBots"
-#define NAME_INPUT_OPPONENT "Opponent"
 
 int main(int argc, const char * argv[]) {
     
