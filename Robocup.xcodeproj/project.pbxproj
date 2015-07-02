@@ -387,10 +387,10 @@
 			children = (
 				BE0C05DE1A66DA28009065F8 /* Client.cpp */,
 				BE0C05DF1A66DA28009065F8 /* Client.h */,
-				BE0C05E01A66DA28009065F8 /* TCPClient.cpp */,
 				BE0C05E11A66DA28009065F8 /* TCPClient.h */,
-				BE0C05E21A66DA28009065F8 /* UDPClient.cpp */,
+				BE0C05E01A66DA28009065F8 /* TCPClient.cpp */,
 				BE0C05E31A66DA28009065F8 /* UDPClient.h */,
+				BE0C05E21A66DA28009065F8 /* UDPClient.cpp */,
 			);
 			name = Client;
 			sourceTree = "<group>";
